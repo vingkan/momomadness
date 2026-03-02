@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import logo from "/assets/logo/logo.png";
 import "../App.css";
 
@@ -15,8 +14,11 @@ function hasSavedBracket(): boolean {
   }
 }
 
-export default function LandingPage() {
-  const navigate = useNavigate();
+interface Props {
+  onGoToBracket: () => void;
+}
+
+export default function LandingPage({ onGoToBracket }: Props) {
   const hasBracket = hasSavedBracket();
 
   return (
@@ -26,7 +28,7 @@ export default function LandingPage() {
       <p className="landing-subtitle">
         The Bracket Tournament to Find San Francisco's Best Dumplings
       </p>
-      <button className="landing-cta" onClick={() => navigate("/bracket")}>
+      <button className="landing-cta" onClick={onGoToBracket}>
         {hasBracket ? "Continue Your Bracket" : "Create Your Bracket"}
       </button>
     </div>

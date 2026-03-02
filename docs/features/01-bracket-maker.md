@@ -8,8 +8,8 @@ Our first project is to create the landing page and bracket maker on the website
 
 - Create a simple, clean landing page
   - Show just the Momo Madness logo and a single call to action button
-  - The button should say "Create Your Bracket" and take the player to the bracket maker
-  - Remember that the site is under the basename `/momomadness`, so the URL would be `/momomadness/bracket`
+  - The button should say "Create Your Bracket" and switch the view to the bracket maker in-place (no page navigation)
+  - The site is a single page at `/momomadness/` — there is no separate bracket URL
 - Derive the design system, colors, and fonts from the design of the logo and mascot
   - Look at `public/assets/logo/logo.png` for the logo
   - Look at `public/assets/mascot/mascot-dribble.png` for the mascot
@@ -65,6 +65,6 @@ Our first project is to create the landing page and bracket maker on the website
     - Decode: parse as base-36 integer, convert to binary string, left-pad to 15 bits
     - For backward compatibility, if a `choices` param is 5 or more characters, treat it as the legacy 15-character binary string format
 - Allow users to come back to their own bracket and view brackets from other users
-  - When opening a URL, populate that bracket and if it differs from the user's saved bracket, show them the option to view their own bracket
-  - When the `choices` param is not set, load up the user's saved bracket, if any, otherwise show an empty bracket
+  - If the `choices` param is present in the URL on load, skip the landing page and go straight to the bracket view with that bracket populated; if it differs from the user's saved bracket, show them the option to view their own bracket
+  - When the `choices` param is not set, show the landing page first; clicking the button loads the user's saved bracket if any, otherwise an empty bracket
   - Include a button that allows the user to clear their bracket

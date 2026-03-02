@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
 import type { Choices } from '../data/bracket';
 import { decodeChoices, encodeChoicesFull } from '../data/bracket';
 import { useBracket, clearStorage } from '../hooks/useBracket';
@@ -23,13 +22,17 @@ function loadSavedChoices(): Choices | null {
   }
 }
 
-export default function BracketPage() {
-  const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
+interface Props {
+  choicesParam: string | null;
+  onGoToLanding: () => void;
+  onClearChoicesParam: () => void;
+}
+
+export default function BracketPage({ choicesParam, onGoToLanding, onClearChoicesParam }: Props) {
   const [showShare, setShowShare] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
 
-  const urlChoicesParam = searchParams.get('choices');
+  const urlChoicesParam = choicesParam;
 
   const urlChoices = useMemo(
     () => (urlChoicesParam ? decodeChoices(urlChoicesParam) : null),
@@ -62,13 +65,13 @@ export default function BracketPage() {
   const shareUrl = useMemo(() => {
     const encoded = encodeChoicesFull(choices);
     const base = `${window.location.origin}${window.location.pathname}`;
-    return `${base}#/bracket?choices=${encoded}`;
+    return `${base}?choices=${encoded}`;
   }, [choices]);
 
   function handleClear() {
     clearBracket();
     clearStorage();
-    navigate('/bracket', { replace: true });
+    onClearChoicesParam();
   }
 
   return (
@@ -80,7 +83,7 @@ export default function BracketPage() {
           <span>You're viewing someone else's bracket.</span>
           <button
             className="btn-ghost banner-btn"
-            onClick={() => navigate('/bracket', { replace: true })}
+            onClick={onClearChoicesParam}
           >
             View Your Bracket
           </button>
@@ -90,7 +93,7 @@ export default function BracketPage() {
       <header className="bracket-header">
         <button
           className="btn-ghost back-btn"
-          onClick={() => navigate('/')}
+          onClick={onGoToLanding}
           aria-label="Back to home"
         >
           ← Home
