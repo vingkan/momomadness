@@ -41,7 +41,7 @@ jobs:
 
       - name: Install dependencies and build project
         run: |
-          npm install
+          npm ci
           npm run build
           touch ./dist/.nojekyll
 
