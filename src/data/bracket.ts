@@ -1,0 +1,216 @@
+import type { Restaurant } from './restaurants';
+import { getRestaurantBySeed } from './restaurants';
+
+/**
+ * A slot identifies which team fills a position in a matchup.
+ * - { seed } = a fixed seed (used in Round of 16)
+ * - { matchIndex, pick: 0|1 } = winner of another match
+ *   pick 0 = top team won that match; pick 1 = bottom team won
+ */
+export type Slot =
+  | { seed: number }
+  | { matchIndex: number; pick: 0 | 1 };
+
+export interface MatchDef {
+  /** Position in the 15-digit encoding (0-14, finals = 14) */
+  index: number;
+  /** Human-readable label */
+  label: string;
+  /** Top-positioned team slot (higher seed) */
+  topSlot: Slot;
+  /** Bottom-positioned team slot (lower seed) */
+  bottomSlot: Slot;
+  /**
+   * Match indices that must have a winner before this match is available.
+   * Empty for all Round of 16 matches.
+   */
+  prerequisites: number[];
+  /** Which round this match belongs to (for highlight grouping) */
+  round: 'r16' | 'qf' | 'sf' | 'final';
+}
+
+/**
+ * 15-match definitions in encoding order (column-major left→right, finals last):
+ *
+ * Indices 0–3:  Left-side R16  (East top/bottom, South top/bottom)
+ * Indices 4–5:  Left-side QF   (East, South)
+ * Index  6:     Left-side SF   (East-South)
+ * Index  7:     Right-side SF  (West-North)
+ * Indices 8–9:  Right-side QF  (West, North)
+ * Indices 10–13: Right-side R16 (West top/bottom, North top/bottom)
+ * Index  14:    Finals
+ */
+export const MATCHES: MatchDef[] = [
+  // ── Left side Round of 16 ──
+  {
+    index: 0, label: 'East #1 vs #15', round: 'r16',
+    topSlot: { seed: 1 }, bottomSlot: { seed: 15 },
+    prerequisites: [],
+  },
+  {
+    index: 1, label: 'East #2 vs #4', round: 'r16',
+    topSlot: { seed: 2 }, bottomSlot: { seed: 4 },
+    prerequisites: [],
+  },
+  {
+    index: 2, label: 'South #6 vs #13', round: 'r16',
+    topSlot: { seed: 6 }, bottomSlot: { seed: 13 },
+    prerequisites: [],
+  },
+  {
+    index: 3, label: 'South #8 vs #12', round: 'r16',
+    topSlot: { seed: 8 }, bottomSlot: { seed: 12 },
+    prerequisites: [],
+  },
+
+  // ── Left side Quarterfinals ──
+  {
+    index: 4, label: 'East Quarterfinal', round: 'qf',
+    topSlot: { matchIndex: 0, pick: 0 }, bottomSlot: { matchIndex: 1, pick: 0 },
+    prerequisites: [0, 1],
+  },
+  {
+    index: 5, label: 'South Quarterfinal', round: 'qf',
+    topSlot: { matchIndex: 2, pick: 0 }, bottomSlot: { matchIndex: 3, pick: 0 },
+    prerequisites: [2, 3],
+  },
+
+  // ── Left side Semifinal ──
+  {
+    index: 6, label: 'East–South Semifinal', round: 'sf',
+    topSlot: { matchIndex: 4, pick: 0 }, bottomSlot: { matchIndex: 5, pick: 0 },
+    prerequisites: [4, 5],
+  },
+
+  // ── Right side Semifinal ──
+  {
+    index: 7, label: 'West–North Semifinal', round: 'sf',
+    topSlot: { matchIndex: 8, pick: 0 }, bottomSlot: { matchIndex: 9, pick: 0 },
+    prerequisites: [8, 9],
+  },
+
+  // ── Right side Quarterfinals ──
+  {
+    index: 8, label: 'West Quarterfinal', round: 'qf',
+    topSlot: { matchIndex: 10, pick: 0 }, bottomSlot: { matchIndex: 11, pick: 0 },
+    prerequisites: [10, 11],
+  },
+  {
+    index: 9, label: 'North Quarterfinal', round: 'qf',
+    topSlot: { matchIndex: 12, pick: 0 }, bottomSlot: { matchIndex: 13, pick: 0 },
+    prerequisites: [12, 13],
+  },
+
+  // ── Right side Round of 16 ──
+  {
+    index: 10, label: 'West #3 vs #11', round: 'r16',
+    topSlot: { seed: 3 }, bottomSlot: { seed: 11 },
+    prerequisites: [],
+  },
+  {
+    index: 11, label: 'West #9 vs #10', round: 'r16',
+    topSlot: { seed: 9 }, bottomSlot: { seed: 10 },
+    prerequisites: [],
+  },
+  {
+    index: 12, label: 'North #5 vs #16', round: 'r16',
+    topSlot: { seed: 5 }, bottomSlot: { seed: 16 },
+    prerequisites: [],
+  },
+  {
+    index: 13, label: 'North #7 vs #14', round: 'r16',
+    topSlot: { seed: 7 }, bottomSlot: { seed: 14 },
+    prerequisites: [],
+  },
+
+  // ── Finals ──
+  {
+    index: 14, label: 'Momo Madness Finals', round: 'final',
+    topSlot: { matchIndex: 6, pick: 0 }, bottomSlot: { matchIndex: 7, pick: 0 },
+    prerequisites: [6, 7],
+  },
+];
+
+export type Choices = (0 | 1 | null)[];
+
+/** Return a blank 15-element choices array */
+export function emptyChoices(): Choices {
+  return Array(15).fill(null);
+}
+
+/**
+ * Resolve which restaurant occupies a slot given current choices.
+ * Returns null if the slot's prerequisite match hasn't been picked yet.
+ */
+export function resolveSlot(slot: Slot, choices: Choices): Restaurant | null {
+  if ('seed' in slot) {
+    return getRestaurantBySeed(slot.seed);
+  }
+  const { matchIndex } = slot;
+  const choice = choices[matchIndex];
+  if (choice === null) return null;
+  const match = MATCHES[matchIndex];
+  const winningSlot = choice === 0 ? match.topSlot : match.bottomSlot;
+  return resolveSlot(winningSlot, choices);
+}
+
+/** Check whether a match's prerequisites are all satisfied */
+export function isMatchAvailable(matchIndex: number, choices: Choices): boolean {
+  return MATCHES[matchIndex].prerequisites.every(i => choices[i] !== null);
+}
+
+/** Decode a URL `choices` param string into a Choices array */
+export function decodeChoices(param: string): Choices {
+  const result: Choices = Array(15).fill(null);
+  for (let i = 0; i < 15 && i < param.length; i++) {
+    const c = param[i];
+    if (c === '0') result[i] = 0;
+    else if (c === '1') result[i] = 1;
+  }
+  return result;
+}
+
+/** Encode a Choices array to a 15-char string (null → '?') */
+export function encodeChoices(choices: Choices): string {
+  return choices.map(c => (c === null ? '?' : String(c))).join('');
+}
+
+/** Return a shareable encoded string (replaces '?' with '0' for unset — should only call when complete) */
+export function encodeChoicesFull(choices: Choices): string {
+  return choices.map(c => (c === null ? '0' : String(c))).join('');
+}
+
+/**
+ * Determine the next match index to highlight for the user.
+ *
+ * Logic: After a pick, highlight the next unpicked-but-available match
+ * in the same round. If the round is fully complete, highlight the first
+ * available match in the next round.
+ */
+export function getNextHighlight(choices: Choices): number | null {
+  const roundOrder: Array<MatchDef['round']> = ['r16', 'qf', 'sf', 'final'];
+
+  for (const round of roundOrder) {
+    const roundMatches = MATCHES.filter(m => m.round === round);
+    const unpickedAvailable = roundMatches.filter(
+      m => choices[m.index] === null && isMatchAvailable(m.index, choices)
+    );
+    if (unpickedAvailable.length > 0) {
+      return unpickedAvailable[0].index;
+    }
+    // If this round has unpicked matches that are NOT yet available, stop here
+    const unpicked = roundMatches.filter(m => choices[m.index] === null);
+    if (unpicked.length > 0) return null;
+  }
+  return null;
+}
+
+/** Check if all 15 matches have been picked */
+export function isComplete(choices: Choices): boolean {
+  return choices.every(c => c !== null);
+}
+
+/** Count how many matches have been picked */
+export function countPicks(choices: Choices): number {
+  return choices.filter(c => c !== null).length;
+}

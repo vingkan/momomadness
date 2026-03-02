@@ -1,0 +1,99 @@
+.matchup-slot {
+  width: 140px;
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: 8px;
+  overflow: hidden;
+  user-select: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  flex-shrink: 0;
+}
+
+/* Clickable states */
+.slot-available,
+.slot-highlighted {
+  cursor: pointer;
+}
+
+.slot-available:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(217, 79, 30, 0.25);
+}
+
+/* Highlighted: pulsing glow animation */
+.slot-highlighted {
+  border-color: var(--color-accent);
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%   { box-shadow: 0 0 0 0   rgba(245, 166, 35, 0.5); }
+  50%  { box-shadow: 0 0 0 6px rgba(245, 166, 35, 0.2); }
+  100% { box-shadow: 0 0 0 0   rgba(245, 166, 35, 0);   }
+}
+
+/* Locked: dimmed */
+.slot-locked {
+  opacity: 0.45;
+  cursor: default;
+}
+
+/* Decided: subtle */
+.slot-decided {
+  cursor: pointer;
+  border-color: var(--color-border);
+}
+
+.slot-decided:hover {
+  border-color: var(--color-text-muted);
+}
+
+/* Team rows */
+.team-row {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.35rem 0.5rem;
+  min-height: 32px;
+}
+
+.team-row.winner .team-name {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.team-row.tbd .team-name {
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+/* Loser text should be dimmed */
+.slot-decided .team-row:not(.winner) .team-name {
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+  text-decoration-color: rgba(196, 168, 130, 0.4);
+}
+
+.team-seed {
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  min-width: 22px;
+  text-align: right;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.team-name {
+  font-size: 0.72rem;
+  color: var(--color-text);
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.slot-divider {
+  height: 1px;
+  background: var(--color-border);
+  margin: 0;
+}

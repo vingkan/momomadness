@@ -1,15 +1,15 @@
-import logo from "/assets/logo/logo.png";
-import "./App.css";
+import { HashRouter, Routes, Route } from 'react-router-dom';
+import LandingPage from './pages/LandingPage';
+import BracketPage from './pages/BracketPage';
 
 function App() {
   return (
-    <>
-      <div>
-        <img src={logo} className="logo" alt="logo" />
-      </div>
-      <h1>Momo Madness</h1>
-      <p>March 2026</p>
-    </>
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/bracket" element={<BracketPage />} />
+      </Routes>
+    </HashRouter>
   );
 }
 

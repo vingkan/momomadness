@@ -1,0 +1,186 @@
+/* ──────────────────────────────────────────────────────────
+   Bracket layout
+   The bracket has 7 columns:
+   [R16-L] [QF-L] [SF-L] [Finals] [SF-R] [QF-R] [R16-R]
+
+   Each matchup slot is 140px wide.
+   Columns are connected by horizontal lines via pseudo-elements.
+────────────────────────────────────────────────────────── */
+
+:root {
+  --slot-w: 140px;
+  --slot-h: 66px;   /* 2 × 32px rows + 2px divider */
+  --gap: 12px;       /* gap between slots in a column */
+  --col-gap: 32px;   /* horizontal gap between columns */
+  --line-color: var(--color-border);
+}
+
+.bracket-scroll-container {
+  overflow-x: auto;
+  overflow-y: auto;
+  padding: 1.5rem 1rem 2rem;
+  max-height: calc(100vh - 140px);
+}
+
+.bracket {
+  display: flex;
+  align-items: stretch;
+  gap: var(--col-gap);
+  min-width: calc(7 * var(--slot-w) + 6 * var(--col-gap) + 2rem);
+  width: max-content;
+  margin: 0 auto;
+}
+
+/* ── Column base ── */
+.bracket-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: var(--slot-w);
+  position: relative;
+}
+
+/* Division labels */
+.division-label {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: var(--color-primary);
+  text-align: center;
+  padding: 0.3rem 0;
+  width: 100%;
+}
+
+.division-label-south,
+.division-label-north {
+  margin-top: 0.5rem;
+}
+
+/* ── Left R16 column ── */
+.col-r16-left {
+  gap: var(--gap);
+}
+
+/* ── Left QF column — vertically centered between pairs ── */
+.col-qf-left {
+  justify-content: space-between;
+}
+
+.col-spacer-top-east {
+  /* Space above East QF: label height + 2 slots + 1 gap, then half slot */
+  flex: 0 0 calc(0.9rem + var(--slot-h) + var(--gap) / 2 + 0.3rem * 2);
+}
+
+.col-spacer-mid {
+  flex: 1;
+}
+
+.col-spacer-bottom-south {
+  flex: 0 0 calc(0.9rem + var(--slot-h) + var(--gap) / 2 + 0.3rem * 2 + 0.5rem);
+}
+
+/* Mirror for right side */
+.col-spacer-top-west {
+  flex: 0 0 calc(0.9rem + var(--slot-h) + var(--gap) / 2 + 0.3rem * 2);
+}
+
+.col-spacer-bottom-north {
+  flex: 0 0 calc(0.9rem + var(--slot-h) + var(--gap) / 2 + 0.3rem * 2 + 0.5rem);
+}
+
+/* ── SF columns ── */
+.col-sf-left,
+.col-sf-right {
+  justify-content: center;
+}
+
+.col-sf-spacer {
+  flex: 1;
+}
+
+/* ── Finals column ── */
+.col-finals {
+  justify-content: center;
+  gap: 0;
+}
+
+.finals-spacer {
+  flex: 1;
+}
+
+/* ── Connector lines ──
+   We draw lines using ::before / ::after on the column containers,
+   connecting slot edges to the next column.
+   Strategy: use box-shadow / border on wrapper divs between columns.
+   For simplicity, we use the bracket column's ::before to draw right-side connectors.
+*/
+
+/* Right-to-next connectors from left-side columns */
+.col-r16-left::after,
+.col-qf-left::after,
+.col-sf-left::after {
+  content: '';
+  position: absolute;
+  right: calc(-1 * var(--col-gap));
+  width: var(--col-gap);
+  border-top: 1px solid var(--line-color);
+  pointer-events: none;
+}
+
+/* Position the connector at vertical midpoint of the column's content */
+.col-r16-left::after  { top: 50%; }
+.col-qf-left::after   { top: 50%; }
+.col-sf-left::after   { top: 50%; }
+
+/* We'll rely on CSS for bracket lines — but accurate positioning
+   requires JS or hardcoded values. For visual clarity, we use a simpler
+   approach: dashed column separators and visible slot borders. */
+
+/* Instead of complex pseudo-element bracket lines, use a flex spacer
+   approach so the bracket reads naturally without lines. Add a subtle
+   background grid to indicate connections. */
+
+/* ── Bracket line overrides ── */
+/* Horizontal connector between each slot and the next column */
+.matchup-slot.slot-side-left::after,
+.matchup-slot.slot-side-right::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: var(--col-gap);
+  height: 1px;
+  background: var(--line-color);
+  pointer-events: none;
+}
+
+.matchup-slot {
+  position: relative;
+}
+
+.matchup-slot.slot-side-left::after {
+  left: 100%;
+}
+
+.matchup-slot.slot-side-right::before {
+  right: 100%;
+}
+
+/* Center slot (Finals) gets lines on both sides */
+.matchup-slot.slot-side-center::before,
+.matchup-slot.slot-side-center::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: var(--col-gap);
+  height: 1px;
+  background: var(--line-color);
+  pointer-events: none;
+}
+
+.matchup-slot.slot-side-center::before {
+  right: 100%;
+}
+
+.matchup-slot.slot-side-center::after {
+  left: 100%;
+}

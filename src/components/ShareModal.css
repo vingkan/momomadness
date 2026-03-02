@@ -1,0 +1,68 @@
+.share-modal-content {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  max-width: 520px;
+  width: 100%;
+  position: relative;
+  text-align: center;
+  animation: slide-up 0.2s ease;
+}
+
+.share-trophy {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.share-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: 0.05em;
+  color: var(--color-accent);
+  margin-bottom: 0.75rem;
+}
+
+.share-desc {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin: 0 0 1.5rem;
+  line-height: 1.5;
+}
+
+.share-url-box {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  text-align: left;
+  overflow: hidden;
+}
+
+.share-url-text {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  word-break: break-all;
+  font-family: monospace;
+}
+
+.share-copy-btn {
+  padding: 0.7em 2em;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+}
+
+.share-copy-btn:hover {
+  opacity: 0.9;
+}
+
+.share-copy-btn.copied {
+  background: var(--color-success);
+}
