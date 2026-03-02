@@ -36,7 +36,7 @@
   font-family: var(--font-display);
   letter-spacing: 0.08em;
   font-weight: 400;
-  border-radius: 50px;
+  border-radius: 8px;
   background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   border: none;
   color: #fff;

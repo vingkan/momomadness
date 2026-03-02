@@ -173,6 +173,43 @@
   background: var(--color-primary-dark);
 }
 
+/* Current winner highlight (edit mode) */
+.restaurant-card.current-winner {
+  border-color: var(--color-accent);
+  background: var(--color-surface-raised);
+}
+
+.restaurant-card.current-winner .pick-btn-label {
+  background: var(--color-accent);
+  color: #1a1a1a;
+}
+
+/* View-only mode */
+.restaurant-card.view-only {
+  cursor: default;
+}
+
+.restaurant-card.view-only:hover {
+  border-color: var(--color-border);
+  background: var(--color-surface-raised);
+  transform: none;
+}
+
+.restaurant-card.view-only.current-winner:hover {
+  border-color: var(--color-accent);
+}
+
+/* Winner badge (read-only mode) */
+.winner-badge {
+  margin-top: 0.75rem;
+  padding: 0.4em 1em;
+  background: var(--color-accent);
+  color: #1a1a1a;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
 /* Mobile: stack vertically */
 @media (max-width: 520px) {
   .matchup-cards {

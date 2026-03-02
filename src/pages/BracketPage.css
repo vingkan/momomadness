@@ -25,7 +25,8 @@
 
 /* Header */
 .bracket-header {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   padding: 0.75rem 1rem;
   border-bottom: 1px solid var(--color-border);
@@ -39,7 +40,8 @@
 .back-btn {
   padding: 0.4em 0.8em;
   font-size: 0.9rem;
-  flex-shrink: 0;
+  justify-self: start;
+  width: fit-content;
 }
 
 .bracket-page-title {
@@ -47,19 +49,27 @@
   font-size: clamp(1.2rem, 4vw, 1.8rem);
   letter-spacing: 0.06em;
   color: var(--color-text);
-  flex: 1;
   text-align: center;
+  white-space: nowrap;
 }
 
-.bracket-header-actions {
+/* Footer */
+.bracket-footer {
+  padding: 0.5rem 1.5rem 1rem;
   display: flex;
-  gap: 0.5rem;
+  flex-direction: column;
   align-items: center;
-  flex-shrink: 0;
+  gap: 0.5rem;
+  background: var(--color-bg);
+}
+
+.bracket-footer-buttons {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
 }
 
 .share-btn {
-  border-radius: 50px;
   font-size: 0.9rem;
 }
 

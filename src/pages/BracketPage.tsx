@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import type { Choices } from '../data/bracket';
 import { decodeChoices, encodeChoicesFull } from '../data/bracket';
@@ -6,6 +6,7 @@ import { useBracket, clearStorage } from '../hooks/useBracket';
 import Bracket from '../components/Bracket';
 import ProgressBar from '../components/ProgressBar';
 import ShareModal from '../components/ShareModal';
+import Confetti from '../components/Confetti';
 import './BracketPage.css';
 
 const STORAGE_KEY = 'momomadness-bracket';
@@ -26,10 +27,10 @@ export default function BracketPage() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [showShare, setShowShare] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const urlChoicesParam = searchParams.get('choices');
 
-  // Determine if we're viewing someone else's bracket
   const urlChoices = useMemo(
     () => (urlChoicesParam ? decodeChoices(urlChoicesParam) : null),
     [urlChoicesParam]
@@ -42,10 +43,21 @@ export default function BracketPage() {
     return JSON.stringify(urlChoices) !== JSON.stringify(savedChoices);
   }, [urlChoices, savedChoices]);
 
-  // The bracket state: if viewing URL, use URL choices (read-only if different from own)
   const initialChoices = urlChoices ?? savedChoices ?? undefined;
   const { choices, pick, clearBracket, complete, picksCount, nextHighlight } =
     useBracket(initialChoices, !isViewingOther);
+
+  // Auto-open share modal + confetti when the 15th pick is made
+  const prevPicksRef = useRef(picksCount);
+  useEffect(() => {
+    if (prevPicksRef.current === 14 && picksCount === 15 && !isViewingOther) {
+      setShowShare(true);
+      setShowConfetti(true);
+      const timer = setTimeout(() => setShowConfetti(false), 5500);
+      return () => clearTimeout(timer);
+    }
+    prevPicksRef.current = picksCount;
+  }, [picksCount, isViewingOther]);
 
   const shareUrl = useMemo(() => {
     const encoded = encodeChoicesFull(choices);
@@ -56,13 +68,13 @@ export default function BracketPage() {
   function handleClear() {
     clearBracket();
     clearStorage();
-    // Navigate to bracket without choices param to clear URL too
     navigate('/bracket', { replace: true });
   }
 
   return (
     <div className="bracket-page">
-      {/* Banner for viewing someone else's bracket */}
+      {showConfetti && <Confetti />}
+
       {isViewingOther && (
         <div className="other-bracket-banner">
           <span>You're viewing someone else's bracket.</span>
@@ -75,7 +87,6 @@ export default function BracketPage() {
         </div>
       )}
 
-      {/* Header */}
       <header className="bracket-header">
         <button
           className="btn-ghost back-btn"
@@ -85,7 +96,19 @@ export default function BracketPage() {
           ← Home
         </button>
         <h1 className="bracket-page-title">Momo Madness 2026</h1>
-        <div className="bracket-header-actions">
+        <div />
+      </header>
+
+      <Bracket
+        choices={choices}
+        nextHighlight={isViewingOther ? null : nextHighlight}
+        onPick={isViewingOther ? () => {} : pick}
+        readOnly={isViewingOther}
+      />
+
+      <footer className="bracket-footer">
+        {!isViewingOther && <ProgressBar picks={picksCount} total={15} />}
+        <div className="bracket-footer-buttons">
           {!isViewingOther && (
             <button className="btn-ghost" onClick={handleClear}>
               Clear
@@ -100,22 +123,8 @@ export default function BracketPage() {
             Share Bracket
           </button>
         </div>
-      </header>
+      </footer>
 
-      {/* Progress */}
-      {!isViewingOther && (
-        <ProgressBar picks={picksCount} total={15} />
-      )}
-
-      {/* Bracket */}
-      <Bracket
-        choices={choices}
-        nextHighlight={isViewingOther ? null : nextHighlight}
-        onPick={isViewingOther ? () => {} : pick}
-        readOnly={isViewingOther}
-      />
-
-      {/* Share modal */}
       {showShare && (
         <ShareModal url={shareUrl} onClose={() => setShowShare(false)} />
       )}

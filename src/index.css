@@ -2,12 +2,12 @@
   --color-primary: #D94F1E;
   --color-primary-dark: #A83910;
   --color-accent: #F5A623;
-  --color-bg: #1A1008;
-  --color-surface: #2A1D0F;
-  --color-surface-raised: #3A2918;
+  --color-bg: #162A42;
+  --color-surface: #1C3456;
+  --color-surface-raised: #234069;
   --color-text: #FFF8F0;
-  --color-text-muted: #C4A882;
-  --color-border: #3D2A14;
+  --color-text-muted: #7BA5C9;
+  --color-border: #2A4D7A;
   --color-success: #5CB85C;
   --font-display: 'Bebas Neue', Impact, sans-serif;
   --font-body: system-ui, Avenir, Helvetica, Arial, sans-serif;

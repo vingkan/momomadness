@@ -2,7 +2,9 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.5rem 1rem;
+  width: 60%;
+  max-width: 420px;
+  padding: 0.75rem 0;
 }
 
 .progress-bar-track {
