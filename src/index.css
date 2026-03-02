@@ -1,4 +1,7 @@
 :root {
+  /* Bracket column / matchup slot width — change this one value to resize both */
+  --slot-w: 200px;
+
   --color-primary: #D94F1E;
   --color-primary-dark: #A83910;
   --color-accent: #F5A623;

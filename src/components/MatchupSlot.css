@@ -1,6 +1,6 @@
 .matchup-slot {
   position: absolute;
-  width: 140px;
+  width: var(--slot-w);
   height: 72px;
   background: var(--color-surface);
   border: 1.5px solid var(--color-border);

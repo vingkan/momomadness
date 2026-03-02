@@ -1,7 +1,6 @@
 /* ──────────────────────────────────────────────────────────
    Bracket layout — absolute-positioned columns for symmetry.
-   Column container: position:relative; width:140px; height:316px
-   Each MatchupSlot: position:absolute; width:140px; height:72px
+   To resize columns and slots, change --slot-w in index.css.
 ────────────────────────────────────────────────────────── */
 
 .bracket-scroll-container {
@@ -36,7 +35,7 @@
 }
 
 .round-label-col {
-  width: 140px;
+  width: var(--slot-w);
   text-align: center;
   font-size: 0.65rem;
   letter-spacing: 0.08em;
@@ -54,7 +53,7 @@
 /* Each column is a fixed-size relative container; slots are absolutely positioned inside */
 .bracket-col {
   position: relative;
-  width: 140px;
+  width: var(--slot-w);
   height: 364px;
   flex-shrink: 0;
   overflow: visible;

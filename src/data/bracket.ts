@@ -32,94 +32,94 @@ export interface MatchDef {
 /**
  * 15-match definitions in encoding order (column-major left→right, finals last):
  *
- * Indices 0–3:  Left-side R16  (East top/bottom, South top/bottom)
- * Indices 4–5:  Left-side QF   (East, South)
- * Index  6:     Left-side SF   (East-South)
- * Index  7:     Right-side SF  (West-North)
- * Indices 8–9:  Right-side QF  (West, North)
- * Indices 10–13: Right-side R16 (West top/bottom, North top/bottom)
+ * Indices 0–3:  Left-side R16  (North top/bottom, West top/bottom)
+ * Indices 4–5:  Left-side QF   (North, West)
+ * Index  6:     Left-side SF   (North-West)
+ * Index  7:     Right-side SF  (East-South)
+ * Indices 8–9:  Right-side QF  (East, South)
+ * Indices 10–13: Right-side R16 (East top/bottom, South top/bottom)
  * Index  14:    Finals
  */
 export const MATCHES: MatchDef[] = [
-  // ── Left side Round of 16 ──
+  // ── Left side Round of 16 (North top, West bottom) ──
   {
-    index: 0, label: 'East #1 vs #15', round: 'r16',
-    topSlot: { seed: 1 }, bottomSlot: { seed: 15 },
+    index: 0, label: 'North #5 vs #16', round: 'r16',
+    topSlot: { seed: 5 }, bottomSlot: { seed: 16 },
     prerequisites: [],
   },
   {
-    index: 1, label: 'East #2 vs #4', round: 'r16',
-    topSlot: { seed: 2 }, bottomSlot: { seed: 4 },
+    index: 1, label: 'North #7 vs #14', round: 'r16',
+    topSlot: { seed: 7 }, bottomSlot: { seed: 14 },
     prerequisites: [],
   },
   {
-    index: 2, label: 'South #6 vs #13', round: 'r16',
-    topSlot: { seed: 6 }, bottomSlot: { seed: 13 },
+    index: 2, label: 'West #3 vs #11', round: 'r16',
+    topSlot: { seed: 3 }, bottomSlot: { seed: 11 },
     prerequisites: [],
   },
   {
-    index: 3, label: 'South #8 vs #12', round: 'r16',
-    topSlot: { seed: 8 }, bottomSlot: { seed: 12 },
+    index: 3, label: 'West #9 vs #10', round: 'r16',
+    topSlot: { seed: 9 }, bottomSlot: { seed: 10 },
     prerequisites: [],
   },
 
   // ── Left side Quarterfinals ──
   {
-    index: 4, label: 'East Quarterfinal', round: 'qf',
+    index: 4, label: 'North Quarterfinal', round: 'qf',
     topSlot: { matchIndex: 0, pick: 0 }, bottomSlot: { matchIndex: 1, pick: 0 },
     prerequisites: [0, 1],
   },
   {
-    index: 5, label: 'South Quarterfinal', round: 'qf',
+    index: 5, label: 'West Quarterfinal', round: 'qf',
     topSlot: { matchIndex: 2, pick: 0 }, bottomSlot: { matchIndex: 3, pick: 0 },
     prerequisites: [2, 3],
   },
 
-  // ── Left side Semifinal ──
+  // ── Left side Semifinal (North-West) ──
   {
-    index: 6, label: 'East–South Semifinal', round: 'sf',
+    index: 6, label: 'North–West Semifinal', round: 'sf',
     topSlot: { matchIndex: 4, pick: 0 }, bottomSlot: { matchIndex: 5, pick: 0 },
     prerequisites: [4, 5],
   },
 
-  // ── Right side Semifinal ──
+  // ── Right side Semifinal (East-South) ──
   {
-    index: 7, label: 'West–North Semifinal', round: 'sf',
+    index: 7, label: 'East–South Semifinal', round: 'sf',
     topSlot: { matchIndex: 8, pick: 0 }, bottomSlot: { matchIndex: 9, pick: 0 },
     prerequisites: [8, 9],
   },
 
   // ── Right side Quarterfinals ──
   {
-    index: 8, label: 'West Quarterfinal', round: 'qf',
+    index: 8, label: 'East Quarterfinal', round: 'qf',
     topSlot: { matchIndex: 10, pick: 0 }, bottomSlot: { matchIndex: 11, pick: 0 },
     prerequisites: [10, 11],
   },
   {
-    index: 9, label: 'North Quarterfinal', round: 'qf',
+    index: 9, label: 'South Quarterfinal', round: 'qf',
     topSlot: { matchIndex: 12, pick: 0 }, bottomSlot: { matchIndex: 13, pick: 0 },
     prerequisites: [12, 13],
   },
 
-  // ── Right side Round of 16 ──
+  // ── Right side Round of 16 (East top, South bottom) ──
   {
-    index: 10, label: 'West #3 vs #11', round: 'r16',
-    topSlot: { seed: 3 }, bottomSlot: { seed: 11 },
+    index: 10, label: 'East #1 vs #15', round: 'r16',
+    topSlot: { seed: 1 }, bottomSlot: { seed: 15 },
     prerequisites: [],
   },
   {
-    index: 11, label: 'West #9 vs #10', round: 'r16',
-    topSlot: { seed: 9 }, bottomSlot: { seed: 10 },
+    index: 11, label: 'East #2 vs #4', round: 'r16',
+    topSlot: { seed: 2 }, bottomSlot: { seed: 4 },
     prerequisites: [],
   },
   {
-    index: 12, label: 'North #5 vs #16', round: 'r16',
-    topSlot: { seed: 5 }, bottomSlot: { seed: 16 },
+    index: 12, label: 'South #6 vs #13', round: 'r16',
+    topSlot: { seed: 6 }, bottomSlot: { seed: 13 },
     prerequisites: [],
   },
   {
-    index: 13, label: 'North #7 vs #14', round: 'r16',
-    topSlot: { seed: 7 }, bottomSlot: { seed: 14 },
+    index: 13, label: 'South #8 vs #12', round: 'r16',
+    topSlot: { seed: 8 }, bottomSlot: { seed: 12 },
     prerequisites: [],
   },
 

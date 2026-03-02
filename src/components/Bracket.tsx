@@ -125,15 +125,15 @@ export default function Bracket({
           <div className="round-label-col">Round of 16</div>
         </div>
         <div className="bracket">
-          {/* ── Left R16 column ── */}
+          {/* ── Left R16 column (North top, West bottom) ── */}
           <div className="bracket-col">
             <div className="division-label" style={{ top: -20 }}>
-              EAST
+              NORTH
             </div>
             {slot(0, TOP.r16a0, "left")}
             {slot(1, TOP.r16a1, "left")}
             <div className="division-label" style={{ top: 185 }}>
-              SOUTH
+              WEST
             </div>
             {slot(2, TOP.r16b0, "left")}
             {slot(3, TOP.r16b1, "left")}
@@ -141,7 +141,7 @@ export default function Bracket({
 
           <BracketConnector type="r16-qf-left" />
 
-          {/* ── Left QF column ── */}
+          {/* ── Left QF column (North, West) ── */}
           <div className="bracket-col">
             {slot(4, TOP.qfa, "left")}
             {slot(5, TOP.qfb, "left")}
@@ -149,7 +149,7 @@ export default function Bracket({
 
           <BracketConnector type="qf-sf-left" />
 
-          {/* ── Left SF column ── */}
+          {/* ── Left SF column (North-West) ── */}
           <div className="bracket-col">{slot(6, TOP.sf, "left")}</div>
 
           <BracketConnector type="sf-finals-left" />
@@ -159,12 +159,12 @@ export default function Bracket({
 
           <BracketConnector type="sf-finals-right" />
 
-          {/* ── Right SF column ── */}
+          {/* ── Right SF column (East-South) ── */}
           <div className="bracket-col">{slot(7, TOP.sf, "right")}</div>
 
           <BracketConnector type="qf-sf-right" />
 
-          {/* ── Right QF column ── */}
+          {/* ── Right QF column (East, South) ── */}
           <div className="bracket-col">
             {slot(8, TOP.qfa, "right")}
             {slot(9, TOP.qfb, "right")}
@@ -172,15 +172,15 @@ export default function Bracket({
 
           <BracketConnector type="r16-qf-right" />
 
-          {/* ── Right R16 column ── */}
+          {/* ── Right R16 column (East top, South bottom) ── */}
           <div className="bracket-col">
             <div className="division-label" style={{ top: -20 }}>
-              WEST
+              EAST
             </div>
             {slot(10, TOP.r16a0, "right")}
             {slot(11, TOP.r16a1, "right")}
             <div className="division-label" style={{ top: 185 }}>
-              NORTH
+              SOUTH
             </div>
             {slot(12, TOP.r16b0, "right")}
             {slot(13, TOP.r16b1, "right")}
