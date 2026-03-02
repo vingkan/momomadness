@@ -36,13 +36,13 @@ jobs:
         with:
           node-version: "22"
 
-      - name: Install dependencies and build project
-        run: |
-          npm install
-          npm run build
-
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
+      - name: Install dependencies and build project
+        run: |
+          npm ci
+          npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
