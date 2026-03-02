@@ -56,10 +56,14 @@ Our first project is to create the landing page and bracket maker on the website
   - Auto-save the user's choices to `localStorage`
   - Allow sharing a bracket by URL params
   - Since there are 16 teams and four rounds, there are exactly 15 matches to pick winners for (8 in round 1, 4 in round 2, 2 in round 3, 1 in round 4)
-  - This means the entire bracket can be represented as a 15-digit string of 0s and 1s
-    - The digits represent the matchups ordered from top-to-bottom, then left-to-right in the tournament bracket, with the finals being the last digit
+  - This means the entire bracket can be represented as a 15-bit binary number
+    - The bits represent the matchups ordered from top-to-bottom, then left-to-right in the tournament bracket, with the finals being the last bit
     - A value of 0 represents the higher-seeded restaurant winning and 1 represents the lower-seeded restaurant winning that matchup
-  - When sharing a bracket link, save the 15-digit bracket representation as a URL param called `choices`, like this: `?choices=010101...`
+  - When sharing a bracket link, encode the 15-bit number as a 3-character base-36 string (digits 0–9 and letters A–Z) and save it as a URL param called `choices`, like this: `?choices=PA7`
+    - `36^3 = 46,656 > 2^15 = 32,768`, so 3 base-36 characters are sufficient to represent any bracket
+    - Encode: interpret the 15-bit string as a base-2 integer, convert to base-36 uppercase, left-pad with `'0'` to length 3
+    - Decode: parse as base-36 integer, convert to binary string, left-pad to 15 bits
+    - For backward compatibility, if a `choices` param is 5 or more characters, treat it as the legacy 15-character binary string format
 - Allow users to come back to their own bracket and view brackets from other users
   - When opening a URL, populate that bracket and if it differs from the user's saved bracket, show them the option to view their own bracket
   - When the `choices` param is not set, load up the user's saved bracket, if any, otherwise show an empty bracket

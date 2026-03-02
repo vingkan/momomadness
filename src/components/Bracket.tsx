@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import type { Choices } from "../data/bracket";
 import { MATCHES, resolveSlot, isMatchAvailable } from "../data/bracket";
 import type { SlotState } from "./MatchupSlot";
@@ -43,6 +43,17 @@ export default function Bracket({
   readOnly = false,
 }: Props) {
   const [openMatch, setOpenMatch] = useState<number | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (nextHighlight === null) return;
+    const container = scrollRef.current;
+    if (!container) return;
+    const highlighted = container.querySelector('.slot-highlighted');
+    if (highlighted) {
+      highlighted.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+  }, [nextHighlight]);
 
   function getSlotState(matchIndex: number): SlotState {
     if (choices[matchIndex] !== null) return "decided";
@@ -108,7 +119,7 @@ export default function Bracket({
 
   return (
     <>
-      <div className="bracket-scroll-container">
+      <div className="bracket-scroll-container" ref={scrollRef}>
         <div className="bracket-round-labels">
           <div className="round-label-col">Round of 16</div>
           <div className="round-label-gap" />

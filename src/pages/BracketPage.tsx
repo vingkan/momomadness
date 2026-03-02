@@ -96,7 +96,13 @@ export default function BracketPage() {
           ← Home
         </button>
         <h1 className="bracket-page-title">Momo Madness 2026</h1>
-        <div />
+        {!isViewingOther ? (
+          <button className="btn-ghost clear-btn" onClick={handleClear}>
+            Clear
+          </button>
+        ) : (
+          <div />
+        )}
       </header>
 
       <Bracket
@@ -109,11 +115,6 @@ export default function BracketPage() {
       <footer className="bracket-footer">
         {!isViewingOther && <ProgressBar picks={picksCount} total={15} />}
         <div className="bracket-footer-buttons">
-          {!isViewingOther && (
-            <button className="btn-ghost" onClick={handleClear}>
-              Clear
-            </button>
-          )}
           <button
             className={`btn-primary share-btn ${!complete ? 'disabled' : ''}`}
             onClick={() => complete && setShowShare(true)}

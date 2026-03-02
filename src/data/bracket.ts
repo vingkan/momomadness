@@ -159,25 +159,49 @@ export function isMatchAvailable(matchIndex: number, choices: Choices): boolean 
   return MATCHES[matchIndex].prerequisites.every(i => choices[i] !== null);
 }
 
-/** Decode a URL `choices` param string into a Choices array */
+/** Decode a URL `choices` param string into a Choices array.
+ *
+ * Handles two formats for backward compatibility:
+ *   - New format (length <= 4): 3-char base-36 string (e.g., "PA7")
+ *   - Legacy format (length >= 5): 15-char binary string of '0' and '1' characters
+ */
 export function decodeChoices(param: string): Choices {
   const result: Choices = Array(15).fill(null);
-  for (let i = 0; i < 15 && i < param.length; i++) {
-    const c = param[i];
-    if (c === '0') result[i] = 0;
-    else if (c === '1') result[i] = 1;
+
+  if (param.length <= 4) {
+    const num = parseInt(param, 36);
+    if (isNaN(num)) return result;
+    const binaryStr = num.toString(2).padStart(15, '0');
+    const bits = binaryStr.length > 15 ? binaryStr.slice(-15) : binaryStr;
+    for (let i = 0; i < 15; i++) {
+      if (bits[i] === '0') result[i] = 0;
+      else if (bits[i] === '1') result[i] = 1;
+    }
+  } else {
+    // Legacy: 15-char binary string
+    for (let i = 0; i < 15 && i < param.length; i++) {
+      const c = param[i];
+      if (c === '0') result[i] = 0;
+      else if (c === '1') result[i] = 1;
+    }
   }
+
   return result;
 }
 
-/** Encode a Choices array to a 15-char string (null → '?') */
+/** Encode a Choices array to a 15-char string (null → '?'). Internal use only. */
 export function encodeChoices(choices: Choices): string {
   return choices.map(c => (c === null ? '?' : String(c))).join('');
 }
 
-/** Return a shareable encoded string (replaces '?' with '0' for unset — should only call when complete) */
+/** Return a shareable 3-character base-36 encoded string.
+ * Interprets the 15 binary choices as a binary integer and converts to base-36.
+ * Should only be called when the bracket is complete (all 15 picks made).
+ */
 export function encodeChoicesFull(choices: Choices): string {
-  return choices.map(c => (c === null ? '0' : String(c))).join('');
+  const binaryStr = choices.map(c => (c === null ? '0' : String(c))).join('');
+  const num = parseInt(binaryStr, 2);
+  return num.toString(36).toUpperCase().padStart(3, '0');
 }
 
 /**
