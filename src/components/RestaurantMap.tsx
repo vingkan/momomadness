@@ -32,6 +32,14 @@ export default function RestaurantMap() {
         <h2 className="map-section-title">THE CONTENDERS</h2>
         <p className="map-section-subtitle">{plotted.length} San Francisco dumpling restaurants</p>
       </div>
+      <div className="map-legend">
+        {(Object.entries(DIVISION_COLORS) as [string, string][]).map(([division, color]) => (
+          <div key={division} className="legend-entry">
+            <span className="legend-dot" style={{ background: color, boxShadow: `0 0 6px ${color}80` }} />
+            {division}
+          </div>
+        ))}
+      </div>
       <MapContainer
         center={SF_CENTER}
         zoom={12}
