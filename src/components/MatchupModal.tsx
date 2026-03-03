@@ -1,3 +1,7 @@
+import { useRef } from 'react';
+import type { MutableRefObject } from 'react';
+import { Ham, Drumstick, Vegan, Shrimp, Beef, CircleHelp } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
 import type { Restaurant } from '../data/restaurants';
 import './MatchupModal.css';
 
@@ -13,15 +17,67 @@ interface Props {
   onClose: () => void;
 }
 
+const INGREDIENT_ICONS: Record<string, LucideIcon> = {
+  P: Ham,
+  C: Drumstick,
+  V: Vegan,
+  S: Shrimp,
+  B: Beef,
+};
+
+const INGREDIENT_LABELS: Record<string, string> = {
+  P: 'Pork',
+  C: 'Chicken',
+  V: 'Vegetarian',
+  S: 'Seafood',
+  B: 'Beef',
+};
+
+function parseMenuItem(item: string | undefined): { name: string; codes: string[] } | null {
+  if (!item) return null;
+  const match = item.match(/^(.*?)\s*\(([^)]+)\)\s*$/);
+  if (!match) return { name: item, codes: [] };
+  return {
+    name: match[1].trim(),
+    codes: match[2].split(',').map(c => c.trim()),
+  };
+}
+
+function MenuItemRow({ item }: { item: string | undefined }) {
+  const parsed = parseMenuItem(item);
+  if (!parsed) {
+    return (
+      <div className="menu-item-tbd">
+        <CircleHelp size={13} />
+        Menu Item TBD
+      </div>
+    );
+  }
+  return (
+    <div className="menu-item-row">
+      {parsed.codes.length > 0 && (
+        <span className="menu-item-icons">
+          {parsed.codes.map((code, i) => {
+            const Icon = INGREDIENT_ICONS[code];
+            return Icon ? <Icon key={i} size={13} /> : null;
+          })}
+        </span>
+      )}
+      <span className="menu-item-name">{parsed.name}</span>
+    </div>
+  );
+}
+
 interface RestaurantCardProps {
   restaurant: Restaurant | null;
   position: 0 | 1;
   isCurrentWinner: boolean;
   readOnly: boolean;
   onPick: (value: 0 | 1) => void;
+  openedAt: MutableRefObject<number>;
 }
 
-function RestaurantCard({ restaurant, position, isCurrentWinner, readOnly, onPick }: RestaurantCardProps) {
+function RestaurantCard({ restaurant, position, isCurrentWinner, readOnly, onPick, openedAt }: RestaurantCardProps) {
   if (!restaurant) {
     return (
       <div className="restaurant-card tbd">
@@ -51,6 +107,10 @@ function RestaurantCard({ restaurant, position, isCurrentWinner, readOnly, onPic
           <span className="stat-label">Ratings</span>
         </div>
       </div>
+      <div className="restaurant-menu-items">
+        <MenuItemRow item={restaurant.menuItemA} />
+        <MenuItemRow item={restaurant.menuItemB} />
+      </div>
       {readOnly && isCurrentWinner && (
         <div className="winner-badge">✓ Winner</div>
       )}
@@ -69,7 +129,10 @@ function RestaurantCard({ restaurant, position, isCurrentWinner, readOnly, onPic
   return (
     <button
       className={cardClass}
-      onClick={() => onPick(position)}
+      onClick={() => {
+        if (Date.now() - openedAt.current < 350) return;
+        onPick(position);
+      }}
       aria-label={`Pick ${restaurant.name}`}
     >
       {content}
@@ -86,6 +149,8 @@ export default function MatchupModal({
   onPick,
   onClose,
 }: Props) {
+  const openedAt = useRef(Date.now());
+
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={e => e.stopPropagation()}>
@@ -101,6 +166,7 @@ export default function MatchupModal({
             isCurrentWinner={currentWinner === 0}
             readOnly={readOnly}
             onPick={onPick}
+            openedAt={openedAt}
           />
           <div className="vs-divider">VS</div>
           <RestaurantCard
@@ -109,7 +175,16 @@ export default function MatchupModal({
             isCurrentWinner={currentWinner === 1}
             readOnly={readOnly}
             onPick={onPick}
+            openedAt={openedAt}
           />
+        </div>
+        <div className="ingredient-legend">
+          {(Object.entries(INGREDIENT_ICONS) as [string, LucideIcon][]).map(([code, Icon]) => (
+            <span key={code} className="legend-item">
+              <Icon size={12} />
+              {INGREDIENT_LABELS[code]}
+            </span>
+          ))}
         </div>
       </div>
     </div>

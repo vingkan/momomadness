@@ -23,6 +23,9 @@ Our first project is to create the landing page and bracket maker on the website
     - Division: Which of the four divisions in the brack the restaurant is in: North, East, South, or West
     - Beli Score: Score out of 10 on the Beli app (rough indicator of quality)
     - Beli Ratings: Number of ratings on the Beli app (rough indicator of popularity)
+    - Address: Street address of the restaurant (collected but not yet displayed in the UI)
+    - Menu Item A: First representative dish entered for the tournament
+    - Menu Item B: Second representative dish entered for the tournament
 - Display the bracket according to the tournament structure:
   - The tournament is split up into four divisions: North, East, South, and West
   - The tournament has four rounds: round of 16, quarterfinals (division finals), semifinals, and finals
@@ -40,7 +43,10 @@ Our first project is to create the landing page and bracket maker on the website
   - When the user clicks on a matchup, a modal should pop up that shows the two restaurants in a matchup:
     - The higher-seeded team should be on the left and the lower-seeded team should be on the right
     - Display other information from the CSV about the restaurants to help the user decide
+    - Show each restaurant's two competing menu items below their stats; each menu item displays small ingredient emoji icons derived from the parenthetical code in the item name (P=🐷 Pork, C=🐔 Chicken, V=🥦 Vegetarian, S=🦐 Seafood, B=🐄 Beef)
+    - If a restaurant's menu items have not been entered yet, show "Menu Item TBD" with a ❓ icon in place of each missing item
     - Show buttons for each restaurant to pick that restaurant as the winner
+    - On iOS, a synthetic click fires at the tap coordinates after the modal opens, which can accidentally select the card closest to the tap point; guard against this by ignoring card clicks that arrive within 350 ms of the modal mounting
     - Once a user picks the winner for a matchup, close the model, show an animation that highlights the next match in the bracket so that the user will click that one
     - Highlight the next matchup in the same round, do not start highlighting the match in the next round until all matches in the previous round have a winner picked
   - If the user has not yet picked a winner for the matchups before a certain matchup, then they will not be able to choose a winner for that matchup until they do so
