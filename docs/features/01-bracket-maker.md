@@ -6,9 +6,11 @@ Our first project is to create the landing page and bracket maker on the website
 
 ## Requirements
 
-- Create a simple, clean landing page
-  - Show just the Momo Madness logo and a single call to action button
-  - The button should say "Create Your Bracket" and switch the view to the bracket maker in-place (no page navigation)
+- The landing page is a scrollable multi-section page; clicking "Create Your Bracket" replaces it with the bracket view
+  - **Hero section** (100vh): Momo Madness logo, title, subtitle, "Create Your Bracket" CTA button, and a pulsing chevron arrow at the bottom to draw the user below the fold
+  - **Restaurant map section** (100vh): full-bleed interactive map of San Francisco showing the location of each restaurant with a colored marker per division (East=burnt orange, West=gold, North=blue, South=green); clicking a marker shows the restaurant name and neighborhood; built with Leaflet + CartoDB DarkMatter (no-labels) tiles — free, no API key required, minimal dark style
+  - More sections will be added below the map in future iterations
+  - The button should say "Continue Your Bracket" if the user has a saved bracket, otherwise "Create Your Bracket"
   - The site is a single page at `/momomadness/` — there is no separate bracket URL
 - Derive the design system, colors, and fonts from the design of the logo and mascot
   - Look at `public/assets/logo/logo.png` for the logo
