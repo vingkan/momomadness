@@ -1,21 +1,21 @@
-import L from 'leaflet';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import { RESTAURANTS } from '../data/restaurants';
-import './RestaurantMap.css';
+import L from "leaflet";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import { RESTAURANTS } from "../data/restaurants";
+import "./RestaurantMap.css";
 
 const DIVISION_COLORS: Record<string, string> = {
-  East:  '#D94F1E',
-  West:  '#F5A623',
-  North: '#7BA5C9',
-  South: '#5CB85C',
+  East: "#D94F1E",
+  West: "#F5A623",
+  North: "#7BA5C9",
+  South: "#5CB85C",
 };
 
 function makeIcon(color: string) {
   return L.divIcon({
-    className: '',
+    className: "",
     html: `<div class="map-marker" style="background:${color}; box-shadow:0 0 10px ${color}80;"></div>`,
-    iconSize:   [14, 14],
+    iconSize: [14, 14],
     iconAnchor: [7, 7],
     popupAnchor: [0, -10],
   });
@@ -24,29 +24,38 @@ function makeIcon(color: string) {
 const SF_CENTER: [number, number] = [37.7699, -122.4469];
 
 export default function RestaurantMap() {
-  const plotted = RESTAURANTS.filter(r => r.coordinates);
+  const plotted = RESTAURANTS.filter((r) => r.coordinates);
 
   return (
     <div className="restaurant-map-wrapper">
       <div className="map-overlay-label">
         <h2 className="map-section-title">THE CONTENDERS</h2>
-        <p className="map-section-subtitle">{plotted.length} San Francisco dumpling restaurants</p>
+        <p className="map-section-subtitle">
+          {plotted.length} San Francisco dumpling restaurants
+        </p>
       </div>
       <div className="map-legend">
-        {(Object.entries(DIVISION_COLORS) as [string, string][]).map(([division, color]) => (
-          <div key={division} className="legend-entry">
-            <span className="legend-dot" style={{ background: color, boxShadow: `0 0 6px ${color}80` }} />
-            {division}
-          </div>
-        ))}
+        {(Object.entries(DIVISION_COLORS) as [string, string][]).map(
+          ([division, color]) => (
+            <div key={division} className="legend-entry">
+              <span
+                className="legend-dot"
+                style={{ background: color, boxShadow: `0 0 6px ${color}80` }}
+              />
+              {division}
+            </div>
+          ),
+        )}
       </div>
       <MapContainer
         center={SF_CENTER}
         zoom={12}
-        scrollWheelZoom={false}
         className="leaflet-map"
-        zoomControl={true}
+        zoomControl={false}
+        scrollWheelZoom={false}
         attributionControl={true}
+        dragging={false}
+        keyboard={false}
       >
         <TileLayer
           url="https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}.png"
@@ -54,7 +63,7 @@ export default function RestaurantMap() {
           subdomains="abcd"
           maxZoom={19}
         />
-        {plotted.map(r => (
+        {plotted.map((r) => (
           <Marker
             key={r.seed}
             position={[r.coordinates!.lat, r.coordinates!.lng]}
