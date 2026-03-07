@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import type { MutableRefObject } from 'react';
-import { Ham, Drumstick, Vegan, Shrimp, Beef, CircleHelp } from 'lucide-react';
+import { Ham, Drumstick, Vegan, Shrimp, Beef, TreeDeciduous, CircleHelp } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import type { Restaurant } from '../data/restaurants';
 import './MatchupModal.css';
@@ -23,6 +23,7 @@ const INGREDIENT_ICONS: Record<string, LucideIcon> = {
   V: Vegan,
   S: Shrimp,
   B: Beef,
+  L: TreeDeciduous,
 };
 
 const INGREDIENT_LABELS: Record<string, string> = {
@@ -31,6 +32,7 @@ const INGREDIENT_LABELS: Record<string, string> = {
   V: 'Vegetarian',
   S: 'Seafood',
   B: 'Beef',
+  L: 'Lamb',
 };
 
 function parseMenuItem(item: string | undefined): { name: string; codes: string[] } | null {
@@ -178,14 +180,24 @@ export default function MatchupModal({
             openedAt={openedAt}
           />
         </div>
-        <div className="ingredient-legend">
-          {(Object.entries(INGREDIENT_ICONS) as [string, LucideIcon][]).map(([code, Icon]) => (
-            <span key={code} className="legend-item">
-              <Icon size={12} />
-              {INGREDIENT_LABELS[code]}
-            </span>
-          ))}
-        </div>
+        {(() => {
+          const allCodes = new Set(
+            [topTeam?.menuItemA, topTeam?.menuItemB, bottomTeam?.menuItemA, bottomTeam?.menuItemB]
+              .flatMap(item => parseMenuItem(item)?.codes ?? [])
+          );
+          return allCodes.size > 0 ? (
+            <div className="ingredient-legend">
+              {(Object.entries(INGREDIENT_ICONS) as [string, LucideIcon][])
+                .filter(([code]) => allCodes.has(code))
+                .map(([code, Icon]) => (
+                  <span key={code} className="legend-item">
+                    <Icon size={12} />
+                    {INGREDIENT_LABELS[code]}
+                  </span>
+                ))}
+            </div>
+          ) : null;
+        })()}
       </div>
     </div>
   );

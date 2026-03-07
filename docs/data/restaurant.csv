@@ -10,8 +10,8 @@ Seed,Restaurant,Neighborhood,Division,Beli Score,Beli Ratings,Address,Menu Item 
 5,Dumpling Story,Pacific Heights,North,8.4,"5,020","2114 Fillmore St, San Francisco, CA 94115",Gong Bao Chicken Dumpling (C),Mongolian Beef Dumpling (B)
 7,Good Luck Dim Sum,Inner Richmond,North,8.1,"1,767","736 Clement St, San Francisco, CA 94118","Deep Fried Stuffed Dumpling (P, S)",Shark Fin Dumpling (S)
 14,Dumpling King,Inner Richmond,North,7.1,404,"336 Clement St, San Francisco, CA 94118",Juicy Pan Fried Kurobuta Pork Bao (P),Impossible Dumpling (V)
-16,Dumpling Baby China Bistro,Inner Richmond,North,6.6,227,"3751 Geary Blvd, San Francisco, CA 94118",,
-6,Dumpling Time,SoMa,South,7.5,"3,936",,,
-8,bao,Mission,South,7.9,"2,706",,,
-12,Dumpling Kitchen,Castro,South,7.6,368,,,
-13,United Dumplings,Bernal Heights,South,7.0,336,,,
+16,Dumpling Baby China Bistro,Inner Richmond,North,6.6,227,"3751 Geary Blvd, San Francisco, CA 94118",Dumplings in Chili Oil Sauce (C),Vegetable Potsticker (V)
+6,Dumpling Time,SoMa,South,7.5,"3,936","11 Division St, San Francisco, CA 94103",Boiled Lamb Dumpling (L),Boiled Vegetable Dumpling (V)
+8,Bao,Mission,South,7.9,"2,706","590 Valencia St, San Francisco, CA 94110",Bi Feng Tang Har Gow (S),Pan Fried Vegetarian Pot Sticker (V)
+12,Dumpling Kitchen,Castro,South,7.6,368,"544 Castro St, San Francisco, CA 94114",Pork & Napa Cabbage Potsticker (P),Boiled Chicken & Corn Dumpling (C)
+13,United Dumplings,Bernal Heights,South,7.0,336,"525 Cortland Ave, San Francisco, CA 94110",Korean BBQ Beef Dumplings (B),Vegetarian Dumpling (V)
