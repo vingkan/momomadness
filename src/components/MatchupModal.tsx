@@ -100,13 +100,36 @@ function RestaurantCard({ restaurant, position, isCurrentWinner, readOnly, onPic
       <div className="restaurant-name">{restaurant.name}</div>
       <div className="restaurant-neighborhood">{restaurant.neighborhood}</div>
       <div className="restaurant-stats">
-        <div className="stat">
-          <span className="stat-value">{restaurant.beliScore.toFixed(1)}</span>
-          <span className="stat-label">Beli Score</span>
-        </div>
+        {(() => {
+          const scoreText = restaurant.infatuationScore != null
+            ? restaurant.infatuationScore.toFixed(1)
+            : '??';
+          const isUnrated = restaurant.infatuationScore == null;
+          const inner = (
+            <>
+              <span className={`stat-value${isUnrated ? ' stat-value-unrated' : ''}`}>{scoreText}</span>
+              <span className="stat-label">Infatuation<br />Score</span>
+            </>
+          );
+
+          if (restaurant.infatuationLink) {
+            return (
+              <a
+                className="stat stat-link"
+                href={restaurant.infatuationLink}
+                target="_blank"
+                rel="noreferrer"
+                onClick={e => e.stopPropagation()}
+              >
+                {inner}
+              </a>
+            );
+          }
+          return <div className="stat">{inner}</div>;
+        })()}
         <div className="stat">
           <span className="stat-value">{restaurant.beliRatings.toLocaleString()}</span>
-          <span className="stat-label">Ratings</span>
+          <span className="stat-label">Beli<br />Ratings</span>
         </div>
       </div>
       <div className="restaurant-menu-items">
