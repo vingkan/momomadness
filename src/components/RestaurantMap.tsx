@@ -5,10 +5,10 @@ import { RESTAURANTS } from "../data/restaurants";
 import "./RestaurantMap.css";
 
 const DIVISION_COLORS: Record<string, string> = {
-  East: "#D94F1E",
-  West: "#F5A623",
-  North: "#7BA5C9",
-  South: "#5CB85C",
+  East: "#da4167",
+  West: "#79b473",
+  North: "#d175d1",
+  South: "#f2c078",
 };
 
 function makeIcon(color: string) {
