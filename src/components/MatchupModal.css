@@ -151,15 +151,17 @@
   color: var(--color-accent);
 }
 
-.stat-link {
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer;
+.infatuation-link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-text-muted);
+  margin-left: 2px;
+  vertical-align: middle;
+  transition: color 0.15s;
 }
 
-.stat-link:hover .stat-value {
-  text-decoration: underline;
-  text-underline-offset: 2px;
+.infatuation-link:hover {
+  color: var(--color-accent);
 }
 
 .stat-value-unrated {

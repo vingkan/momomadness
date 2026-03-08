@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import type { MutableRefObject } from 'react';
-import { Ham, Drumstick, Vegan, Shrimp, Beef, TreeDeciduous, CircleHelp } from 'lucide-react';
+import { Ham, Drumstick, Vegan, Shrimp, Beef, TreeDeciduous, CircleHelp, ArrowUpRight } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import type { Restaurant } from '../data/restaurants';
 import './MatchupModal.css';
@@ -105,27 +105,26 @@ function RestaurantCard({ restaurant, position, isCurrentWinner, readOnly, onPic
             ? restaurant.infatuationScore.toFixed(1)
             : '??';
           const isUnrated = restaurant.infatuationScore == null;
-          const inner = (
-            <>
+          return (
+            <div className="stat">
               <span className={`stat-value${isUnrated ? ' stat-value-unrated' : ''}`}>{scoreText}</span>
-              <span className="stat-label">Infatuation<br />Score</span>
-            </>
+              <span className="stat-label">
+                Infatuation<br />Score
+                {restaurant.infatuationLink && (
+                  <a
+                    className="infatuation-link"
+                    href={restaurant.infatuationLink}
+                    target="_blank"
+                    rel="noreferrer"
+                    onClick={e => e.stopPropagation()}
+                    aria-label="Open Infatuation review"
+                  >
+                    <ArrowUpRight size={12} />
+                  </a>
+                )}
+              </span>
+            </div>
           );
-
-          if (restaurant.infatuationLink) {
-            return (
-              <a
-                className="stat stat-link"
-                href={restaurant.infatuationLink}
-                target="_blank"
-                rel="noreferrer"
-                onClick={e => e.stopPropagation()}
-              >
-                {inner}
-              </a>
-            );
-          }
-          return <div className="stat">{inner}</div>;
         })()}
         <div className="stat">
           <span className="stat-value">{restaurant.beliRatings.toLocaleString()}</span>
