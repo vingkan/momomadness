@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import type { MutableRefObject } from 'react';
-import { Ham, Drumstick, Vegan, Shrimp, Beef, TreeDeciduous, CircleHelp, ArrowUpRight } from 'lucide-react';
+import { Ham, Drumstick, Vegan, Shrimp, Beef, TreeDeciduous, CircleHelp, ArrowUpRight, CircleAlert } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import type { Restaurant } from '../data/restaurants';
 import './MatchupModal.css';
@@ -97,7 +97,14 @@ function RestaurantCard({ restaurant, position, isCurrentWinner, readOnly, onPic
   const content = (
     <>
       <div className="restaurant-seed">#{restaurant.seed}</div>
-      <div className="restaurant-name">{restaurant.name}</div>
+      <div className="restaurant-name">
+        {restaurant.name}
+        {restaurant.seed === 7 && (
+          <span className="substitution-icon" title="Substituted for Good Luck Dim Sum">
+            <CircleAlert size={14} />
+          </span>
+        )}
+      </div>
       <div className="restaurant-neighborhood">{restaurant.neighborhood}</div>
       <div className="restaurant-stats">
         {(() => {

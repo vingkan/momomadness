@@ -125,6 +125,40 @@
   font-size: 1rem;
   color: var(--color-text);
   line-height: 1.2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+.substitution-icon {
+  position: relative;
+  display: inline-flex;
+  color: var(--color-accent);
+  cursor: help;
+}
+
+.substitution-icon::after {
+  content: 'Substituted for Good Luck Dim Sum';
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111;
+  color: #eee;
+  font-size: 0.7rem;
+  font-weight: 400;
+  padding: 0.25em 0.5em;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 10;
+}
+
+.substitution-icon:hover::after {
+  opacity: 1;
 }
 
 .restaurant-neighborhood {

@@ -143,17 +143,17 @@ export const RESTAURANTS: Restaurant[] = [
   },
   {
     seed: 7,
-    name: "Good Luck Dim Sum",
+    name: "Cinderella Bakery & Cafe",
     neighborhood: "Inner Richmond",
     division: "North",
-    beliRatings: 1767,
+    beliRatings: 2047,
     infatuationScore: 8.3,
     infatuationLink:
-      "https://www.theinfatuation.com/san-francisco/reviews/good-luck-dim-sum",
-    menuItemA: "Deep Fried Stuffed Dumpling (P, S)",
-    menuItemB: "Shark Fin Dumpling (S)",
-    address: "736 Clement St, San Francisco, CA 94118",
-    coordinates: { lat: 37.782, lng: -122.466 },
+      "https://www.theinfatuation.com/san-francisco/reviews/cinderella-bakery-cafe",
+    menuItemA: "Pan Fried Chicken Pelmeni (C)",
+    menuItemB: "Potato Vareniki (V)",
+    address: "436 Balboa St, San Francisco, CA 94118",
+    coordinates: { lat: 37.7775, lng: -122.4612 },
   },
   {
     seed: 14,
@@ -180,7 +180,7 @@ export const RESTAURANTS: Restaurant[] = [
     menuItemA: "Dumplings in Chili Oil Sauce (C)",
     menuItemB: "Vegetable Potsticker (V)",
     address: "3751 Geary Blvd, San Francisco, CA 94118",
-    coordinates: { lat: 37.7818, lng: -122.4962 },
+    coordinates: { lat: 37.7811, lng: -122.4599 },
   },
   {
     seed: 6,
