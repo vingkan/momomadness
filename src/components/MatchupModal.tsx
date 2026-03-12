@@ -99,8 +99,12 @@ function RestaurantCard({ restaurant, position, isCurrentWinner, readOnly, onPic
       <div className="restaurant-seed">#{restaurant.seed}</div>
       <div className="restaurant-name">
         {restaurant.name}
-        {restaurant.seed === 7 && (
-          <span className="substitution-icon" title="Substituted for Good Luck Dim Sum">
+        {restaurant.substitutedFor && (
+          <span
+            className="substitution-icon"
+            data-tooltip={`Substituted for ${restaurant.substitutedFor}`}
+            title={`Substituted for ${restaurant.substitutedFor}`}
+          >
             <CircleAlert size={14} />
           </span>
         )}

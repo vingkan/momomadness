@@ -12,6 +12,7 @@ export interface Restaurant {
   menuItemB?: string;
   address?: string;
   coordinates?: { lat: number; lng: number };
+  substitutedFor?: string;
 }
 
 export const RESTAURANTS: Restaurant[] = [
@@ -31,17 +32,18 @@ export const RESTAURANTS: Restaurant[] = [
   },
   {
     seed: 2,
-    name: "Yank Sing",
-    neighborhood: "Financial District",
+    name: "Hon's Wun-Tun House",
+    neighborhood: "Chinatown",
     division: "East",
-    beliRatings: 6316,
-    infatuationScore: 7.5,
+    beliRatings: 2634,
+    infatuationScore: 8.3,
     infatuationLink:
-      "https://www.theinfatuation.com/san-francisco/reviews/yank-sing-spear-street",
-    menuItemA: "Shrimp Dumpling (S)",
-    menuItemB: "Mushroom Dumpling (V)",
-    address: "101 Spear St, San Francisco, CA 94105",
-    coordinates: { lat: 37.7928, lng: -122.3919 },
+      "https://www.theinfatuation.com/san-francisco/reviews/hons-wun-tun-house",
+    menuItemA: "Pan-Fried Pork Soup Dumpling (P)",
+    menuItemB: "Vegetarian Dumpling (V)",
+    address: "733 Washington St, San Francisco, CA 94108",
+    coordinates: { lat: 37.7951, lng: -122.4061 },
+    substitutedFor: "Yank Sing",
   },
   {
     seed: 4,
@@ -69,7 +71,7 @@ export const RESTAURANTS: Restaurant[] = [
     menuItemA: "Pork And Cabbage Dumplings (P)",
     menuItemB: "Veggie Dumplings (V)",
     address: "601 Kearny St, San Francisco, CA 94108",
-    coordinates: { lat: 37.796, lng: -122.405 },
+    coordinates: { lat: 37.7936, lng: -122.4047 },
   },
   {
     seed: 3,
@@ -154,6 +156,7 @@ export const RESTAURANTS: Restaurant[] = [
     menuItemB: "Potato Vareniki (V)",
     address: "436 Balboa St, San Francisco, CA 94118",
     coordinates: { lat: 37.7775, lng: -122.4612 },
+    substitutedFor: "Good Luck Dim Sum",
   },
   {
     seed: 14,

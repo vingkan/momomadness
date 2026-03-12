@@ -139,7 +139,7 @@
 }
 
 .substitution-icon::after {
-  content: 'Substituted for Good Luck Dim Sum';
+  content: attr(data-tooltip);
   position: absolute;
   bottom: calc(100% + 6px);
   left: 50%;
