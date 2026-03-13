@@ -219,7 +219,7 @@ export const RESTAURANTS: Restaurant[] = [
     infatuationLink:
       "https://www.theinfatuation.com/san-francisco/reviews/dumpling-kitchen-castro",
     menuItemA: "Pork & Napa Cabbage Potsticker (P)",
-    menuItemB: "Boiled Chicken & Corn Dumpling (C)",
+    menuItemB: "Vegetarian Potsticker (V)",
     address: "544 Castro St, San Francisco, CA 94114",
     coordinates: { lat: 37.7607, lng: -122.435 },
   },
