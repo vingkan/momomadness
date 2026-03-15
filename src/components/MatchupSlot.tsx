@@ -7,13 +7,15 @@ export type SlotState = 'locked' | 'available' | 'highlighted' | 'decided';
 interface TeamRowProps {
   team: Restaurant | null;
   isWinner: boolean;
+  score?: number | null;
 }
 
-function TeamRow({ team, isWinner }: TeamRowProps) {
+function TeamRow({ team, isWinner, score }: TeamRowProps) {
   return (
     <div className={`team-row ${isWinner ? 'winner' : ''} ${!team ? 'tbd' : ''}`}>
       <span className="team-seed">{team ? `#${team.seed}` : ''}</span>
       <span className="team-name">{team ? team.name : 'TBD'}</span>
+      <span className="team-score">{score != null ? score : ''}</span>
     </div>
   );
 }
@@ -30,6 +32,10 @@ interface Props {
   side: 'left' | 'right' | 'center';
   /** Inline style for absolute positioning (top value) */
   style?: CSSProperties;
+  /** Total score for top team (null if no result) */
+  topScore?: number | null;
+  /** Total score for bottom team (null if no result) */
+  bottomScore?: number | null;
 }
 
 export default function MatchupSlot({
@@ -40,6 +46,8 @@ export default function MatchupSlot({
   onClick,
   side,
   style,
+  topScore,
+  bottomScore,
 }: Props) {
   const clickable = state === 'available' || state === 'highlighted' || state === 'decided';
 
@@ -53,9 +61,9 @@ export default function MatchupSlot({
       aria-disabled={state === 'locked'}
       style={style}
     >
-      <TeamRow team={topTeam} isWinner={winner === 0} />
+      <TeamRow team={topTeam} isWinner={winner === 0} score={topScore} />
       <div className="slot-divider" />
-      <TeamRow team={bottomTeam} isWinner={winner === 1} />
+      <TeamRow team={bottomTeam} isWinner={winner === 1} score={bottomScore} />
     </div>
   );
 }

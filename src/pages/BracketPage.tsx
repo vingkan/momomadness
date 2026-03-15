@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Choices } from '../data/bracket';
 import { decodeChoices, encodeChoicesFull } from '../data/bracket';
+import { hasAnyResults } from '../data/results';
 import { useBracket, clearStorage } from '../hooks/useBracket';
 import Bracket from '../components/Bracket';
 import ProgressBar from '../components/ProgressBar';
@@ -45,6 +46,9 @@ export default function BracketPage({ choicesParam, onGoToLanding, onClearChoice
     if (!urlChoices || !savedChoices) return false;
     return JSON.stringify(urlChoices) !== JSON.stringify(savedChoices);
   }, [urlChoices, savedChoices]);
+
+  const resultsExist = hasAnyResults();
+  const readOnly = isViewingOther || resultsExist;
 
   const initialChoices = urlChoices ?? savedChoices ?? undefined;
   const { choices, pick, clearBracket, complete, picksCount, nextHighlight } =
@@ -99,7 +103,7 @@ export default function BracketPage({ choicesParam, onGoToLanding, onClearChoice
           ← Home
         </button>
         <h1 className="bracket-page-title">Momo Madness 2026</h1>
-        {!isViewingOther ? (
+        {!readOnly ? (
           <button className="btn-ghost clear-btn" onClick={handleClear}>
             Clear
           </button>
@@ -110,22 +114,24 @@ export default function BracketPage({ choicesParam, onGoToLanding, onClearChoice
 
       <Bracket
         choices={choices}
-        nextHighlight={isViewingOther ? null : nextHighlight}
-        onPick={isViewingOther ? () => {} : pick}
-        readOnly={isViewingOther}
+        nextHighlight={readOnly ? null : nextHighlight}
+        onPick={readOnly ? () => {} : pick}
+        readOnly={readOnly}
       />
 
       <footer className="bracket-footer">
-        {!isViewingOther && <ProgressBar picks={picksCount} total={15} />}
+        {!isViewingOther && !resultsExist && <ProgressBar picks={picksCount} total={15} />}
         <div className="bracket-footer-buttons">
-          <button
-            className={`btn-primary share-btn ${!complete ? 'disabled' : ''}`}
-            onClick={() => complete && setShowShare(true)}
-            disabled={!complete}
-            title={complete ? 'Share your bracket' : 'Complete all 15 picks to share'}
-          >
-            Share Bracket
-          </button>
+          {!readOnly || complete ? (
+            <button
+              className={`btn-primary share-btn ${!complete ? 'disabled' : ''}`}
+              onClick={() => complete && setShowShare(true)}
+              disabled={!complete}
+              title={complete ? 'Share your bracket' : 'Complete all 15 picks to share'}
+            >
+              Share Bracket
+            </button>
+          ) : null}
         </div>
       </footer>
 

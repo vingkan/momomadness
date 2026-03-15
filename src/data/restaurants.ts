@@ -82,7 +82,7 @@ export const RESTAURANTS: Restaurant[] = [
     infatuationScore: 9.2,
     infatuationLink:
       "https://www.theinfatuation.com/san-francisco/reviews/yuanbao-jiaozi",
-    menuItemA: "Napa Cabbage And Pork Dumpling (P)",
+    menuItemA: "Shitake Mushroom and Sole Fish Dumpling (F)",
     menuItemB: "Chicken And Corn Dumpling (C)",
     address: "2110 Irving St, San Francisco, CA 94122",
     coordinates: { lat: 37.7637, lng: -122.4795 },
@@ -110,7 +110,7 @@ export const RESTAURANTS: Restaurant[] = [
     infatuationScore: 8.0,
     infatuationLink:
       "https://www.theinfatuation.com/san-francisco/reviews/kingdom-of-dumpling",
-    menuItemA: "Pork Dumpling With Napa Cabbage (P)",
+    menuItemA: "Lamb Dumpling with Chinese Vegetable (L)",
     menuItemB: "Baby Bok Choy & Mushroom Dumplings (V)",
     address: "1713 Taraval St, San Francisco, CA 94116",
     coordinates: { lat: 37.7432, lng: -122.4843 },
@@ -125,7 +125,7 @@ export const RESTAURANTS: Restaurant[] = [
     infatuationLink:
       "https://www.theinfatuation.com/san-francisco/reviews/house-of-pancakes",
     menuItemA: "Pork Dumpling w/ Chives (P)",
-    menuItemB: "Vegetable Dumpling (V)",
+    menuItemB: "Vegetable Potsticker (V)",
     address: "937 Taraval St, San Francisco, CA 94116",
     coordinates: { lat: 37.7432, lng: -122.4709 },
   },

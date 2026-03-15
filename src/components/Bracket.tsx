@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import type { Choices } from "../data/bracket";
 import { MATCHES, resolveSlot, isMatchAvailable } from "../data/bracket";
+import { getResultByIndex, totalScore } from "../data/results";
 import type { SlotState } from "./MatchupSlot";
 import MatchupSlot from "./MatchupSlot";
 import MatchupModal from "./MatchupModal";
@@ -64,8 +65,10 @@ export default function Bracket({
 
   function handleSlotClick(matchIndex: number) {
     if (readOnly) {
-      // In read-only mode: only open modal for decided (completed) matches
-      if (choices[matchIndex] !== null) setOpenMatch(matchIndex);
+      // In read-only mode: open modal for decided matches or matches with results
+      if (choices[matchIndex] !== null || getResultByIndex(matchIndex) !== null) {
+        setOpenMatch(matchIndex);
+      }
       return;
     }
     const state = getSlotState(matchIndex);
@@ -96,6 +99,7 @@ export default function Bracket({
     const match = MATCHES[matchIndex];
     const top = resolveSlot(match.topSlot, choices);
     const bottom = resolveSlot(match.bottomSlot, choices);
+    const result = getResultByIndex(matchIndex);
     const state: SlotState = readOnly
       ? choices[matchIndex] !== null
         ? "decided"
@@ -113,6 +117,8 @@ export default function Bracket({
         onClick={() => handleSlotClick(matchIndex)}
         side={side}
         style={{ top: topValue }}
+        topScore={result ? totalScore(result.topScore) : null}
+        bottomScore={result ? totalScore(result.bottomScore) : null}
       />
     );
   }
@@ -206,6 +212,8 @@ export default function Bracket({
           matchLabel={openMatchDef.label}
           currentWinner={currentWinner}
           readOnly={readOnly}
+          matchIndex={openMatch}
+          userChoices={choices}
           onPick={handlePick}
           onClose={() => setOpenMatch(null)}
         />
