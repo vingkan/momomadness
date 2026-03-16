@@ -182,7 +182,18 @@ export default function Bracket({
         const actualWinner = getResultWinner(result);
         const actualWinnerSlot = actualWinner === 0 ? match.topSlot : match.bottomSlot;
         const actualWinnerTeam = resolveActualSlot(actualWinnerSlot);
-        userPickCorrect = !!(userWinnerTeam && actualWinnerTeam && userWinnerTeam.seed === actualWinnerTeam.seed);
+        // Only mark correct/incorrect if the user's predicted team actually made it to
+        // this match. If neither predicted team is in the actual match, leave as null
+        // (no coloring) — red should only show when the user's pick was in the match and lost.
+        const actualTop = resolveActualSlot(match.topSlot);
+        const actualBottom = resolveActualSlot(match.bottomSlot);
+        const userTeamInMatch = !!(userWinnerTeam && (
+          (actualTop && userWinnerTeam.seed === actualTop.seed) ||
+          (actualBottom && userWinnerTeam.seed === actualBottom.seed)
+        ));
+        if (userTeamInMatch) {
+          userPickCorrect = !!(actualWinnerTeam && userWinnerTeam.seed === actualWinnerTeam.seed);
+        }
       }
     } else if (userPick !== null) {
       const pickedPosition = userPick;
