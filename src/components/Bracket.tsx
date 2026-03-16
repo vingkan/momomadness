@@ -125,10 +125,12 @@ export default function Bracket({
 
   const openMatchDef = openMatch !== null ? MATCHES[openMatch] : null;
   const topTeam = openMatchDef
-    ? (resolveActualSlot(openMatchDef.topSlot) ?? resolveSlot(openMatchDef.topSlot, choices))
+    ? (resolveActualSlot(openMatchDef.topSlot)
+      ?? (isUserSlotViable(openMatchDef.topSlot, choices) ? resolveSlot(openMatchDef.topSlot, choices) : null))
     : null;
   const bottomTeam = openMatchDef
-    ? (resolveActualSlot(openMatchDef.bottomSlot) ?? resolveSlot(openMatchDef.bottomSlot, choices))
+    ? (resolveActualSlot(openMatchDef.bottomSlot)
+      ?? (isUserSlotViable(openMatchDef.bottomSlot, choices) ? resolveSlot(openMatchDef.bottomSlot, choices) : null))
     : null;
   const currentWinner = openMatch !== null ? choices[openMatch] : null;
 

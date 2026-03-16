@@ -254,7 +254,7 @@ function RestaurantCard({
   if (!restaurant) {
     return (
       <div className="restaurant-card tbd">
-        <span className="tbd-label">TBD</span>
+        <span className="tbd-label">Opponent TBD</span>
       </div>
     );
   }
