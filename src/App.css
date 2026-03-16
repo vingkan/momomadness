@@ -90,11 +90,84 @@
   width: 100%;
 }
 
+.leaderboard-section-restaurants {
+  background: var(--color-primary);
+  max-width: none;
+  padding: 4rem max(1rem, calc((100% - 900px) / 2 + 1rem));
+}
+
+.leaderboard-section-brackets {
+  background: var(--color-accent);
+  max-width: none;
+  padding: 4rem max(1rem, calc((100% - 900px) / 2 + 1rem));
+}
+
 .leaderboard {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: 12px;
   overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+}
+
+/* Scoring explanations above leaderboards */
+.scoring-explanation {
+  max-width: 900px;
+  margin: 0 auto 4rem;
+  color: #fff;
+  font-size: 1rem;
+  line-height: 1.6;
+  padding: 0 1rem;
+}
+
+.scoring-explanation h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.04em;
+  margin: 0 0 0.5rem;
+}
+
+.scoring-explanation p {
+  margin: 0 0 0.75rem;
+}
+
+.scoring-explanation ul {
+  margin: 0 0 0.75rem;
+  padding-left: 1.25rem;
+}
+
+.scoring-explanation li {
+  list-style-type: disc;
+  margin-bottom: 0.2rem;
+}
+
+.scoring-explanation strong {
+  font-weight: bold;
+}
+
+.points-matrix {
+  border-collapse: collapse;
+  font-size: 1rem;
+  margin: 0.5rem auto 0.75rem;
+}
+
+.points-matrix th,
+.points-matrix td {
+  padding: 0.3rem 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+  color: #fff;
+}
+
+.points-matrix th {
+  font-weight: 600;
+}
+
+.leaderboard-section-brackets .scoring-explanation,
+.leaderboard-section-brackets .scoring-explanation ul,
+.leaderboard-section-brackets .scoring-explanation li {
+  color: var(--color-bg);
 }
 
 .leaderboard-title {
@@ -102,7 +175,7 @@
   font-size: 1.5rem;
   letter-spacing: 0.05em;
   color: var(--color-primary);
-  padding: 1rem 1.25rem 0.75rem;
+  padding: 0.5rem 0.5rem 0.75rem;
   margin: 0;
 }
 
@@ -116,6 +189,11 @@
 
 .leaderboard-scroll {
   overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.leaderboard-scroll::-webkit-scrollbar {
+  display: none;
 }
 
 .leaderboard-table {
@@ -135,6 +213,33 @@
   text-align: left;
   border-bottom: 1px solid var(--color-border);
   cursor: help;
+  position: relative;
+}
+
+.leaderboard-table th[data-tip]::after {
+  content: attr(data-tip);
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111;
+  color: #eee;
+  font-size: 0.68rem;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  padding: 0.3em 0.6em;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 10;
+}
+
+.leaderboard-table th[data-tip]:hover::after,
+.leaderboard-table th[data-tip]:focus::after {
+  opacity: 1;
 }
 
 .leaderboard-table td {
@@ -147,7 +252,7 @@
   border-bottom: none;
 }
 
-.col-seed {
+.col-seed, th.col-seed {
   color: var(--color-text-muted);
   font-weight: 600;
   text-align: center;
@@ -158,7 +263,7 @@
   font-weight: 600;
 }
 
-.col-num {
+.col-num, th.col-num {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }

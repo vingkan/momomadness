@@ -44,6 +44,12 @@
   width: fit-content;
 }
 
+@media (max-width: 520px) {
+  .back-btn-text {
+    display: none;
+  }
+}
+
 .clear-btn {
   padding: 0.4em 0.8em;
   font-size: 0.9rem;
@@ -90,6 +96,7 @@
   display: flex;
   gap: 1.5rem;
   align-items: center;
+  margin: 1rem auto;
 }
 
 .bracket-score-item {
@@ -97,6 +104,31 @@
   flex-direction: column;
   align-items: center;
   gap: 0.1rem;
+  position: relative;
+  cursor: help;
+}
+
+.bracket-score-item[data-tip]::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111;
+  color: #eee;
+  font-size: 0.7rem;
+  padding: 0.3em 0.6em;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 10;
+}
+
+.bracket-score-item[data-tip]:hover::after,
+.bracket-score-item[data-tip]:focus::after {
+  opacity: 1;
 }
 
 .bracket-score-label {
@@ -111,4 +143,63 @@
   font-size: 1.5rem;
   color: var(--color-accent);
   letter-spacing: 0.05em;
+}
+
+/* Correct picks breakdown table */
+.bracket-picks-table {
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto 0.75rem ;
+}
+
+.bracket-picks-table .col-num {
+  text-align: right;
+}
+
+.bracket-picks-table th {
+  color: var(--color-text-muted);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: left;
+  padding: 0.35rem 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.bracket-picks-table td {
+  padding: 0.35rem 0.5rem;
+  color: var(--color-text);
+  border-bottom: 1px solid rgba(42, 77, 122, 0.2);
+}
+
+.picks-total-row td {
+  border-top: 1px solid var(--color-border);
+  border-bottom: none;
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+/* Pick status colors */
+.pick-cell.pick-won {
+  color: var(--color-success);
+  font-weight: 600;
+}
+
+.pick-cell.pick-lost {
+  color: var(--color-primary);
+  text-decoration: line-through;
+  text-decoration-color: rgba(217, 79, 30, 0.5);
+}
+
+.pick-cell.pick-eliminated {
+  color: var(--color-primary);
+  text-decoration: line-through;
+  text-decoration-color: rgba(217, 79, 30, 0.5);
+}
+
+.pick-cell.pick-pending {
+  color: var(--color-text);
 }

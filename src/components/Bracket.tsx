@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import type { Choices } from "../data/bracket";
 import { MATCHES, resolveSlot, isMatchAvailable } from "../data/bracket";
-import { getResultByIndex, totalScore } from "../data/results";
+import { getResultByIndex, getResultWinner, isUserSlotViable, resolveActualSlot, totalScore } from "../data/results";
 import type { SlotState } from "./MatchupSlot";
 import MatchupSlot from "./MatchupSlot";
 import MatchupModal from "./MatchupModal";
@@ -45,6 +45,20 @@ export default function Bracket({
 }: Props) {
   const [openMatch, setOpenMatch] = useState<number | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const dragState = useRef<{ isDragging: boolean; startX: number; startY: number; scrollLeft: number; scrollTop: number }>({
+    isDragging: false, startX: 0, startY: 0, scrollLeft: 0, scrollTop: 0,
+  });
+
+  // Center the bracket horizontally on mount
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const scrollWidth = container.scrollWidth;
+    const clientWidth = container.clientWidth;
+    if (scrollWidth > clientWidth) {
+      container.scrollLeft = (scrollWidth - clientWidth) / 2;
+    }
+  }, []);
 
   useEffect(() => {
     if (nextHighlight === null) return;
@@ -55,6 +69,33 @@ export default function Bracket({
       highlighted.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
     }
   }, [nextHighlight]);
+
+  function handleMouseDown(e: React.MouseEvent) {
+    const container = scrollRef.current;
+    if (!container) return;
+    dragState.current = {
+      isDragging: true,
+      startX: e.pageX - container.offsetLeft,
+      startY: e.pageY - container.offsetTop,
+      scrollLeft: container.scrollLeft,
+      scrollTop: container.scrollTop,
+    };
+  }
+
+  function handleMouseMove(e: React.MouseEvent) {
+    if (!dragState.current.isDragging) return;
+    const container = scrollRef.current;
+    if (!container) return;
+    e.preventDefault();
+    const x = e.pageX - container.offsetLeft;
+    const y = e.pageY - container.offsetTop;
+    container.scrollLeft = dragState.current.scrollLeft - (x - dragState.current.startX);
+    container.scrollTop = dragState.current.scrollTop - (y - dragState.current.startY);
+  }
+
+  function handleMouseUp() {
+    dragState.current.isDragging = false;
+  }
 
   function getSlotState(matchIndex: number): SlotState {
     if (choices[matchIndex] !== null) return "decided";
@@ -84,10 +125,10 @@ export default function Bracket({
 
   const openMatchDef = openMatch !== null ? MATCHES[openMatch] : null;
   const topTeam = openMatchDef
-    ? resolveSlot(openMatchDef.topSlot, choices)
+    ? (resolveActualSlot(openMatchDef.topSlot) ?? resolveSlot(openMatchDef.topSlot, choices))
     : null;
   const bottomTeam = openMatchDef
-    ? resolveSlot(openMatchDef.bottomSlot, choices)
+    ? (resolveActualSlot(openMatchDef.bottomSlot) ?? resolveSlot(openMatchDef.bottomSlot, choices))
     : null;
   const currentWinner = openMatch !== null ? choices[openMatch] : null;
 
@@ -97,14 +138,55 @@ export default function Bracket({
     side: "left" | "right" | "center",
   ) {
     const match = MATCHES[matchIndex];
-    const top = resolveSlot(match.topSlot, choices);
-    const bottom = resolveSlot(match.bottomSlot, choices);
     const result = getResultByIndex(matchIndex);
+
+    // For matches with results, show actual teams.
+    // For no-result matches, show user's predicted team only if their pick
+    // chain is still viable (not eliminated by any earlier result).
+    let top, bottom;
+    let topViable = true, bottomViable = true;
+    if (result) {
+      top = resolveActualSlot(match.topSlot);
+      bottom = resolveActualSlot(match.bottomSlot);
+    } else {
+      // Try actual teams first (from prerequisite results), fall back to user's viable prediction
+      const topActual = resolveActualSlot(match.topSlot);
+      const bottomActual = resolveActualSlot(match.bottomSlot);
+      topViable = isUserSlotViable(match.topSlot, choices);
+      bottomViable = isUserSlotViable(match.bottomSlot, choices);
+      top = topActual ?? (topViable ? resolveSlot(match.topSlot, choices) : null);
+      bottom = bottomActual ?? (bottomViable ? resolveSlot(match.bottomSlot, choices) : null);
+    }
+
     const state: SlotState = readOnly
-      ? choices[matchIndex] !== null
+      ? choices[matchIndex] !== null || result !== null
         ? "decided"
         : "locked"
       : getSlotState(matchIndex);
+
+    // Show actual result winner when available.
+    // For no-result matches, only highlight user's pick if viable.
+    let displayWinner: 0 | 1 | null = null;
+    const userPick = choices[matchIndex];
+    let userPickCorrect: boolean | null = null;
+
+    if (result) {
+      displayWinner = getResultWinner(result);
+      if (userPick !== null) {
+        // Compare the user's predicted winner RESTAURANT against the actual winner RESTAURANT
+        // This gives credit even when the opponent was different than predicted
+        const userWinnerSlot = userPick === 0 ? match.topSlot : match.bottomSlot;
+        const userWinnerTeam = resolveSlot(userWinnerSlot, choices);
+        const actualWinner = getResultWinner(result);
+        const actualWinnerSlot = actualWinner === 0 ? match.topSlot : match.bottomSlot;
+        const actualWinnerTeam = resolveActualSlot(actualWinnerSlot);
+        userPickCorrect = !!(userWinnerTeam && actualWinnerTeam && userWinnerTeam.seed === actualWinnerTeam.seed);
+      }
+    } else if (userPick !== null) {
+      const pickedPosition = userPick;
+      const pickedViable = pickedPosition === 0 ? topViable : bottomViable;
+      displayWinner = pickedViable ? pickedPosition : null;
+    }
 
     return (
       <MatchupSlot
@@ -112,20 +194,29 @@ export default function Bracket({
         matchIndex={matchIndex}
         topTeam={top}
         bottomTeam={bottom}
-        winner={choices[matchIndex]}
+        winner={displayWinner}
         state={state}
         onClick={() => handleSlotClick(matchIndex)}
         side={side}
         style={{ top: topValue }}
         topScore={result ? totalScore(result.topScore) : null}
         bottomScore={result ? totalScore(result.bottomScore) : null}
+        userPick={userPick}
+        userPickCorrect={userPickCorrect}
       />
     );
   }
 
   return (
     <>
-      <div className="bracket-scroll-container" ref={scrollRef}>
+      <div
+        className="bracket-scroll-container"
+        ref={scrollRef}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
+      >
         <div className="bracket-round-labels">
           <div className="round-label-col">Round of 16</div>
           <div className="round-label-gap" />

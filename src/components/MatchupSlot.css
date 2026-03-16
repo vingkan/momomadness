@@ -111,6 +111,38 @@
   color: var(--color-accent);
 }
 
+/* User correctly picked the winner — green */
+.team-row.winner.pick-correct .team-name,
+.team-row.winner.pick-correct .team-score {
+  color: var(--color-success);
+}
+
+/* Winner that the user didn't pick — bold but neutral color */
+.team-row.winner.pick-other-won .team-name {
+  color: var(--color-text);
+}
+
+.team-row.winner.pick-other-won .team-score {
+  color: var(--color-text);
+}
+
+/* User's pick lost — red, not bold */
+.team-row.pick-incorrect .team-name {
+  color: var(--color-primary);
+  font-weight: 400;
+}
+
+.team-row.pick-incorrect .team-score {
+  color: var(--color-primary);
+}
+
+/* User's pick lost in a decided match — red + strikethrough */
+.slot-decided .team-row.pick-incorrect .team-name {
+  color: var(--color-primary);
+  text-decoration: line-through;
+  text-decoration-color: rgba(217, 79, 30, 0.4);
+}
+
 .slot-divider {
   height: 1px;
   background: var(--color-border);

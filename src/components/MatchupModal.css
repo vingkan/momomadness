@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 100;
+  z-index: 2000;
   padding: 1rem;
   animation: fade-in 0.15s ease;
 }
@@ -382,6 +382,45 @@
   color: #1a1a1a;
 }
 
+.modal-no-picks {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  font-style: italic;
+  margin: 1.5rem 0;
+}
+
+.badge-eliminated {
+  background: rgba(123, 165, 201, 0.15);
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+}
+
+/* Game preview section */
+.game-preview-section {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.game-preview-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+  color: var(--color-accent);
+  margin: 0 0 0.5rem;
+  text-align: center;
+}
+
+.game-preview {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0 0.5rem;
+  font-style: italic;
+}
+
 /* Box score section */
 .box-score-section {
   margin-top: 1.25rem;
@@ -428,6 +467,76 @@
 }
 
 .box-score-winner .box-score-team {
+  color: var(--color-accent);
+}
+
+/* Judge scores expandable section */
+.judge-scores-toggle {
+  display: block;
+  margin: 0.75rem auto 0;
+  background: none;
+  border: none;
+  color: var(--color-accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: text-decoration-color 0.15s;
+}
+
+.judge-scores-toggle:hover {
+  text-decoration-color: var(--color-accent);
+}
+
+.judge-scores-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+  text-align: left;
+  margin-top: 0.5rem;
+}
+
+.judge-scores-table th {
+  color: var(--color-text-muted);
+  font-weight: 600;
+  padding: 0.25rem 0.4rem;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.judge-scores-table th:nth-child(2),
+.judge-scores-table td:nth-child(2) {
+  text-align: right;
+}
+
+.judge-scores-table th.col-num {
+  text-align: right;
+}
+
+.judge-scores-table td {
+  padding: 0.25rem 0.4rem;
+  color: var(--color-text);
+  border-bottom: 1px solid rgba(42, 77, 122, 0.2);
+}
+
+.judge-scores-table td.col-num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.judge-scores-table tbody tr.judge-q-even {
+  background: rgba(123, 165, 201, 0.1);
+}
+
+.judge-total-row td {
+  border-top: 1px solid var(--color-border);
+  border-bottom: none;
+  font-weight: 700;
   color: var(--color-accent);
 }
 

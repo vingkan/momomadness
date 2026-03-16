@@ -22,7 +22,7 @@ export default function BracketLeaderboard({ onViewBracket }: Props) {
   if (!hasAnyResults()) {
     return (
       <div className="leaderboard">
-        <h2 className="leaderboard-title">Bracket Leaderboard</h2>
+        <h2 className="leaderboard-title">Prediction Leaderboard</h2>
         <p className="leaderboard-placeholder">Results forthcoming...</p>
       </div>
     );
@@ -30,17 +30,39 @@ export default function BracketLeaderboard({ onViewBracket }: Props) {
 
   return (
     <div className="leaderboard">
-      <h2 className="leaderboard-title">Bracket Leaderboard</h2>
+      <h2 className="leaderboard-title">Prediction Leaderboard</h2>
       <div className="leaderboard-scroll">
         <table className="leaderboard-table">
           <thead>
             <tr>
-              <th title="Rank">#</th>
+              <th data-tip="Rank" className="col-seed" tabIndex={0}>
+                #
+              </th>
               <th>Name</th>
-              <th title="Current Score">Score</th>
-              <th title="Maximum Possible Score">Max</th>
-              <th title="Correct Predictions">W</th>
-              <th title="Incorrect Predictions">L</th>
+              <th data-tip="Current Score" tabIndex={0} className="col-num">
+                Score
+              </th>
+              <th
+                data-tip="Maximum Possible Score"
+                tabIndex={0}
+                className="col-num"
+              >
+                Max
+              </th>
+              <th
+                data-tip="Correct Predictions"
+                tabIndex={0}
+                className="col-num"
+              >
+                W
+              </th>
+              <th
+                data-tip="Incorrect Predictions"
+                tabIndex={0}
+                className="col-num"
+              >
+                L
+              </th>
             </tr>
           </thead>
           <tbody>

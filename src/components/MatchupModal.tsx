@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import type { MutableRefObject } from "react";
 import {
   Ham,
@@ -19,11 +19,35 @@ import { MATCHES, resolveSlot } from "../data/bracket";
 import {
   getResultByIndex,
   getResultWinner,
+  getPreviewByIndex,
   resolveActualSlot,
   totalScore,
 } from "../data/results";
 import type { MatchResult } from "../data/results";
+import scoresData from "../data/scores.json";
 import "./MatchupModal.css";
+
+interface JudgeRow {
+  judge: string;
+  quarter: number;
+  topPts: number;
+  bottomPts: number;
+}
+
+function getJudgeRows(topName: string, bottomName: string): JudgeRow[] {
+  const entry = scoresData.find(
+    (e) =>
+      (e.pair[0] === topName && e.pair[1] === bottomName) ||
+      (e.pair[0] === bottomName && e.pair[1] === topName),
+  );
+  if (!entry) return [];
+  return entry.judgeDetails.map((d) => ({
+    judge: d.judge,
+    quarter: d.quarter,
+    topPts: d.source === topName ? d.pointsEarned : 0,
+    bottomPts: d.source === bottomName ? d.pointsEarned : 0,
+  }));
+}
 
 interface Props {
   topTeam: Restaurant | null;
@@ -100,7 +124,7 @@ function MenuItemRow({ item }: { item: string | undefined }) {
 
 interface Badge {
   text: string;
-  type: "won" | "lost" | "user-won" | "user-lost";
+  type: "won" | "lost" | "user-won" | "user-lost" | "your-pick" | "eliminated";
   tooltip?: string;
 }
 
@@ -113,46 +137,99 @@ function computeBadge(
   const resultWinner = getResultWinner(result);
   const thisTeamWon = resultWinner === position;
   const match = MATCHES[matchIndex];
+  const userPick = userChoices[matchIndex];
 
+  // Check if user's predicted team for this slot matches who actually played
   const slot = position === 0 ? match.topSlot : match.bottomSlot;
   const actualTeam = resolveActualSlot(slot);
   const userTeam = resolveSlot(slot, userChoices);
-
-  // Check if user's predicted team for this slot matches who actually played
-  const userMatchesActual =
+  const slotMatchesActual =
     actualTeam !== null &&
     userTeam !== null &&
     userTeam.seed === actualTeam.seed;
 
-  // Did the user pick THIS position to win this match?
-  const userPickedThisPosition = userChoices[matchIndex] === position;
-
-  // User's predicted team didn't make it to this round
-  if (userTeam !== null && !userMatchesActual) {
-    return thisTeamWon
-      ? {
-          text: "Winner",
-          type: "won",
-          tooltip: "Your pick did not make it to this round.",
-        }
-      : {
-          text: "Loser",
-          type: "lost",
-          tooltip: "Your pick did not make it to this round.",
-        };
+  // Check if the user's predicted WINNER restaurant matches the actual winner restaurant
+  // This gives credit even when the opponent was different
+  let userPickedWinnerCorrectly = false;
+  if (userPick !== null) {
+    const userWinnerSlot = userPick === 0 ? match.topSlot : match.bottomSlot;
+    const userWinner = resolveSlot(userWinnerSlot, userChoices);
+    const actualWinnerSlot = resultWinner === 0 ? match.topSlot : match.bottomSlot;
+    const actualWinner = resolveActualSlot(actualWinnerSlot);
+    userPickedWinnerCorrectly = !!(userWinner && actualWinner && userWinner.seed === actualWinner.seed);
   }
 
-  // User picked this position to win
-  if (userMatchesActual && userPickedThisPosition) {
-    return thisTeamWon
-      ? { text: "Your Pick Won", type: "user-won" }
-      : { text: "Your Pick Lost", type: "user-lost" };
+  // Did the user pick THIS position to win?
+  const userPickedThisPosition = userPick === position;
+
+  // If user predicted the winning restaurant correctly
+  if (userPickedWinnerCorrectly) {
+    if (thisTeamWon && userPickedThisPosition) {
+      return { text: "Your Pick Won", type: "user-won" };
+    }
+    if (thisTeamWon) {
+      // Winner but user picked the other position — shouldn't happen if userPickedWinnerCorrectly
+      return { text: "Winner", type: "won" };
+    }
+    // This is the losing team and user picked the winner correctly
+    if (userPickedThisPosition) {
+      // User picked this position but it lost — shouldn't happen if they picked winner correctly
+      return { text: "Loser", type: "lost" };
+    }
+    return { text: "Loser", type: "lost" };
   }
 
-  // User didn't pick, or picked the other team — just show Winner/Loser
+  // User predicted the winner incorrectly
+  if (userPick !== null) {
+    if (userPickedThisPosition) {
+      // User picked this team to win but it lost (or the team they thought was here wasn't)
+      if (!slotMatchesActual) {
+        return thisTeamWon
+          ? { text: "Winner", type: "won", tooltip: "Your pick did not make it to this round." }
+          : { text: "Loser", type: "lost", tooltip: "Your pick did not make it to this round." };
+      }
+      return { text: "Your Pick Lost", type: "user-lost" };
+    }
+    // Not the user's picked position
+    if (!slotMatchesActual) {
+      return thisTeamWon
+        ? { text: "Winner", type: "won", tooltip: "Your pick did not make it to this round." }
+        : { text: "Loser", type: "lost", tooltip: "Your pick did not make it to this round." };
+    }
+    return thisTeamWon
+      ? { text: "Winner", type: "won" }
+      : { text: "Loser", type: "lost" };
+  }
+
+  // No user pick at all
   return thisTeamWon
     ? { text: "Winner", type: "won" }
     : { text: "Loser", type: "lost" };
+}
+
+function computePendingBadge(
+  matchIndex: number,
+  position: 0 | 1,
+  userChoices: Choices,
+): Badge | null {
+  const match = MATCHES[matchIndex];
+  const slot = position === 0 ? match.topSlot : match.bottomSlot;
+  const actualTeam = resolveActualSlot(slot);
+  const userTeam = resolveSlot(slot, userChoices);
+  if (!actualTeam || !userTeam) return null;
+
+  // Only show "Your Pick" for the position the user actually picked to win
+  const userPick = userChoices[matchIndex];
+  if (userPick === position) {
+    // This is the team the user picked to win this match
+    if (actualTeam.seed === userTeam.seed) {
+      return { text: "Your Pick", type: "your-pick" };
+    }
+    return { text: "Your Pick Was Eliminated", type: "eliminated" };
+  }
+
+  // The other position — no badge
+  return null;
 }
 
 interface RestaurantCardProps {
@@ -302,16 +379,34 @@ export default function MatchupModal({
   onClose,
 }: Props) {
   const openedAt = useRef(Date.now());
+  const [showJudges, setShowJudges] = useState(false);
   const result = getResultByIndex(matchIndex);
 
-  const topBadge = result
-    ? computeBadge(matchIndex, 0, userChoices, result)
-    : null;
-  const bottomBadge = result
-    ? computeBadge(matchIndex, 1, userChoices, result)
-    : null;
-
   const resultWinner = result ? getResultWinner(result) : null;
+
+  // Detect when neither of the user's predicted teams made it to this match
+  const neitherPickAdvanced = (() => {
+    const userPick = userChoices[matchIndex];
+    if (userPick === null) return false;
+    const match = MATCHES[matchIndex];
+    const topUserTeam = resolveSlot(match.topSlot, userChoices);
+    const topActualTeam = resolveActualSlot(match.topSlot);
+    const bottomUserTeam = resolveSlot(match.bottomSlot, userChoices);
+    const bottomActualTeam = resolveActualSlot(match.bottomSlot);
+    // Only check if at least one actual team is known (prerequisite has a result)
+    if (!topActualTeam && !bottomActualTeam) return false;
+    const topMatches = topUserTeam && topActualTeam && topUserTeam.seed === topActualTeam.seed;
+    const bottomMatches = bottomUserTeam && bottomActualTeam && bottomUserTeam.seed === bottomActualTeam.seed;
+    return !topMatches && !bottomMatches;
+  })();
+
+  // Suppress badges when neither pick advanced — the message replaces them
+  const topBadge = neitherPickAdvanced ? null
+    : result ? computeBadge(matchIndex, 0, userChoices, result)
+    : computePendingBadge(matchIndex, 0, userChoices);
+  const bottomBadge = neitherPickAdvanced ? null
+    : result ? computeBadge(matchIndex, 1, userChoices, result)
+    : computePendingBadge(matchIndex, 1, userChoices);
 
   return (
     <div className="modal-overlay" onClick={onClose}>
@@ -327,11 +422,14 @@ export default function MatchupModal({
               ? "Match details"
               : "Pick the winner"}
         </p>
+        {neitherPickAdvanced && (
+          <p className="modal-no-picks">None of your picks advanced to this match.</p>
+        )}
         <div className="matchup-cards">
           <RestaurantCard
             restaurant={topTeam}
             position={0}
-            isCurrentWinner={currentWinner === 0}
+            isCurrentWinner={!neitherPickAdvanced && currentWinner === 0 && !topBadge?.tooltip}
             readOnly={readOnly}
             badge={topBadge}
             onPick={onPick}
@@ -341,7 +439,7 @@ export default function MatchupModal({
           <RestaurantCard
             restaurant={bottomTeam}
             position={1}
-            isCurrentWinner={currentWinner === 1}
+            isCurrentWinner={!neitherPickAdvanced && currentWinner === 1 && !bottomBadge?.tooltip}
             readOnly={readOnly}
             badge={bottomBadge}
             onPick={onPick}
@@ -369,6 +467,16 @@ export default function MatchupModal({
                 ))}
             </div>
           ) : null;
+        })()}
+        {!result && (() => {
+          const preview = getPreviewByIndex(matchIndex);
+          if (!preview) return null;
+          return (
+            <div className="game-preview-section">
+              <h3 className="game-preview-title">Game Preview</h3>
+              <p className="game-preview">{preview.preview}</p>
+            </div>
+          );
         })()}
         {result && (
           <div className="box-score-section">
@@ -407,6 +515,49 @@ export default function MatchupModal({
               </tbody>
             </table>
             {result.recap && <p className="game-recap">{result.recap}</p>}
+            {topTeam && bottomTeam && (() => {
+              const judgeRows = getJudgeRows(topTeam.name, bottomTeam.name);
+              if (judgeRows.length === 0) return null;
+              const topTotal = judgeRows.reduce((s, r) => s + r.topPts, 0);
+              const bottomTotal = judgeRows.reduce((s, r) => s + r.bottomPts, 0);
+              return (
+                <>
+                  <button
+                    className="judge-scores-toggle"
+                    onClick={() => setShowJudges(!showJudges)}
+                  >
+                    {showJudges ? "Collapse Scores" : "Expand Scores"}
+                  </button>
+                  {showJudges && (
+                    <table className="judge-scores-table">
+                      <thead>
+                        <tr>
+                          <th>Judge</th>
+                          <th>Q</th>
+                          <th className="col-num">{topTeam.name}</th>
+                          <th className="col-num">{bottomTeam.name}</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {judgeRows.map((r, i) => (
+                          <tr key={i} className={r.quarter % 2 === 0 ? "judge-q-even" : ""}>
+                            <td>{r.judge}</td>
+                            <td>Q{r.quarter}</td>
+                            <td className="col-num">{r.topPts || ""}</td>
+                            <td className="col-num">{r.bottomPts || ""}</td>
+                          </tr>
+                        ))}
+                        <tr className="judge-total-row">
+                          <td colSpan={2}>Total</td>
+                          <td className="col-num">{topTotal}</td>
+                          <td className="col-num">{bottomTotal}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  )}
+                </>
+              );
+            })()}
           </div>
         )}
       </div>

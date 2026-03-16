@@ -101,7 +101,7 @@ export default function BracketPage({ choicesParam, onGoToLanding, onClearChoice
           onClick={onGoToLanding}
           aria-label="Back to home"
         >
-          ← Home
+          ← <span className="back-btn-text">Home</span>
         </button>
         <h1 className="bracket-page-title">Momo Madness 2026</h1>
         {!readOnly ? (
@@ -122,21 +122,6 @@ export default function BracketPage({ choicesParam, onGoToLanding, onClearChoice
 
       <footer className="bracket-footer">
         {!isViewingOther && !resultsExist && <ProgressBar picks={picksCount} total={15} />}
-        {resultsExist && complete && (() => {
-          const score = scoreBracketFromChoices(choices);
-          return (
-            <div className="bracket-score-display">
-              <span className="bracket-score-item">
-                <span className="bracket-score-label">Score</span>
-                <span className="bracket-score-value">{score.current}</span>
-              </span>
-              <span className="bracket-score-item">
-                <span className="bracket-score-label">Max</span>
-                <span className="bracket-score-value">{score.max}</span>
-              </span>
-            </div>
-          );
-        })()}
         <div className="bracket-footer-buttons">
           {!readOnly || complete ? (
             <button
@@ -149,6 +134,50 @@ export default function BracketPage({ choicesParam, onGoToLanding, onClearChoice
             </button>
           ) : null}
         </div>
+        {resultsExist && complete && (() => {
+          const score = scoreBracketFromChoices(choices);
+          return (
+            <>
+              <div className="bracket-score-display">
+                <span className="bracket-score-item" data-tip="Points earned from correct predictions" tabIndex={0}>
+                  <span className="bracket-score-label">Score</span>
+                  <span className="bracket-score-value">{score.current}</span>
+                </span>
+                <span className="bracket-score-item" data-tip="Maximum possible score if all remaining eligible picks are correct" tabIndex={0}>
+                  <span className="bracket-score-label">Max</span>
+                  <span className="bracket-score-value">{score.max}</span>
+                </span>
+              </div>
+              <table className="bracket-picks-table">
+                <thead>
+                  <tr>
+                    <th>Round</th>
+                    <th>Pick</th>
+                    <th className="col-num">Pts</th>
+                    <th className="col-num">Max</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {score.matches.map((m, i) => (
+                    <tr key={i} className={`pick-row-${m.status}`}>
+                      <td>{m.round}</td>
+                      <td className={`pick-cell pick-${m.status}`}>
+                        {m.pickName ?? "—"}
+                      </td>
+                      <td className="col-num">{m.pts || ""}</td>
+                      <td className="col-num">{m.maxPts || ""}</td>
+                    </tr>
+                  ))}
+                  <tr className="picks-total-row">
+                    <td colSpan={2}>Total</td>
+                    <td className="col-num">{score.current}</td>
+                    <td className="col-num">{score.max}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </>
+          );
+        })()}
       </footer>
 
       {showShare && (

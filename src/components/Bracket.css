@@ -4,14 +4,18 @@
 ────────────────────────────────────────────────────────── */
 
 .bracket-scroll-container {
-  overflow-x: auto;
-  overflow-y: visible;
+  overflow: auto;
   padding: 2.5rem 1.5rem 3rem;
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none;
+  cursor: grab;
+}
+
+.bracket-scroll-container:active {
+  cursor: grabbing;
 }
 
 .bracket-scroll-container::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Edge */
+  display: none;
 }
 
 .bracket {

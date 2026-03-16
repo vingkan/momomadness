@@ -71,6 +71,17 @@ function getQuarter(rowIndex, totalRows) {
   return 4;
 }
 
+// ── Point values by source rank vs target rank ──
+// Key: "sourceRank,targetRank" → points earned by source
+const PAIRWISE_POINTS = {
+  "1,2": 7,
+  "1,3": 13,
+  "1,4": 16,
+  "2,3": 5,
+  "2,4": 10,
+  "3,4": 3,
+};
+
 // ── Pairwise scoring for one row ──
 // Returns array of { source, sourceRank, target, targetRank, pointsEarned }
 // source = higher-ranked restaurant (lower rank number)
@@ -89,12 +100,13 @@ function computePairwise(rankings, restaurantNames) {
       const target = sorted[j];
       const sourceRank = rankings[source];
       const targetRank = rankings[target];
+      const pointsEarned = PAIRWISE_POINTS[`${sourceRank},${targetRank}`] ?? 0;
       pairs.push({
         source,
         sourceRank,
         target,
         targetRank,
-        pointsEarned: targetRank - sourceRank,
+        pointsEarned,
       });
     }
   }
@@ -332,20 +344,24 @@ function decodeChoicesJS(param) {
 
 // ── Bracket scoring ──
 
-function isSlotPredictionViableJS(slotMatchIndex, choices) {
-  const result = getResultByIdx(slotMatchIndex);
-  if (!result) return true;
-
-  const match = MATCHES[slotMatchIndex];
+function isUserSlotViableJS(slot, choices) {
+  if ("seed" in slot) return true;
+  const { matchIndex } = slot;
+  const result = getResultByIdx(matchIndex);
+  if (!result) {
+    const pick = choices[matchIndex];
+    if (pick === null) return true;
+    const pickedSlot = pick === 0 ? MATCHES[matchIndex].topSlot : MATCHES[matchIndex].bottomSlot;
+    return isUserSlotViableJS(pickedSlot, choices);
+  }
   const winner = getResultWinnerJS(result);
+  const match = MATCHES[matchIndex];
   const actualWinnerSlot = winner === 0 ? match.topSlot : match.bottomSlot;
   const actualWinnerSeed = resolveSlotWithResults(actualWinnerSlot);
-
-  const userPick = choices[slotMatchIndex];
+  const userPick = choices[matchIndex];
   if (userPick === null) return false;
   const userWinnerSlot = userPick === 0 ? match.topSlot : match.bottomSlot;
   const userWinnerSeed = resolveSlotWithChoices(userWinnerSlot, choices);
-
   if (actualWinnerSeed === null || userWinnerSeed === null) return false;
   return actualWinnerSeed === userWinnerSeed;
 }
@@ -386,8 +402,8 @@ function scoreBracketJS(encoded) {
         const topSlot = match.topSlot;
         const bottomSlot = match.bottomSlot;
 
-        let topViable = "seed" in topSlot ? true : isSlotPredictionViableJS(topSlot.matchIndex, choices);
-        let bottomViable = "seed" in bottomSlot ? true : isSlotPredictionViableJS(bottomSlot.matchIndex, choices);
+        let topViable = isUserSlotViableJS(topSlot, choices);
+        let bottomViable = isUserSlotViableJS(bottomSlot, choices);
 
         const userPick = choices[match.index];
         if (userPick !== null) {

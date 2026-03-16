@@ -1,4 +1,5 @@
-import { RESTAURANTS } from "../data/restaurants";
+import { useState } from "react";
+import { RESTAURANTS, getRestaurantBySeed } from "../data/restaurants";
 import { MATCHES } from "../data/bracket";
 import {
   RESULTS,
@@ -6,8 +7,9 @@ import {
   resolveActualSlot,
   totalScore,
 } from "../data/results";
+import RestaurantModal from "./RestaurantModal";
 
-interface RestaurantStats {
+interface RestaurantRow {
   seed: number;
   name: string;
   division: string;
@@ -17,13 +19,21 @@ interface RestaurantStats {
   diff: number;
   wins: number;
   losses: number;
+  games: number;
+  ppg: number;
   eliminated: boolean;
 }
 
-function computeStats(): RestaurantStats[] {
+function computeStats(): RestaurantRow[] {
   const stats = new Map<
     number,
-    { pf: number; pa: number; wins: number; losses: number; eliminated: boolean }
+    {
+      pf: number;
+      pa: number;
+      wins: number;
+      losses: number;
+      eliminated: boolean;
+    }
   >();
 
   for (const r of RESTAURANTS) {
@@ -71,15 +81,16 @@ function computeStats(): RestaurantStats[] {
       diff: s.pf - s.pa,
       wins: s.wins,
       losses: s.losses,
+      games: s.wins + s.losses,
+      ppg: s.wins + s.losses > 0 ? s.pf / (s.wins + s.losses) : 0,
       eliminated: s.eliminated,
     };
-  }).sort(
-    (a, b) => b.pf - a.pf || b.diff - a.diff || a.seed - b.seed,
-  );
+  }).sort((a, b) => b.ppg - a.ppg || b.diff - a.diff || a.seed - b.seed);
 }
 
 export default function RestaurantLeaderboard() {
   const rows = computeStats();
+  const [selectedSeed, setSelectedSeed] = useState<number | null>(null);
 
   if (RESULTS.length === 0) {
     return (
@@ -90,6 +101,9 @@ export default function RestaurantLeaderboard() {
     );
   }
 
+  const selectedRow =
+    selectedSeed !== null ? rows.find((r) => r.seed === selectedSeed) : null;
+
   return (
     <div className="leaderboard">
       <h2 className="leaderboard-title">Restaurant Standings</h2>
@@ -97,27 +111,53 @@ export default function RestaurantLeaderboard() {
         <table className="leaderboard-table">
           <thead>
             <tr>
-              <th title="Seed">#</th>
+              <th data-tip="Seed" className="col-seed" tabIndex={0}>
+                #
+              </th>
               <th>Name</th>
-              <th>Div</th>
-              <th className="hide-mobile">Neighborhood</th>
-              <th title="Points For">PF</th>
-              <th title="Points Against">PA</th>
-              <th title="Point Differential">Diff</th>
-              <th title="Wins">W</th>
-              <th title="Losses">L</th>
+              <th data-tip="Division" tabIndex={0}>
+                Div
+              </th>
+              <th>Neighborhood</th>
+              <th data-tip="Points Per Game" tabIndex={0} className="col-num">
+                PPG
+              </th>
+              <th data-tip="Points For" tabIndex={0} className="col-num">
+                PF
+              </th>
+              <th data-tip="Points Against" tabIndex={0} className="col-num">
+                PA
+              </th>
+              <th
+                data-tip="Point Differential"
+                tabIndex={0}
+                className="col-num"
+              >
+                Diff
+              </th>
+              <th data-tip="Wins" tabIndex={0} className="col-num">
+                W
+              </th>
+              <th data-tip="Losses" tabIndex={0} className="col-num">
+                L
+              </th>
             </tr>
           </thead>
           <tbody>
             {rows.map((r) => (
-              <tr
-                key={r.seed}
-                className={r.eliminated ? "row-eliminated" : ""}
-              >
+              <tr key={r.seed} className={r.eliminated ? "row-eliminated" : ""}>
                 <td className="col-seed">{r.seed}</td>
-                <td className="col-name">{r.name}</td>
+                <td className="col-name">
+                  <button
+                    className="bracket-link"
+                    onClick={() => setSelectedSeed(r.seed)}
+                  >
+                    {r.name}
+                  </button>
+                </td>
                 <td>{r.division}</td>
-                <td className="hide-mobile">{r.neighborhood}</td>
+                <td>{r.neighborhood}</td>
+                <td className="col-num">{r.ppg.toFixed(1)}</td>
                 <td className="col-num">{r.pf}</td>
                 <td className="col-num">{r.pa}</td>
                 <td className="col-num col-diff">
@@ -130,6 +170,20 @@ export default function RestaurantLeaderboard() {
           </tbody>
         </table>
       </div>
+      {selectedRow && (
+        <RestaurantModal
+          restaurant={getRestaurantBySeed(selectedRow.seed)}
+          stats={{
+            pf: selectedRow.pf,
+            pa: selectedRow.pa,
+            diff: selectedRow.diff,
+            wins: selectedRow.wins,
+            losses: selectedRow.losses,
+            eliminated: selectedRow.eliminated,
+          }}
+          onClose={() => setSelectedSeed(null)}
+        />
+      )}
     </div>
   );
 }

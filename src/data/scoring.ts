@@ -3,6 +3,7 @@ import type { Choices } from "./bracket";
 import {
   getResultByIndex,
   getResultWinner,
+  isUserSlotViable,
   resolveActualSlot,
 } from "./results";
 
@@ -13,40 +14,38 @@ const ROUND_POINTS: Record<string, number> = {
   final: 8,
 };
 
+const ROUND_LABELS: Record<string, string> = {
+  r16: "Round of 16",
+  qf: "Quarterfinal",
+  sf: "Semifinal",
+  final: "Finals",
+};
+
+const ROUND_ORDER: Record<string, number> = {
+  r16: 0,
+  qf: 1,
+  sf: 2,
+  final: 3,
+};
+
+export type PickStatus = "won" | "lost" | "eliminated" | "pending";
+
+export interface MatchDetail {
+  round: string;
+  roundOrder: number;
+  matchIndex: number;
+  pickName: string | null;
+  pts: number;
+  maxPts: number;
+  status: PickStatus;
+}
+
 export interface BracketScore {
   current: number;
   max: number;
   wins: number;
   losses: number;
-}
-
-/**
- * Check if a user's predicted restaurant for a slot is still viable
- * (could still end up in this slot given results so far).
- * A prediction is viable if:
- * - The slot is a fixed seed (always viable)
- * - The prerequisite match has no result yet (still undetermined)
- * - The prerequisite match has a result AND the user's predicted winner matches the actual winner
- */
-function isSlotPredictionViable(
-  slotMatchIndex: number,
-  choices: Choices,
-): boolean {
-  const result = getResultByIndex(slotMatchIndex);
-  if (!result) return true; // no result yet — still possible
-
-  const match = MATCHES[slotMatchIndex];
-  const winner = getResultWinner(result);
-  const actualWinnerSlot = winner === 0 ? match.topSlot : match.bottomSlot;
-  const actualWinner = resolveActualSlot(actualWinnerSlot);
-
-  const userPick = choices[slotMatchIndex];
-  if (userPick === null) return false;
-  const userWinnerSlot = userPick === 0 ? match.topSlot : match.bottomSlot;
-  const userWinner = resolveSlot(userWinnerSlot, choices);
-
-  if (!actualWinner || !userWinner) return false;
-  return actualWinner.seed === userWinner.seed;
+  matches: MatchDetail[];
 }
 
 /**
@@ -65,19 +64,28 @@ export function scoreBracketFromChoices(choices: Choices): BracketScore {
   let max = 0;
   let wins = 0;
   let losses = 0;
+  const matches: MatchDetail[] = [];
 
   for (const match of MATCHES) {
     const points = ROUND_POINTS[match.round];
     const result = getResultByIndex(match.index);
+    const userPick = choices[match.index];
+
+    // Resolve user's predicted winner name
+    let pickName: string | null = null;
+    if (userPick !== null) {
+      const userWinnerSlot =
+        userPick === 0 ? match.topSlot : match.bottomSlot;
+      const userWinner = resolveSlot(userWinnerSlot, choices);
+      pickName = userWinner?.name ?? null;
+    }
 
     if (result) {
-      // Match has a result — check if user predicted the winner
       const resultWinner = getResultWinner(result);
       const actualWinnerSlot =
         resultWinner === 0 ? match.topSlot : match.bottomSlot;
       const actualWinner = resolveActualSlot(actualWinnerSlot);
 
-      const userPick = choices[match.index];
       if (userPick !== null) {
         const userWinnerSlot =
           userPick === 0 ? match.topSlot : match.bottomSlot;
@@ -86,56 +94,80 @@ export function scoreBracketFromChoices(choices: Choices): BracketScore {
         if (actualWinner && userWinner && actualWinner.seed === userWinner.seed) {
           current += points;
           wins++;
+          matches.push({
+            round: ROUND_LABELS[match.round],
+            roundOrder: ROUND_ORDER[match.round],
+            matchIndex: match.index,
+            pickName,
+            pts: points,
+            maxPts: points,
+            status: "won",
+          });
         } else {
           losses++;
+          // Check if pick didn't even advance to this round
+          const userWinnerSlotCheck = userPick === 0 ? match.topSlot : match.bottomSlot;
+          const actualInSlot = resolveActualSlot(userWinnerSlotCheck);
+          const didAdvance = actualInSlot && userWinner && actualInSlot.seed === userWinner.seed;
+          matches.push({
+            round: ROUND_LABELS[match.round],
+            roundOrder: ROUND_ORDER[match.round],
+            matchIndex: match.index,
+            pickName,
+            pts: 0,
+            maxPts: 0,
+            status: didAdvance ? "lost" : "eliminated",
+          });
         }
-      }
-      max += current - (max < current ? 0 : 0); // will set max = current after loop section
-    } else {
-      // No result yet — check if this match is still eligible for max points
-      // A match is eligible if the user's predicted winner could still appear
-      // For R16 matches (fixed seeds), always eligible
-      if (match.round === "r16") {
-        max += points;
       } else {
-        // Check if at least one of the user's predicted teams for this match
-        // could still end up here
-        const topSlot = match.topSlot;
-        const bottomSlot = match.bottomSlot;
+        matches.push({
+          round: ROUND_LABELS[match.round],
+          roundOrder: ROUND_ORDER[match.round],
+          matchIndex: match.index,
+          pickName: null,
+          pts: 0,
+          maxPts: 0,
+          status: "lost",
+        });
+      }
+    } else {
+      // No result yet — check max eligibility
+      let matchMax = 0;
+      let status: PickStatus = "pending";
 
-        let topViable = false;
-        let bottomViable = false;
-
-        if ("seed" in topSlot) {
-          topViable = true;
+      if (userPick !== null) {
+        if (match.round === "r16") {
+          matchMax = points;
         } else {
-          topViable = isSlotPredictionViable(topSlot.matchIndex, choices);
-        }
-
-        if ("seed" in bottomSlot) {
-          bottomViable = true;
-        } else {
-          bottomViable = isSlotPredictionViable(
-            bottomSlot.matchIndex,
-            choices,
-          );
-        }
-
-        // The user's predicted winner needs to be viable
-        const userPick = choices[match.index];
-        if (userPick !== null) {
+          const topSlot = match.topSlot;
+          const bottomSlot = match.bottomSlot;
+          const topViable = isUserSlotViable(topSlot, choices);
+          const bottomViable = isUserSlotViable(bottomSlot, choices);
           const viable = userPick === 0 ? topViable : bottomViable;
           if (viable) {
-            max += points;
+            matchMax = points;
+          } else {
+            status = "eliminated";
           }
-        } else {
-          // User didn't pick — not eligible
         }
+        max += matchMax;
       }
+
+      matches.push({
+        round: ROUND_LABELS[match.round],
+        roundOrder: ROUND_ORDER[match.round],
+        matchIndex: match.index,
+        pickName,
+        pts: 0,
+        maxPts: matchMax,
+        status,
+      });
     }
   }
 
   max += current;
 
-  return { current, max, wins, losses };
+  matches.sort((a, b) => a.roundOrder - b.roundOrder || a.matchIndex - b.matchIndex);
+
+  return { current, max, wins, losses, matches };
 }

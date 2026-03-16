@@ -1,0 +1,68 @@
+.restaurant-modal {
+  text-align: center;
+}
+
+.landing-page .restaurant-modal {
+  max-width: 380px;
+}
+
+.restaurant-modal .restaurant-seed {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--color-primary);
+  letter-spacing: 0.05em;
+}
+
+.restaurant-modal .restaurant-neighborhood {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin: 0 0 1rem;
+}
+
+.restaurant-modal .restaurant-stats {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.restaurant-modal .restaurant-menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-top: 0.75rem;
+  text-align: left;
+}
+
+.restaurant-modal-stats {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.rms-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+}
+
+.rms-label {
+  color: var(--color-text-muted);
+}
+
+.rms-value {
+  font-weight: 600;
+  color: var(--color-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.rms-status-eliminated {
+  color: var(--color-primary);
+}
+
+.rms-status-inplay {
+  color: var(--color-success);
+}
