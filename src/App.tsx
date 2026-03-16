@@ -31,7 +31,14 @@ function App() {
     );
   }
 
-  return <LandingPage onGoToBracket={() => setView('bracket')} />;
+  function viewBracket(encoded: string) {
+    const base = window.location.pathname;
+    window.history.replaceState(null, '', `${base}?choices=${encoded}`);
+    setChoicesParam(encoded);
+    setView('bracket');
+  }
+
+  return <LandingPage onGoToBracket={() => setView('bracket')} onViewBracket={viewBracket} />;
 }
 
 export default App;

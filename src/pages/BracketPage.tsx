@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import type { Choices } from '../data/bracket';
 import { decodeChoices, encodeChoicesFull } from '../data/bracket';
 import { hasAnyResults } from '../data/results';
+import { scoreBracketFromChoices } from '../data/scoring';
 import { useBracket, clearStorage } from '../hooks/useBracket';
 import Bracket from '../components/Bracket';
 import ProgressBar from '../components/ProgressBar';
@@ -121,6 +122,21 @@ export default function BracketPage({ choicesParam, onGoToLanding, onClearChoice
 
       <footer className="bracket-footer">
         {!isViewingOther && !resultsExist && <ProgressBar picks={picksCount} total={15} />}
+        {resultsExist && complete && (() => {
+          const score = scoreBracketFromChoices(choices);
+          return (
+            <div className="bracket-score-display">
+              <span className="bracket-score-item">
+                <span className="bracket-score-label">Score</span>
+                <span className="bracket-score-value">{score.current}</span>
+              </span>
+              <span className="bracket-score-item">
+                <span className="bracket-score-label">Max</span>
+                <span className="bracket-score-value">{score.max}</span>
+              </span>
+            </div>
+          );
+        })()}
         <div className="bracket-footer-buttons">
           {!readOnly || complete ? (
             <button

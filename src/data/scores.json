@@ -1,0 +1,1610 @@
+[
+  {
+    "pair": [
+      "Dumpling Home",
+      "Hon's Wun-Tun House"
+    ],
+    "pairSeeds": [
+      1,
+      2
+    ],
+    "pairIds": [
+      "00",
+      "01"
+    ],
+    "scores": {
+      "Dumpling Home": [
+        2,
+        3,
+        1,
+        3
+      ],
+      "Hon's Wun-Tun House": [
+        1,
+        1,
+        2,
+        3
+      ]
+    },
+    "totalScores": {
+      "Dumpling Home": 9,
+      "Hon's Wun-Tun House": 7
+    },
+    "judgeDetails": [
+      {
+        "file": "east_finals.csv",
+        "judge": "Tanha Kabir",
+        "quarter": 1,
+        "source": "Hon's Wun-Tun House",
+        "sourceRank": 3,
+        "target": "Dumpling Home",
+        "targetRank": 4,
+        "pointsEarned": 1
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Andy",
+        "quarter": 1,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "Hon's Wun-Tun House",
+        "targetRank": 3,
+        "pointsEarned": 2
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Jonathan",
+        "quarter": 2,
+        "source": "Hon's Wun-Tun House",
+        "sourceRank": 2,
+        "target": "Dumpling Home",
+        "targetRank": 3,
+        "pointsEarned": 1
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Mete",
+        "quarter": 2,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "Hon's Wun-Tun House",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Natalia",
+        "quarter": 3,
+        "source": "Hon's Wun-Tun House",
+        "sourceRank": 1,
+        "target": "Dumpling Home",
+        "targetRank": 3,
+        "pointsEarned": 2
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Michell Li",
+        "quarter": 3,
+        "source": "Dumpling Home",
+        "sourceRank": 2,
+        "target": "Hon's Wun-Tun House",
+        "targetRank": 3,
+        "pointsEarned": 1
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Vinesh Kannan",
+        "quarter": 4,
+        "source": "Hon's Wun-Tun House",
+        "sourceRank": 1,
+        "target": "Dumpling Home",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Elif",
+        "quarter": 4,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "Hon's Wun-Tun House",
+        "targetRank": 2,
+        "pointsEarned": 1
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Javi",
+        "quarter": 4,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "Hon's Wun-Tun House",
+        "targetRank": 3,
+        "pointsEarned": 2
+      }
+    ]
+  },
+  {
+    "pair": [
+      "Dumpling Home",
+      "Palette Tea House"
+    ],
+    "pairSeeds": [
+      1,
+      4
+    ],
+    "pairIds": [
+      "00",
+      "03"
+    ],
+    "scores": {
+      "Dumpling Home": [
+        1,
+        1,
+        3,
+        4
+      ],
+      "Palette Tea House": [
+        3,
+        2,
+        0,
+        1
+      ]
+    },
+    "totalScores": {
+      "Dumpling Home": 9,
+      "Palette Tea House": 6
+    },
+    "judgeDetails": [
+      {
+        "file": "east_finals.csv",
+        "judge": "Tanha Kabir",
+        "quarter": 1,
+        "source": "Palette Tea House",
+        "sourceRank": 1,
+        "target": "Dumpling Home",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Andy",
+        "quarter": 1,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "Palette Tea House",
+        "targetRank": 2,
+        "pointsEarned": 1
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Jonathan",
+        "quarter": 2,
+        "source": "Palette Tea House",
+        "sourceRank": 1,
+        "target": "Dumpling Home",
+        "targetRank": 3,
+        "pointsEarned": 2
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Mete",
+        "quarter": 2,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "Palette Tea House",
+        "targetRank": 2,
+        "pointsEarned": 1
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Natalia",
+        "quarter": 3,
+        "source": "Dumpling Home",
+        "sourceRank": 3,
+        "target": "Palette Tea House",
+        "targetRank": 4,
+        "pointsEarned": 1
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Michell Li",
+        "quarter": 3,
+        "source": "Dumpling Home",
+        "sourceRank": 2,
+        "target": "Palette Tea House",
+        "targetRank": 4,
+        "pointsEarned": 2
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Vinesh Kannan",
+        "quarter": 4,
+        "source": "Palette Tea House",
+        "sourceRank": 3,
+        "target": "Dumpling Home",
+        "targetRank": 4,
+        "pointsEarned": 1
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Elif",
+        "quarter": 4,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "Palette Tea House",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Javi",
+        "quarter": 4,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "Palette Tea House",
+        "targetRank": 2,
+        "pointsEarned": 1
+      }
+    ]
+  },
+  {
+    "pair": [
+      "Dumpling Home",
+      "Today Food"
+    ],
+    "pairSeeds": [
+      1,
+      15
+    ],
+    "pairIds": [
+      "00",
+      "14"
+    ],
+    "scores": {
+      "Dumpling Home": [
+        3,
+        3,
+        0,
+        5
+      ],
+      "Today Food": [
+        2,
+        0,
+        2,
+        2
+      ]
+    },
+    "totalScores": {
+      "Dumpling Home": 11,
+      "Today Food": 6
+    },
+    "judgeDetails": [
+      {
+        "file": "east_finals.csv",
+        "judge": "Tanha Kabir",
+        "quarter": 1,
+        "source": "Today Food",
+        "sourceRank": 2,
+        "target": "Dumpling Home",
+        "targetRank": 4,
+        "pointsEarned": 2
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Andy",
+        "quarter": 1,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "Today Food",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Jonathan",
+        "quarter": 2,
+        "source": "Dumpling Home",
+        "sourceRank": 3,
+        "target": "Today Food",
+        "targetRank": 4,
+        "pointsEarned": 1
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Mete",
+        "quarter": 2,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "Today Food",
+        "targetRank": 3,
+        "pointsEarned": 2
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Natalia",
+        "quarter": 3,
+        "source": "Today Food",
+        "sourceRank": 2,
+        "target": "Dumpling Home",
+        "targetRank": 3,
+        "pointsEarned": 1
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Michell Li",
+        "quarter": 3,
+        "source": "Today Food",
+        "sourceRank": 1,
+        "target": "Dumpling Home",
+        "targetRank": 2,
+        "pointsEarned": 1
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Vinesh Kannan",
+        "quarter": 4,
+        "source": "Today Food",
+        "sourceRank": 2,
+        "target": "Dumpling Home",
+        "targetRank": 4,
+        "pointsEarned": 2
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Elif",
+        "quarter": 4,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "Today Food",
+        "targetRank": 3,
+        "pointsEarned": 2
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Javi",
+        "quarter": 4,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "Today Food",
+        "targetRank": 4,
+        "pointsEarned": 3
+      }
+    ]
+  },
+  {
+    "pair": [
+      "Hon's Wun-Tun House",
+      "Palette Tea House"
+    ],
+    "pairSeeds": [
+      2,
+      4
+    ],
+    "pairIds": [
+      "01",
+      "03"
+    ],
+    "scores": {
+      "Hon's Wun-Tun House": [
+        0,
+        0,
+        4,
+        4
+      ],
+      "Palette Tea House": [
+        3,
+        3,
+        0,
+        1
+      ]
+    },
+    "totalScores": {
+      "Hon's Wun-Tun House": 8,
+      "Palette Tea House": 7
+    },
+    "judgeDetails": [
+      {
+        "file": "east_finals.csv",
+        "judge": "Tanha Kabir",
+        "quarter": 1,
+        "source": "Palette Tea House",
+        "sourceRank": 1,
+        "target": "Hon's Wun-Tun House",
+        "targetRank": 3,
+        "pointsEarned": 2
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Andy",
+        "quarter": 1,
+        "source": "Palette Tea House",
+        "sourceRank": 2,
+        "target": "Hon's Wun-Tun House",
+        "targetRank": 3,
+        "pointsEarned": 1
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Jonathan",
+        "quarter": 2,
+        "source": "Palette Tea House",
+        "sourceRank": 1,
+        "target": "Hon's Wun-Tun House",
+        "targetRank": 2,
+        "pointsEarned": 1
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Mete",
+        "quarter": 2,
+        "source": "Palette Tea House",
+        "sourceRank": 2,
+        "target": "Hon's Wun-Tun House",
+        "targetRank": 4,
+        "pointsEarned": 2
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Natalia",
+        "quarter": 3,
+        "source": "Hon's Wun-Tun House",
+        "sourceRank": 1,
+        "target": "Palette Tea House",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Michell Li",
+        "quarter": 3,
+        "source": "Hon's Wun-Tun House",
+        "sourceRank": 3,
+        "target": "Palette Tea House",
+        "targetRank": 4,
+        "pointsEarned": 1
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Vinesh Kannan",
+        "quarter": 4,
+        "source": "Hon's Wun-Tun House",
+        "sourceRank": 1,
+        "target": "Palette Tea House",
+        "targetRank": 3,
+        "pointsEarned": 2
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Elif",
+        "quarter": 4,
+        "source": "Hon's Wun-Tun House",
+        "sourceRank": 2,
+        "target": "Palette Tea House",
+        "targetRank": 4,
+        "pointsEarned": 2
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Javi",
+        "quarter": 4,
+        "source": "Palette Tea House",
+        "sourceRank": 2,
+        "target": "Hon's Wun-Tun House",
+        "targetRank": 3,
+        "pointsEarned": 1
+      }
+    ]
+  },
+  {
+    "pair": [
+      "Hon's Wun-Tun House",
+      "Today Food"
+    ],
+    "pairSeeds": [
+      2,
+      15
+    ],
+    "pairIds": [
+      "01",
+      "14"
+    ],
+    "scores": {
+      "Hon's Wun-Tun House": [
+        1,
+        2,
+        1,
+        3
+      ],
+      "Today Food": [
+        1,
+        1,
+        2,
+        0
+      ]
+    },
+    "totalScores": {
+      "Hon's Wun-Tun House": 7,
+      "Today Food": 4
+    },
+    "judgeDetails": [
+      {
+        "file": "east_finals.csv",
+        "judge": "Tanha Kabir",
+        "quarter": 1,
+        "source": "Today Food",
+        "sourceRank": 2,
+        "target": "Hon's Wun-Tun House",
+        "targetRank": 3,
+        "pointsEarned": 1
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Andy",
+        "quarter": 1,
+        "source": "Hon's Wun-Tun House",
+        "sourceRank": 3,
+        "target": "Today Food",
+        "targetRank": 4,
+        "pointsEarned": 1
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Jonathan",
+        "quarter": 2,
+        "source": "Hon's Wun-Tun House",
+        "sourceRank": 2,
+        "target": "Today Food",
+        "targetRank": 4,
+        "pointsEarned": 2
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Mete",
+        "quarter": 2,
+        "source": "Today Food",
+        "sourceRank": 3,
+        "target": "Hon's Wun-Tun House",
+        "targetRank": 4,
+        "pointsEarned": 1
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Natalia",
+        "quarter": 3,
+        "source": "Hon's Wun-Tun House",
+        "sourceRank": 1,
+        "target": "Today Food",
+        "targetRank": 2,
+        "pointsEarned": 1
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Michell Li",
+        "quarter": 3,
+        "source": "Today Food",
+        "sourceRank": 1,
+        "target": "Hon's Wun-Tun House",
+        "targetRank": 3,
+        "pointsEarned": 2
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Vinesh Kannan",
+        "quarter": 4,
+        "source": "Hon's Wun-Tun House",
+        "sourceRank": 1,
+        "target": "Today Food",
+        "targetRank": 2,
+        "pointsEarned": 1
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Elif",
+        "quarter": 4,
+        "source": "Hon's Wun-Tun House",
+        "sourceRank": 2,
+        "target": "Today Food",
+        "targetRank": 3,
+        "pointsEarned": 1
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Javi",
+        "quarter": 4,
+        "source": "Hon's Wun-Tun House",
+        "sourceRank": 3,
+        "target": "Today Food",
+        "targetRank": 4,
+        "pointsEarned": 1
+      }
+    ]
+  },
+  {
+    "pair": [
+      "Palette Tea House",
+      "Today Food"
+    ],
+    "pairSeeds": [
+      4,
+      15
+    ],
+    "pairIds": [
+      "03",
+      "14"
+    ],
+    "scores": {
+      "Palette Tea House": [
+        3,
+        4,
+        0,
+        2
+      ],
+      "Today Food": [
+        0,
+        0,
+        5,
+        2
+      ]
+    },
+    "totalScores": {
+      "Palette Tea House": 9,
+      "Today Food": 7
+    },
+    "judgeDetails": [
+      {
+        "file": "east_finals.csv",
+        "judge": "Tanha Kabir",
+        "quarter": 1,
+        "source": "Palette Tea House",
+        "sourceRank": 1,
+        "target": "Today Food",
+        "targetRank": 2,
+        "pointsEarned": 1
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Andy",
+        "quarter": 1,
+        "source": "Palette Tea House",
+        "sourceRank": 2,
+        "target": "Today Food",
+        "targetRank": 4,
+        "pointsEarned": 2
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Jonathan",
+        "quarter": 2,
+        "source": "Palette Tea House",
+        "sourceRank": 1,
+        "target": "Today Food",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Mete",
+        "quarter": 2,
+        "source": "Palette Tea House",
+        "sourceRank": 2,
+        "target": "Today Food",
+        "targetRank": 3,
+        "pointsEarned": 1
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Natalia",
+        "quarter": 3,
+        "source": "Today Food",
+        "sourceRank": 2,
+        "target": "Palette Tea House",
+        "targetRank": 4,
+        "pointsEarned": 2
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Michell Li",
+        "quarter": 3,
+        "source": "Today Food",
+        "sourceRank": 1,
+        "target": "Palette Tea House",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Vinesh Kannan",
+        "quarter": 4,
+        "source": "Today Food",
+        "sourceRank": 2,
+        "target": "Palette Tea House",
+        "targetRank": 3,
+        "pointsEarned": 1
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Elif",
+        "quarter": 4,
+        "source": "Today Food",
+        "sourceRank": 3,
+        "target": "Palette Tea House",
+        "targetRank": 4,
+        "pointsEarned": 1
+      },
+      {
+        "file": "east_finals.csv",
+        "judge": "Javi",
+        "quarter": 4,
+        "source": "Palette Tea House",
+        "sourceRank": 2,
+        "target": "Today Food",
+        "targetRank": 4,
+        "pointsEarned": 2
+      }
+    ]
+  },
+  {
+    "pair": [
+      "Dumpling Story",
+      "Cinderella Bakery & Cafe"
+    ],
+    "pairSeeds": [
+      5,
+      7
+    ],
+    "pairIds": [
+      "04",
+      "06"
+    ],
+    "scores": {
+      "Dumpling Story": [
+        0,
+        0,
+        3,
+        3
+      ],
+      "Cinderella Bakery & Cafe": [
+        5,
+        6,
+        2,
+        1
+      ]
+    },
+    "totalScores": {
+      "Dumpling Story": 6,
+      "Cinderella Bakery & Cafe": 14
+    },
+    "judgeDetails": [
+      {
+        "file": "north_finals.csv",
+        "judge": "Vinesh Kannan",
+        "quarter": 1,
+        "source": "Cinderella Bakery & Cafe",
+        "sourceRank": 2,
+        "target": "Dumpling Story",
+        "targetRank": 4,
+        "pointsEarned": 2
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "James Fletcher",
+        "quarter": 1,
+        "source": "Cinderella Bakery & Cafe",
+        "sourceRank": 1,
+        "target": "Dumpling Story",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Somya Jain",
+        "quarter": 2,
+        "source": "Cinderella Bakery & Cafe",
+        "sourceRank": 2,
+        "target": "Dumpling Story",
+        "targetRank": 4,
+        "pointsEarned": 2
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Natalia",
+        "quarter": 2,
+        "source": "Cinderella Bakery & Cafe",
+        "sourceRank": 1,
+        "target": "Dumpling Story",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Michell Li",
+        "quarter": 2,
+        "source": "Cinderella Bakery & Cafe",
+        "sourceRank": 2,
+        "target": "Dumpling Story",
+        "targetRank": 3,
+        "pointsEarned": 1
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Nancy Hung",
+        "quarter": 3,
+        "source": "Cinderella Bakery & Cafe",
+        "sourceRank": 3,
+        "target": "Dumpling Story",
+        "targetRank": 4,
+        "pointsEarned": 1
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Mikail",
+        "quarter": 3,
+        "source": "Dumpling Story",
+        "sourceRank": 1,
+        "target": "Cinderella Bakery & Cafe",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Sarah",
+        "quarter": 3,
+        "source": "Cinderella Bakery & Cafe",
+        "sourceRank": 3,
+        "target": "Dumpling Story",
+        "targetRank": 4,
+        "pointsEarned": 1
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Jonathan",
+        "quarter": 4,
+        "source": "Cinderella Bakery & Cafe",
+        "sourceRank": 2,
+        "target": "Dumpling Story",
+        "targetRank": 3,
+        "pointsEarned": 1
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Virginia A",
+        "quarter": 4,
+        "source": "Dumpling Story",
+        "sourceRank": 2,
+        "target": "Cinderella Bakery & Cafe",
+        "targetRank": 4,
+        "pointsEarned": 2
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Amy Tingle",
+        "quarter": 4,
+        "source": "Dumpling Story",
+        "sourceRank": 3,
+        "target": "Cinderella Bakery & Cafe",
+        "targetRank": 4,
+        "pointsEarned": 1
+      }
+    ]
+  },
+  {
+    "pair": [
+      "Dumpling Story",
+      "Dumpling King"
+    ],
+    "pairSeeds": [
+      5,
+      14
+    ],
+    "pairIds": [
+      "04",
+      "13"
+    ],
+    "scores": {
+      "Dumpling Story": [
+        0,
+        0,
+        2,
+        2
+      ],
+      "Dumpling King": [
+        5,
+        7,
+        5,
+        2
+      ]
+    },
+    "totalScores": {
+      "Dumpling Story": 4,
+      "Dumpling King": 19
+    },
+    "judgeDetails": [
+      {
+        "file": "north_finals.csv",
+        "judge": "Vinesh Kannan",
+        "quarter": 1,
+        "source": "Dumpling King",
+        "sourceRank": 1,
+        "target": "Dumpling Story",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "James Fletcher",
+        "quarter": 1,
+        "source": "Dumpling King",
+        "sourceRank": 2,
+        "target": "Dumpling Story",
+        "targetRank": 4,
+        "pointsEarned": 2
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Somya Jain",
+        "quarter": 2,
+        "source": "Dumpling King",
+        "sourceRank": 1,
+        "target": "Dumpling Story",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Natalia",
+        "quarter": 2,
+        "source": "Dumpling King",
+        "sourceRank": 2,
+        "target": "Dumpling Story",
+        "targetRank": 4,
+        "pointsEarned": 2
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Michell Li",
+        "quarter": 2,
+        "source": "Dumpling King",
+        "sourceRank": 1,
+        "target": "Dumpling Story",
+        "targetRank": 3,
+        "pointsEarned": 2
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Nancy Hung",
+        "quarter": 3,
+        "source": "Dumpling King",
+        "sourceRank": 1,
+        "target": "Dumpling Story",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Mikail",
+        "quarter": 3,
+        "source": "Dumpling Story",
+        "sourceRank": 1,
+        "target": "Dumpling King",
+        "targetRank": 3,
+        "pointsEarned": 2
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Sarah",
+        "quarter": 3,
+        "source": "Dumpling King",
+        "sourceRank": 2,
+        "target": "Dumpling Story",
+        "targetRank": 4,
+        "pointsEarned": 2
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Jonathan",
+        "quarter": 4,
+        "source": "Dumpling Story",
+        "sourceRank": 3,
+        "target": "Dumpling King",
+        "targetRank": 4,
+        "pointsEarned": 1
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Virginia A",
+        "quarter": 4,
+        "source": "Dumpling Story",
+        "sourceRank": 2,
+        "target": "Dumpling King",
+        "targetRank": 3,
+        "pointsEarned": 1
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Amy Tingle",
+        "quarter": 4,
+        "source": "Dumpling King",
+        "sourceRank": 1,
+        "target": "Dumpling Story",
+        "targetRank": 3,
+        "pointsEarned": 2
+      }
+    ]
+  },
+  {
+    "pair": [
+      "Dumpling Story",
+      "Dumpling Baby China Bistro"
+    ],
+    "pairSeeds": [
+      5,
+      16
+    ],
+    "pairIds": [
+      "04",
+      "15"
+    ],
+    "scores": {
+      "Dumpling Story": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "Dumpling Baby China Bistro": [
+        2,
+        2,
+        5,
+        4
+      ]
+    },
+    "totalScores": {
+      "Dumpling Story": 2,
+      "Dumpling Baby China Bistro": 13
+    },
+    "judgeDetails": [
+      {
+        "file": "north_finals.csv",
+        "judge": "Vinesh Kannan",
+        "quarter": 1,
+        "source": "Dumpling Baby China Bistro",
+        "sourceRank": 3,
+        "target": "Dumpling Story",
+        "targetRank": 4,
+        "pointsEarned": 1
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "James Fletcher",
+        "quarter": 1,
+        "source": "Dumpling Baby China Bistro",
+        "sourceRank": 3,
+        "target": "Dumpling Story",
+        "targetRank": 4,
+        "pointsEarned": 1
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Somya Jain",
+        "quarter": 2,
+        "source": "Dumpling Baby China Bistro",
+        "sourceRank": 3,
+        "target": "Dumpling Story",
+        "targetRank": 4,
+        "pointsEarned": 1
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Natalia",
+        "quarter": 2,
+        "source": "Dumpling Baby China Bistro",
+        "sourceRank": 3,
+        "target": "Dumpling Story",
+        "targetRank": 4,
+        "pointsEarned": 1
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Michell Li",
+        "quarter": 2,
+        "source": "Dumpling Story",
+        "sourceRank": 3,
+        "target": "Dumpling Baby China Bistro",
+        "targetRank": 4,
+        "pointsEarned": 1
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Nancy Hung",
+        "quarter": 3,
+        "source": "Dumpling Baby China Bistro",
+        "sourceRank": 2,
+        "target": "Dumpling Story",
+        "targetRank": 4,
+        "pointsEarned": 2
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Mikail",
+        "quarter": 3,
+        "source": "Dumpling Story",
+        "sourceRank": 1,
+        "target": "Dumpling Baby China Bistro",
+        "targetRank": 2,
+        "pointsEarned": 1
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Sarah",
+        "quarter": 3,
+        "source": "Dumpling Baby China Bistro",
+        "sourceRank": 1,
+        "target": "Dumpling Story",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Jonathan",
+        "quarter": 4,
+        "source": "Dumpling Baby China Bistro",
+        "sourceRank": 1,
+        "target": "Dumpling Story",
+        "targetRank": 3,
+        "pointsEarned": 2
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Virginia A",
+        "quarter": 4,
+        "source": "Dumpling Baby China Bistro",
+        "sourceRank": 1,
+        "target": "Dumpling Story",
+        "targetRank": 2,
+        "pointsEarned": 1
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Amy Tingle",
+        "quarter": 4,
+        "source": "Dumpling Baby China Bistro",
+        "sourceRank": 2,
+        "target": "Dumpling Story",
+        "targetRank": 3,
+        "pointsEarned": 1
+      }
+    ]
+  },
+  {
+    "pair": [
+      "Cinderella Bakery & Cafe",
+      "Dumpling King"
+    ],
+    "pairSeeds": [
+      7,
+      14
+    ],
+    "pairIds": [
+      "06",
+      "13"
+    ],
+    "scores": {
+      "Cinderella Bakery & Cafe": [
+        1,
+        1,
+        0,
+        2
+      ],
+      "Dumpling King": [
+        1,
+        2,
+        4,
+        4
+      ]
+    },
+    "totalScores": {
+      "Cinderella Bakery & Cafe": 4,
+      "Dumpling King": 11
+    },
+    "judgeDetails": [
+      {
+        "file": "north_finals.csv",
+        "judge": "Vinesh Kannan",
+        "quarter": 1,
+        "source": "Dumpling King",
+        "sourceRank": 1,
+        "target": "Cinderella Bakery & Cafe",
+        "targetRank": 2,
+        "pointsEarned": 1
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "James Fletcher",
+        "quarter": 1,
+        "source": "Cinderella Bakery & Cafe",
+        "sourceRank": 1,
+        "target": "Dumpling King",
+        "targetRank": 2,
+        "pointsEarned": 1
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Somya Jain",
+        "quarter": 2,
+        "source": "Dumpling King",
+        "sourceRank": 1,
+        "target": "Cinderella Bakery & Cafe",
+        "targetRank": 2,
+        "pointsEarned": 1
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Natalia",
+        "quarter": 2,
+        "source": "Cinderella Bakery & Cafe",
+        "sourceRank": 1,
+        "target": "Dumpling King",
+        "targetRank": 2,
+        "pointsEarned": 1
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Michell Li",
+        "quarter": 2,
+        "source": "Dumpling King",
+        "sourceRank": 1,
+        "target": "Cinderella Bakery & Cafe",
+        "targetRank": 2,
+        "pointsEarned": 1
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Nancy Hung",
+        "quarter": 3,
+        "source": "Dumpling King",
+        "sourceRank": 1,
+        "target": "Cinderella Bakery & Cafe",
+        "targetRank": 3,
+        "pointsEarned": 2
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Mikail",
+        "quarter": 3,
+        "source": "Dumpling King",
+        "sourceRank": 3,
+        "target": "Cinderella Bakery & Cafe",
+        "targetRank": 4,
+        "pointsEarned": 1
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Sarah",
+        "quarter": 3,
+        "source": "Dumpling King",
+        "sourceRank": 2,
+        "target": "Cinderella Bakery & Cafe",
+        "targetRank": 3,
+        "pointsEarned": 1
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Jonathan",
+        "quarter": 4,
+        "source": "Cinderella Bakery & Cafe",
+        "sourceRank": 2,
+        "target": "Dumpling King",
+        "targetRank": 4,
+        "pointsEarned": 2
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Virginia A",
+        "quarter": 4,
+        "source": "Dumpling King",
+        "sourceRank": 3,
+        "target": "Cinderella Bakery & Cafe",
+        "targetRank": 4,
+        "pointsEarned": 1
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Amy Tingle",
+        "quarter": 4,
+        "source": "Dumpling King",
+        "sourceRank": 1,
+        "target": "Cinderella Bakery & Cafe",
+        "targetRank": 4,
+        "pointsEarned": 3
+      }
+    ]
+  },
+  {
+    "pair": [
+      "Cinderella Bakery & Cafe",
+      "Dumpling Baby China Bistro"
+    ],
+    "pairSeeds": [
+      7,
+      16
+    ],
+    "pairIds": [
+      "06",
+      "15"
+    ],
+    "scores": {
+      "Cinderella Bakery & Cafe": [
+        3,
+        5,
+        0,
+        0
+      ],
+      "Dumpling Baby China Bistro": [
+        0,
+        0,
+        5,
+        6
+      ]
+    },
+    "totalScores": {
+      "Cinderella Bakery & Cafe": 8,
+      "Dumpling Baby China Bistro": 11
+    },
+    "judgeDetails": [
+      {
+        "file": "north_finals.csv",
+        "judge": "Vinesh Kannan",
+        "quarter": 1,
+        "source": "Cinderella Bakery & Cafe",
+        "sourceRank": 2,
+        "target": "Dumpling Baby China Bistro",
+        "targetRank": 3,
+        "pointsEarned": 1
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "James Fletcher",
+        "quarter": 1,
+        "source": "Cinderella Bakery & Cafe",
+        "sourceRank": 1,
+        "target": "Dumpling Baby China Bistro",
+        "targetRank": 3,
+        "pointsEarned": 2
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Somya Jain",
+        "quarter": 2,
+        "source": "Cinderella Bakery & Cafe",
+        "sourceRank": 2,
+        "target": "Dumpling Baby China Bistro",
+        "targetRank": 3,
+        "pointsEarned": 1
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Natalia",
+        "quarter": 2,
+        "source": "Cinderella Bakery & Cafe",
+        "sourceRank": 1,
+        "target": "Dumpling Baby China Bistro",
+        "targetRank": 3,
+        "pointsEarned": 2
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Michell Li",
+        "quarter": 2,
+        "source": "Cinderella Bakery & Cafe",
+        "sourceRank": 2,
+        "target": "Dumpling Baby China Bistro",
+        "targetRank": 4,
+        "pointsEarned": 2
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Nancy Hung",
+        "quarter": 3,
+        "source": "Dumpling Baby China Bistro",
+        "sourceRank": 2,
+        "target": "Cinderella Bakery & Cafe",
+        "targetRank": 3,
+        "pointsEarned": 1
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Mikail",
+        "quarter": 3,
+        "source": "Dumpling Baby China Bistro",
+        "sourceRank": 2,
+        "target": "Cinderella Bakery & Cafe",
+        "targetRank": 4,
+        "pointsEarned": 2
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Sarah",
+        "quarter": 3,
+        "source": "Dumpling Baby China Bistro",
+        "sourceRank": 1,
+        "target": "Cinderella Bakery & Cafe",
+        "targetRank": 3,
+        "pointsEarned": 2
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Jonathan",
+        "quarter": 4,
+        "source": "Dumpling Baby China Bistro",
+        "sourceRank": 1,
+        "target": "Cinderella Bakery & Cafe",
+        "targetRank": 2,
+        "pointsEarned": 1
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Virginia A",
+        "quarter": 4,
+        "source": "Dumpling Baby China Bistro",
+        "sourceRank": 1,
+        "target": "Cinderella Bakery & Cafe",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Amy Tingle",
+        "quarter": 4,
+        "source": "Dumpling Baby China Bistro",
+        "sourceRank": 2,
+        "target": "Cinderella Bakery & Cafe",
+        "targetRank": 4,
+        "pointsEarned": 2
+      }
+    ]
+  },
+  {
+    "pair": [
+      "Dumpling King",
+      "Dumpling Baby China Bistro"
+    ],
+    "pairSeeds": [
+      14,
+      16
+    ],
+    "pairIds": [
+      "13",
+      "15"
+    ],
+    "scores": {
+      "Dumpling King": [
+        3,
+        6,
+        1,
+        1
+      ],
+      "Dumpling Baby China Bistro": [
+        0,
+        0,
+        2,
+        5
+      ]
+    },
+    "totalScores": {
+      "Dumpling King": 11,
+      "Dumpling Baby China Bistro": 7
+    },
+    "judgeDetails": [
+      {
+        "file": "north_finals.csv",
+        "judge": "Vinesh Kannan",
+        "quarter": 1,
+        "source": "Dumpling King",
+        "sourceRank": 1,
+        "target": "Dumpling Baby China Bistro",
+        "targetRank": 3,
+        "pointsEarned": 2
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "James Fletcher",
+        "quarter": 1,
+        "source": "Dumpling King",
+        "sourceRank": 2,
+        "target": "Dumpling Baby China Bistro",
+        "targetRank": 3,
+        "pointsEarned": 1
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Somya Jain",
+        "quarter": 2,
+        "source": "Dumpling King",
+        "sourceRank": 1,
+        "target": "Dumpling Baby China Bistro",
+        "targetRank": 3,
+        "pointsEarned": 2
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Natalia",
+        "quarter": 2,
+        "source": "Dumpling King",
+        "sourceRank": 2,
+        "target": "Dumpling Baby China Bistro",
+        "targetRank": 3,
+        "pointsEarned": 1
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Michell Li",
+        "quarter": 2,
+        "source": "Dumpling King",
+        "sourceRank": 1,
+        "target": "Dumpling Baby China Bistro",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Nancy Hung",
+        "quarter": 3,
+        "source": "Dumpling King",
+        "sourceRank": 1,
+        "target": "Dumpling Baby China Bistro",
+        "targetRank": 2,
+        "pointsEarned": 1
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Mikail",
+        "quarter": 3,
+        "source": "Dumpling Baby China Bistro",
+        "sourceRank": 2,
+        "target": "Dumpling King",
+        "targetRank": 3,
+        "pointsEarned": 1
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Sarah",
+        "quarter": 3,
+        "source": "Dumpling Baby China Bistro",
+        "sourceRank": 1,
+        "target": "Dumpling King",
+        "targetRank": 2,
+        "pointsEarned": 1
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Jonathan",
+        "quarter": 4,
+        "source": "Dumpling Baby China Bistro",
+        "sourceRank": 1,
+        "target": "Dumpling King",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Virginia A",
+        "quarter": 4,
+        "source": "Dumpling Baby China Bistro",
+        "sourceRank": 1,
+        "target": "Dumpling King",
+        "targetRank": 3,
+        "pointsEarned": 2
+      },
+      {
+        "file": "north_finals.csv",
+        "judge": "Amy Tingle",
+        "quarter": 4,
+        "source": "Dumpling King",
+        "sourceRank": 1,
+        "target": "Dumpling Baby China Bistro",
+        "targetRank": 2,
+        "pointsEarned": 1
+      }
+    ]
+  }
+]

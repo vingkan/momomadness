@@ -1,6 +1,8 @@
 import { ChevronDown } from 'lucide-react';
 import logo from "/assets/logo/logo.png";
 import RestaurantMap from '../components/RestaurantMap';
+import RestaurantLeaderboard from '../components/RestaurantLeaderboard';
+import BracketLeaderboard from '../components/BracketLeaderboard';
 import "../App.css";
 
 const STORAGE_KEY = "momomadness-bracket";
@@ -18,9 +20,10 @@ function hasSavedBracket(): boolean {
 
 interface Props {
   onGoToBracket: () => void;
+  onViewBracket: (encoded: string) => void;
 }
 
-export default function LandingPage({ onGoToBracket }: Props) {
+export default function LandingPage({ onGoToBracket, onViewBracket }: Props) {
   const hasBracket = hasSavedBracket();
 
   return (
@@ -41,6 +44,14 @@ export default function LandingPage({ onGoToBracket }: Props) {
 
       <section className="map-section">
         <RestaurantMap />
+      </section>
+
+      <section className="leaderboard-section">
+        <RestaurantLeaderboard />
+      </section>
+
+      <section className="leaderboard-section">
+        <BracketLeaderboard onViewBracket={onViewBracket} />
       </section>
     </div>
   );

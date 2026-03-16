@@ -84,3 +84,31 @@
   opacity: 0.45;
   cursor: not-allowed;
 }
+
+/* Score display */
+.bracket-score-display {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.bracket-score-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+}
+
+.bracket-score-label {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.bracket-score-value {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--color-accent);
+  letter-spacing: 0.05em;
+}
