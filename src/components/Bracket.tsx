@@ -125,12 +125,12 @@ export default function Bracket({
 
   const openMatchDef = openMatch !== null ? MATCHES[openMatch] : null;
   const topTeam = openMatchDef
-    ? (resolveActualSlot(openMatchDef.topSlot)
-      ?? (isUserSlotViable(openMatchDef.topSlot, choices) ? resolveSlot(openMatchDef.topSlot, choices) : null))
+    ? (resolveActualSlot(openMatchDef.topSlot, openMatchDef.round)
+      ?? (isUserSlotViable(openMatchDef.topSlot, choices, openMatchDef.round) ? resolveSlot(openMatchDef.topSlot, choices) : null))
     : null;
   const bottomTeam = openMatchDef
-    ? (resolveActualSlot(openMatchDef.bottomSlot)
-      ?? (isUserSlotViable(openMatchDef.bottomSlot, choices) ? resolveSlot(openMatchDef.bottomSlot, choices) : null))
+    ? (resolveActualSlot(openMatchDef.bottomSlot, openMatchDef.round)
+      ?? (isUserSlotViable(openMatchDef.bottomSlot, choices, openMatchDef.round) ? resolveSlot(openMatchDef.bottomSlot, choices) : null))
     : null;
   const currentWinner = openMatch !== null ? choices[openMatch] : null;
 
@@ -148,14 +148,14 @@ export default function Bracket({
     let top, bottom;
     let topViable = true, bottomViable = true;
     if (result) {
-      top = resolveActualSlot(match.topSlot);
-      bottom = resolveActualSlot(match.bottomSlot);
+      top = resolveActualSlot(match.topSlot, match.round);
+      bottom = resolveActualSlot(match.bottomSlot, match.round);
     } else {
       // Try actual teams first (from prerequisite results), fall back to user's viable prediction
-      const topActual = resolveActualSlot(match.topSlot);
-      const bottomActual = resolveActualSlot(match.bottomSlot);
-      topViable = isUserSlotViable(match.topSlot, choices);
-      bottomViable = isUserSlotViable(match.bottomSlot, choices);
+      const topActual = resolveActualSlot(match.topSlot, match.round);
+      const bottomActual = resolveActualSlot(match.bottomSlot, match.round);
+      topViable = isUserSlotViable(match.topSlot, choices, match.round);
+      bottomViable = isUserSlotViable(match.bottomSlot, choices, match.round);
       top = topActual ?? (topViable ? resolveSlot(match.topSlot, choices) : null);
       bottom = bottomActual ?? (bottomViable ? resolveSlot(match.bottomSlot, choices) : null);
     }
@@ -181,12 +181,12 @@ export default function Bracket({
         const userWinnerTeam = resolveSlot(userWinnerSlot, choices);
         const actualWinner = getResultWinner(result);
         const actualWinnerSlot = actualWinner === 0 ? match.topSlot : match.bottomSlot;
-        const actualWinnerTeam = resolveActualSlot(actualWinnerSlot);
+        const actualWinnerTeam = resolveActualSlot(actualWinnerSlot, match.round);
         // Only mark correct/incorrect if the user's predicted team actually made it to
         // this match. If neither predicted team is in the actual match, leave as null
         // (no coloring) — red should only show when the user's pick was in the match and lost.
-        const actualTop = resolveActualSlot(match.topSlot);
-        const actualBottom = resolveActualSlot(match.bottomSlot);
+        const actualTop = resolveActualSlot(match.topSlot, match.round);
+        const actualBottom = resolveActualSlot(match.bottomSlot, match.round);
         const userTeamInMatch = !!(userWinnerTeam && (
           (actualTop && userWinnerTeam.seed === actualTop.seed) ||
           (actualBottom && userWinnerTeam.seed === actualBottom.seed)

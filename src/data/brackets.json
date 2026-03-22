@@ -15,7 +15,7 @@
     "encoded": "MG4",
     "url": "https://vingkan.github.io/momomadness/?choices=MG4",
     "score": 11,
-    "maxScore": 15,
+    "maxScore": 27,
     "wins": 9,
     "losses": 3
   },
@@ -28,6 +28,16 @@
     "maxScore": 26,
     "wins": 8,
     "losses": 4
+  },
+  {
+    "name": "Marilyn Zhang",
+    "timestamp": "3/15/2026 15:39:41",
+    "encoded": "MHS",
+    "url": "https://vingkan.github.io/momomadness/?choices=MHS",
+    "score": 10,
+    "maxScore": 26,
+    "wins": 9,
+    "losses": 3
   },
   {
     "name": "Avena Cheng",
@@ -50,22 +60,12 @@
     "losses": 4
   },
   {
-    "name": "Marilyn Zhang",
-    "timestamp": "3/15/2026 15:39:41",
-    "encoded": "MHS",
-    "url": "https://vingkan.github.io/momomadness/?choices=MHS",
-    "score": 10,
-    "maxScore": 14,
-    "wins": 9,
-    "losses": 3
-  },
-  {
     "name": "Michell Li",
     "timestamp": "3/8/2026 14:59:36",
     "encoded": "4YP",
     "url": "https://vingkan.github.io/momomadness/?choices=4YP",
     "score": 9,
-    "maxScore": 21,
+    "maxScore": 25,
     "wins": 7,
     "losses": 5
   },

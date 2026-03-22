@@ -84,7 +84,7 @@ export function scoreBracketFromChoices(choices: Choices): BracketScore {
       const resultWinner = getResultWinner(result);
       const actualWinnerSlot =
         resultWinner === 0 ? match.topSlot : match.bottomSlot;
-      const actualWinner = resolveActualSlot(actualWinnerSlot);
+      const actualWinner = resolveActualSlot(actualWinnerSlot, match.round);
 
       if (userPick !== null) {
         const userWinnerSlot =
@@ -107,7 +107,7 @@ export function scoreBracketFromChoices(choices: Choices): BracketScore {
           losses++;
           // Check if pick didn't even advance to this round
           const userWinnerSlotCheck = userPick === 0 ? match.topSlot : match.bottomSlot;
-          const actualInSlot = resolveActualSlot(userWinnerSlotCheck);
+          const actualInSlot = resolveActualSlot(userWinnerSlotCheck, match.round);
           const didAdvance = actualInSlot && userWinner && actualInSlot.seed === userWinner.seed;
           matches.push({
             round: ROUND_LABELS[match.round],
@@ -141,8 +141,8 @@ export function scoreBracketFromChoices(choices: Choices): BracketScore {
         } else {
           const topSlot = match.topSlot;
           const bottomSlot = match.bottomSlot;
-          const topViable = isUserSlotViable(topSlot, choices);
-          const bottomViable = isUserSlotViable(bottomSlot, choices);
+          const topViable = isUserSlotViable(topSlot, choices, match.round);
+          const bottomViable = isUserSlotViable(bottomSlot, choices, match.round);
           const viable = userPick === 0 ? topViable : bottomViable;
           if (viable) {
             matchMax = points;

@@ -21,6 +21,7 @@ import {
   getResultWinner,
   getPreviewByIndex,
   resolveActualSlot,
+  getReplacementSource,
   totalScore,
 } from "../data/results";
 import type { MatchResult } from "../data/results";
@@ -141,7 +142,7 @@ function computeBadge(
 
   // Check if user's predicted team for this slot matches who actually played
   const slot = position === 0 ? match.topSlot : match.bottomSlot;
-  const actualTeam = resolveActualSlot(slot);
+  const actualTeam = resolveActualSlot(slot, match.round);
   const userTeam = resolveSlot(slot, userChoices);
   const slotMatchesActual =
     actualTeam !== null &&
@@ -155,7 +156,7 @@ function computeBadge(
     const userWinnerSlot = userPick === 0 ? match.topSlot : match.bottomSlot;
     const userWinner = resolveSlot(userWinnerSlot, userChoices);
     const actualWinnerSlot = resultWinner === 0 ? match.topSlot : match.bottomSlot;
-    const actualWinner = resolveActualSlot(actualWinnerSlot);
+    const actualWinner = resolveActualSlot(actualWinnerSlot, match.round);
     userPickedWinnerCorrectly = !!(userWinner && actualWinner && userWinner.seed === actualWinner.seed);
   }
 
@@ -214,7 +215,7 @@ function computePendingBadge(
 ): Badge | null {
   const match = MATCHES[matchIndex];
   const slot = position === 0 ? match.topSlot : match.bottomSlot;
-  const actualTeam = resolveActualSlot(slot);
+  const actualTeam = resolveActualSlot(slot, match.round);
   const userTeam = resolveSlot(slot, userChoices);
   if (!actualTeam || !userTeam) return null;
 
@@ -240,6 +241,7 @@ interface RestaurantCardProps {
   badge: Badge | null;
   onPick: (value: 0 | 1) => void;
   openedAt: MutableRefObject<number>;
+  round: 'r16' | 'qf' | 'sf' | 'final';
 }
 
 function RestaurantCard({
@@ -250,6 +252,7 @@ function RestaurantCard({
   badge,
   onPick,
   openedAt,
+  round,
 }: RestaurantCardProps) {
   if (!restaurant) {
     return (
@@ -281,6 +284,19 @@ function RestaurantCard({
             <CircleAlert size={14} />
           </span>
         )}
+        {(() => {
+          const replacedRestaurant = getReplacementSource(restaurant.seed, round);
+          if (!replacedRestaurant) return null;
+          return (
+            <span
+              className="substitution-icon"
+              data-tooltip={`Replacing ${replacedRestaurant.name} (ineligible)`}
+              title={`Replacing ${replacedRestaurant.name} (ineligible)`}
+            >
+              <CircleAlert size={14} />
+            </span>
+          );
+        })()}
       </div>
       <div className="restaurant-neighborhood">{restaurant.neighborhood}</div>
       <div className="restaurant-stats">
@@ -390,9 +406,9 @@ export default function MatchupModal({
     if (userPick === null) return false;
     const match = MATCHES[matchIndex];
     const topUserTeam = resolveSlot(match.topSlot, userChoices);
-    const topActualTeam = resolveActualSlot(match.topSlot);
+    const topActualTeam = resolveActualSlot(match.topSlot, match.round);
     const bottomUserTeam = resolveSlot(match.bottomSlot, userChoices);
-    const bottomActualTeam = resolveActualSlot(match.bottomSlot);
+    const bottomActualTeam = resolveActualSlot(match.bottomSlot, match.round);
     // Only check if at least one actual team is known (prerequisite has a result)
     if (!topActualTeam && !bottomActualTeam) return false;
     const topMatches = topUserTeam && topActualTeam && topUserTeam.seed === topActualTeam.seed;
@@ -434,6 +450,7 @@ export default function MatchupModal({
             badge={topBadge}
             onPick={onPick}
             openedAt={openedAt}
+            round={MATCHES[matchIndex].round}
           />
           <div className="vs-divider">VS</div>
           <RestaurantCard
@@ -444,6 +461,7 @@ export default function MatchupModal({
             badge={bottomBadge}
             onPick={onPick}
             openedAt={openedAt}
+            round={MATCHES[matchIndex].round}
           />
         </div>
         {(() => {

@@ -1,7 +1,7 @@
 import type { Slot } from "./bracket";
 import type { Choices } from "./bracket";
 import { MATCHES, resolveSlot } from "./bracket";
-import { getRestaurantBySeed } from "./restaurants";
+import { getRestaurantBySeed, RESTAURANTS } from "./restaurants";
 import type { Restaurant } from "./restaurants";
 
 export interface MatchResult {
@@ -54,13 +54,48 @@ export function hasAnyResults(): boolean {
   return RESULTS.length > 0;
 }
 
+// ── Replacement helpers ──
+
+type Round = 'r16' | 'qf' | 'sf' | 'final';
+
+const ROUND_ORDER: Record<string, number> = { r16: 0, qf: 1, sf: 2, final: 3 };
+
+/**
+ * If a restaurant has been replaced starting in a given round, return the
+ * replacement restaurant. Otherwise return the original.
+ */
+export function applyReplacement(restaurant: Restaurant, round: Round): Restaurant {
+  if (!restaurant.replacedBy) return restaurant;
+  if (ROUND_ORDER[round] >= ROUND_ORDER[restaurant.replacedBy.startingInRound]) {
+    return getRestaurantBySeed(restaurant.replacedBy.replacementSeed);
+  }
+  return restaurant;
+}
+
+/**
+ * Reverse lookup: if this restaurant is replacing another restaurant in the
+ * given round, return the replaced restaurant. Otherwise return null.
+ */
+export function getReplacementSource(seed: number, round: Round): Restaurant | null {
+  const replaced = RESTAURANTS.find(
+    (r) =>
+      r.replacedBy?.replacementSeed === seed &&
+      ROUND_ORDER[round] >= ROUND_ORDER[r.replacedBy.startingInRound],
+  );
+  return replaced ?? null;
+}
+
 /**
  * Resolve which restaurant actually occupies a slot, using reported results
  * instead of user picks. Returns null if the prerequisite result doesn't exist.
+ *
+ * When `forRound` is provided, mid-tournament replacements are applied — e.g.,
+ * a restaurant that was replaced starting in a later round will be swapped out.
  */
-export function resolveActualSlot(slot: Slot): Restaurant | null {
+export function resolveActualSlot(slot: Slot, forRound?: Round): Restaurant | null {
   if ("seed" in slot) {
-    return getRestaurantBySeed(slot.seed);
+    const restaurant = getRestaurantBySeed(slot.seed);
+    return forRound ? applyReplacement(restaurant, forRound) : restaurant;
   }
   const { matchIndex } = slot;
   const result = getResultByIndex(matchIndex);
@@ -68,14 +103,17 @@ export function resolveActualSlot(slot: Slot): Restaurant | null {
   const winner = getResultWinner(result);
   const match = MATCHES[matchIndex];
   const winningSlot = winner === 0 ? match.topSlot : match.bottomSlot;
-  return resolveActualSlot(winningSlot);
+  return resolveActualSlot(winningSlot, forRound);
 }
 
 /**
  * Check if a user's predicted team for a slot is still viable — i.e., hasn't
  * been eliminated by any result in the prerequisite chain.
+ *
+ * When `forRound` is provided, mid-tournament replacements are considered —
+ * a replaced restaurant is not viable, but its replacement is.
  */
-export function isUserSlotViable(slot: Slot, choices: Choices): boolean {
+export function isUserSlotViable(slot: Slot, choices: Choices, forRound?: Round): boolean {
   if ("seed" in slot) return true;
   const { matchIndex } = slot;
   const result = getResultByIndex(matchIndex);
@@ -86,13 +124,13 @@ export function isUserSlotViable(slot: Slot, choices: Choices): boolean {
     if (pick === null) return true;
     const pickedSlot =
       pick === 0 ? MATCHES[matchIndex].topSlot : MATCHES[matchIndex].bottomSlot;
-    return isUserSlotViable(pickedSlot, choices);
+    return isUserSlotViable(pickedSlot, choices, forRound);
   }
   // Result exists — check if user's predicted winner matches actual winner
   const winner = getResultWinner(result);
   const match = MATCHES[matchIndex];
   const actualWinnerSlot = winner === 0 ? match.topSlot : match.bottomSlot;
-  const actualWinner = resolveActualSlot(actualWinnerSlot);
+  const actualWinner = resolveActualSlot(actualWinnerSlot, forRound);
   const userPick = choices[matchIndex];
   if (userPick === null) return false;
   const userWinnerSlot = userPick === 0 ? match.topSlot : match.bottomSlot;
@@ -128,7 +166,7 @@ export const PREVIEWS: GamePreview[] = [
   {
     matchIndex: 6,
     preview:
-      "The North-West Semifinal pits two unlikely finalists against each other. Dumpling King, the 14-seed, has been the tournament's most dominant force — dismantling Cinderella Bakery 61-24 in R16 and ending DBCB's Cinderella run 66-41 in the North QF. Their Kurobuta Pork Bao has been nearly unstoppable, and their first-half scoring has been suffocating (opponents averaged just 7 points through Q2). Dumpling Specialist, the 9-seed, took a very different path — surviving a 62-61 thriller against House of Pancakes with a historic 36-0 fourth-quarter explosion. Their Shanghai Dumpling thrives under pressure, but can they keep up with DK's relentless early-quarter dominance? The key matchup: DK's first-half firepower vs. DS's fourth-quarter magic. The winner earns a trip to the Momo Madness Finals.",
+      "The North-West Semifinal takes an unexpected turn. Dumpling Specialist, the 9-seed who staged a historic 36-0 fourth-quarter comeback to beat House of Pancakes 62-61 in the QF, has been ruled ineligible due to injury. House of Pancakes, the 11-seed, steps in as the replacement. HoP was dominant in its own right during the tournament — upsetting 3-seed Yuanbao Jiaozi 73-35 with a monster 29-7 first quarter before falling to DS in that instant-classic QF. Now they get a second chance against Dumpling King, the 14-seed and tournament's most dominant force — dismantling Cinderella Bakery 61-24 and ending DBCB's run 66-41. The key matchup: DK's suffocating first-half scoring vs. HoP's explosive early-quarter energy. The winner earns a trip to the Momo Madness Finals.",
   },
   {
     matchIndex: 7,

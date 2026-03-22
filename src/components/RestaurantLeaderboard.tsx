@@ -69,6 +69,15 @@ function computeStats(): RestaurantRow[] {
     }
   }
 
+  // Apply mid-tournament replacements
+  for (const r of RESTAURANTS) {
+    if (!r.replacedBy) continue;
+    const replacedStats = stats.get(r.seed)!;
+    replacedStats.eliminated = true;
+    const replacementStats = stats.get(r.replacedBy.replacementSeed)!;
+    replacementStats.eliminated = false;
+  }
+
   return RESTAURANTS.map((r) => {
     const s = stats.get(r.seed)!;
     return {

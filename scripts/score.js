@@ -260,6 +260,10 @@ const MATCHES = [
 ];
 
 const ROUND_POINTS = { r16: 1, qf: 2, sf: 4, final: 8 };
+const ROUND_ORDER = { r16: 0, qf: 1, sf: 2, final: 3 };
+
+// Mid-tournament replacements: seed → { replacementSeed, startingInRound }
+const REPLACEMENTS = { 9: { replacementSeed: 11, startingInRound: "sf" } };
 
 // ── Parse RESULTS from results.ts ──
 
@@ -308,15 +312,21 @@ function resolveSlotWithChoices(slot, choices) {
   return resolveSlotWithChoices(winningSlot, choices);
 }
 
-function resolveSlotWithResults(slot) {
-  if ("seed" in slot) return slot.seed;
+function resolveSlotWithResults(slot, forRound) {
+  if ("seed" in slot) {
+    let seed = slot.seed;
+    if (forRound && REPLACEMENTS[seed] && ROUND_ORDER[forRound] >= ROUND_ORDER[REPLACEMENTS[seed].startingInRound]) {
+      seed = REPLACEMENTS[seed].replacementSeed;
+    }
+    return seed;
+  }
   const { matchIndex } = slot;
   const result = getResultByIdx(matchIndex);
   if (!result) return null;
   const winner = getResultWinnerJS(result);
   const match = MATCHES[matchIndex];
   const winningSlot = winner === 0 ? match.topSlot : match.bottomSlot;
-  return resolveSlotWithResults(winningSlot);
+  return resolveSlotWithResults(winningSlot, forRound);
 }
 
 // ── Decode choices (mirrors bracket.ts decodeChoices) ──
@@ -344,7 +354,7 @@ function decodeChoicesJS(param) {
 
 // ── Bracket scoring ──
 
-function isUserSlotViableJS(slot, choices) {
+function isUserSlotViableJS(slot, choices, forRound) {
   if ("seed" in slot) return true;
   const { matchIndex } = slot;
   const result = getResultByIdx(matchIndex);
@@ -352,12 +362,12 @@ function isUserSlotViableJS(slot, choices) {
     const pick = choices[matchIndex];
     if (pick === null) return true;
     const pickedSlot = pick === 0 ? MATCHES[matchIndex].topSlot : MATCHES[matchIndex].bottomSlot;
-    return isUserSlotViableJS(pickedSlot, choices);
+    return isUserSlotViableJS(pickedSlot, choices, forRound);
   }
   const winner = getResultWinnerJS(result);
   const match = MATCHES[matchIndex];
   const actualWinnerSlot = winner === 0 ? match.topSlot : match.bottomSlot;
-  const actualWinnerSeed = resolveSlotWithResults(actualWinnerSlot);
+  const actualWinnerSeed = resolveSlotWithResults(actualWinnerSlot, forRound);
   const userPick = choices[matchIndex];
   if (userPick === null) return false;
   const userWinnerSlot = userPick === 0 ? match.topSlot : match.bottomSlot;
@@ -380,7 +390,7 @@ function scoreBracketJS(encoded) {
     if (result) {
       const resultWinner = getResultWinnerJS(result);
       const actualWinnerSlot = resultWinner === 0 ? match.topSlot : match.bottomSlot;
-      const actualWinnerSeed = resolveSlotWithResults(actualWinnerSlot);
+      const actualWinnerSeed = resolveSlotWithResults(actualWinnerSlot, match.round);
 
       const userPick = choices[match.index];
       if (userPick !== null) {
@@ -402,8 +412,8 @@ function scoreBracketJS(encoded) {
         const topSlot = match.topSlot;
         const bottomSlot = match.bottomSlot;
 
-        let topViable = isUserSlotViableJS(topSlot, choices);
-        let bottomViable = isUserSlotViableJS(bottomSlot, choices);
+        let topViable = isUserSlotViableJS(topSlot, choices, match.round);
+        let bottomViable = isUserSlotViableJS(bottomSlot, choices, match.round);
 
         const userPick = choices[match.index];
         if (userPick !== null) {

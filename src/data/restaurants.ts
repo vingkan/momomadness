@@ -13,6 +13,10 @@ export interface Restaurant {
   address?: string;
   coordinates?: { lat: number; lng: number };
   substitutedFor?: string;
+  replacedBy?: {
+    replacementSeed: number;
+    startingInRound: 'r16' | 'qf' | 'sf' | 'final';
+  };
 }
 
 export const RESTAURANTS: Restaurant[] = [
@@ -100,6 +104,7 @@ export const RESTAURANTS: Restaurant[] = [
     menuItemB: "Vegetarian Potsticker (V)",
     address: "1123 Taraval St, San Francisco, CA 94116",
     coordinates: { lat: 37.7432, lng: -122.475 },
+    replacedBy: { replacementSeed: 11, startingInRound: 'sf' },
   },
   {
     seed: 10,

@@ -250,6 +250,738 @@
   {
     "pair": [
       "Dumpling Home",
+      "Bao"
+    ],
+    "pairSeeds": [
+      1,
+      8
+    ],
+    "pairIds": [
+      "00",
+      "07"
+    ],
+    "scores": {
+      "Dumpling Home": [
+        41,
+        33,
+        23,
+        31
+      ],
+      "Bao": [
+        16,
+        7,
+        20,
+        27
+      ]
+    },
+    "totalScores": {
+      "Dumpling Home": 128,
+      "Bao": 70
+    },
+    "judgeDetails": [
+      {
+        "file": "grand_finals.csv",
+        "judge": "Joe",
+        "quarter": 1,
+        "source": "Dumpling Home",
+        "sourceRank": 2,
+        "target": "Bao",
+        "targetRank": 4,
+        "pointsEarned": 10
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Avena Cheng",
+        "quarter": 1,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "Bao",
+        "targetRank": 3,
+        "pointsEarned": 13
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Michell Li",
+        "quarter": 1,
+        "source": "Bao",
+        "sourceRank": 1,
+        "target": "Dumpling Home",
+        "targetRank": 4,
+        "pointsEarned": 16
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Matthew Gao",
+        "quarter": 1,
+        "source": "Dumpling Home",
+        "sourceRank": 2,
+        "target": "Bao",
+        "targetRank": 3,
+        "pointsEarned": 5
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Nathan",
+        "quarter": 1,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "Bao",
+        "targetRank": 3,
+        "pointsEarned": 13
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Natalia",
+        "quarter": 2,
+        "source": "Dumpling Home",
+        "sourceRank": 3,
+        "target": "Bao",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Anuj",
+        "quarter": 2,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "Bao",
+        "targetRank": 2,
+        "pointsEarned": 7
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Chris Laganiere",
+        "quarter": 2,
+        "source": "Dumpling Home",
+        "sourceRank": 2,
+        "target": "Bao",
+        "targetRank": 4,
+        "pointsEarned": 10
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Rhea",
+        "quarter": 2,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "Bao",
+        "targetRank": 3,
+        "pointsEarned": 13
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Aviva",
+        "quarter": 2,
+        "source": "Bao",
+        "sourceRank": 1,
+        "target": "Dumpling Home",
+        "targetRank": 2,
+        "pointsEarned": 7
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Benjamin Cooper",
+        "quarter": 3,
+        "source": "Dumpling Home",
+        "sourceRank": 3,
+        "target": "Bao",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Justin",
+        "quarter": 3,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "Bao",
+        "targetRank": 2,
+        "pointsEarned": 7
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Siddharth Agrawal",
+        "quarter": 3,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "Bao",
+        "targetRank": 3,
+        "pointsEarned": 13
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Nancy Hung",
+        "quarter": 3,
+        "source": "Bao",
+        "sourceRank": 1,
+        "target": "Dumpling Home",
+        "targetRank": 2,
+        "pointsEarned": 7
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Vikram",
+        "quarter": 3,
+        "source": "Bao",
+        "sourceRank": 1,
+        "target": "Dumpling Home",
+        "targetRank": 3,
+        "pointsEarned": 13
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Casey Price",
+        "quarter": 4,
+        "source": "Dumpling Home",
+        "sourceRank": 2,
+        "target": "Bao",
+        "targetRank": 3,
+        "pointsEarned": 5
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Virginia",
+        "quarter": 4,
+        "source": "Bao",
+        "sourceRank": 1,
+        "target": "Dumpling Home",
+        "targetRank": 2,
+        "pointsEarned": 7
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Kishahnica Rajendran",
+        "quarter": 4,
+        "source": "Bao",
+        "sourceRank": 1,
+        "target": "Dumpling Home",
+        "targetRank": 2,
+        "pointsEarned": 7
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Andrew",
+        "quarter": 4,
+        "source": "Dumpling Home",
+        "sourceRank": 2,
+        "target": "Bao",
+        "targetRank": 4,
+        "pointsEarned": 10
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Dhruva",
+        "quarter": 4,
+        "source": "Bao",
+        "sourceRank": 1,
+        "target": "Dumpling Home",
+        "targetRank": 3,
+        "pointsEarned": 13
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "James Fletcher",
+        "quarter": 4,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "Bao",
+        "targetRank": 4,
+        "pointsEarned": 16
+      }
+    ]
+  },
+  {
+    "pair": [
+      "Dumpling Home",
+      "House of Pancakes"
+    ],
+    "pairSeeds": [
+      1,
+      11
+    ],
+    "pairIds": [
+      "00",
+      "10"
+    ],
+    "scores": {
+      "Dumpling Home": [
+        47,
+        39,
+        40,
+        30
+      ],
+      "House of Pancakes": [
+        10,
+        20,
+        5,
+        7
+      ]
+    },
+    "totalScores": {
+      "Dumpling Home": 156,
+      "House of Pancakes": 42
+    },
+    "judgeDetails": [
+      {
+        "file": "grand_finals.csv",
+        "judge": "Joe",
+        "quarter": 1,
+        "source": "Dumpling Home",
+        "sourceRank": 2,
+        "target": "House of Pancakes",
+        "targetRank": 3,
+        "pointsEarned": 5
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Avena Cheng",
+        "quarter": 1,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "House of Pancakes",
+        "targetRank": 4,
+        "pointsEarned": 16
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Michell Li",
+        "quarter": 1,
+        "source": "House of Pancakes",
+        "sourceRank": 2,
+        "target": "Dumpling Home",
+        "targetRank": 4,
+        "pointsEarned": 10
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Matthew Gao",
+        "quarter": 1,
+        "source": "Dumpling Home",
+        "sourceRank": 2,
+        "target": "House of Pancakes",
+        "targetRank": 4,
+        "pointsEarned": 10
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Nathan",
+        "quarter": 1,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "House of Pancakes",
+        "targetRank": 4,
+        "pointsEarned": 16
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Natalia",
+        "quarter": 2,
+        "source": "House of Pancakes",
+        "sourceRank": 1,
+        "target": "Dumpling Home",
+        "targetRank": 3,
+        "pointsEarned": 13
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Anuj",
+        "quarter": 2,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "House of Pancakes",
+        "targetRank": 3,
+        "pointsEarned": 13
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Chris Laganiere",
+        "quarter": 2,
+        "source": "House of Pancakes",
+        "sourceRank": 1,
+        "target": "Dumpling Home",
+        "targetRank": 2,
+        "pointsEarned": 7
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Rhea",
+        "quarter": 2,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "House of Pancakes",
+        "targetRank": 4,
+        "pointsEarned": 16
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Aviva",
+        "quarter": 2,
+        "source": "Dumpling Home",
+        "sourceRank": 2,
+        "target": "House of Pancakes",
+        "targetRank": 4,
+        "pointsEarned": 10
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Benjamin Cooper",
+        "quarter": 3,
+        "source": "House of Pancakes",
+        "sourceRank": 2,
+        "target": "Dumpling Home",
+        "targetRank": 3,
+        "pointsEarned": 5
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Justin",
+        "quarter": 3,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "House of Pancakes",
+        "targetRank": 4,
+        "pointsEarned": 16
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Siddharth Agrawal",
+        "quarter": 3,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "House of Pancakes",
+        "targetRank": 4,
+        "pointsEarned": 16
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Nancy Hung",
+        "quarter": 3,
+        "source": "Dumpling Home",
+        "sourceRank": 2,
+        "target": "House of Pancakes",
+        "targetRank": 3,
+        "pointsEarned": 5
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Vikram",
+        "quarter": 3,
+        "source": "Dumpling Home",
+        "sourceRank": 3,
+        "target": "House of Pancakes",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Casey Price",
+        "quarter": 4,
+        "source": "Dumpling Home",
+        "sourceRank": 2,
+        "target": "House of Pancakes",
+        "targetRank": 4,
+        "pointsEarned": 10
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Virginia",
+        "quarter": 4,
+        "source": "Dumpling Home",
+        "sourceRank": 2,
+        "target": "House of Pancakes",
+        "targetRank": 3,
+        "pointsEarned": 5
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Kishahnica Rajendran",
+        "quarter": 4,
+        "source": "Dumpling Home",
+        "sourceRank": 2,
+        "target": "House of Pancakes",
+        "targetRank": 3,
+        "pointsEarned": 5
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Andrew",
+        "quarter": 4,
+        "source": "House of Pancakes",
+        "sourceRank": 1,
+        "target": "Dumpling Home",
+        "targetRank": 2,
+        "pointsEarned": 7
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Dhruva",
+        "quarter": 4,
+        "source": "Dumpling Home",
+        "sourceRank": 3,
+        "target": "House of Pancakes",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "James Fletcher",
+        "quarter": 4,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "House of Pancakes",
+        "targetRank": 2,
+        "pointsEarned": 7
+      }
+    ]
+  },
+  {
+    "pair": [
+      "Dumpling Home",
+      "Dumpling King"
+    ],
+    "pairSeeds": [
+      1,
+      14
+    ],
+    "pairIds": [
+      "00",
+      "13"
+    ],
+    "scores": {
+      "Dumpling Home": [
+        14,
+        33,
+        30,
+        38
+      ],
+      "Dumpling King": [
+        17,
+        5,
+        18,
+        12
+      ]
+    },
+    "totalScores": {
+      "Dumpling Home": 115,
+      "Dumpling King": 52
+    },
+    "judgeDetails": [
+      {
+        "file": "grand_finals.csv",
+        "judge": "Joe",
+        "quarter": 1,
+        "source": "Dumpling King",
+        "sourceRank": 1,
+        "target": "Dumpling Home",
+        "targetRank": 2,
+        "pointsEarned": 7
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Avena Cheng",
+        "quarter": 1,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "Dumpling King",
+        "targetRank": 2,
+        "pointsEarned": 7
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Michell Li",
+        "quarter": 1,
+        "source": "Dumpling King",
+        "sourceRank": 3,
+        "target": "Dumpling Home",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Matthew Gao",
+        "quarter": 1,
+        "source": "Dumpling King",
+        "sourceRank": 1,
+        "target": "Dumpling Home",
+        "targetRank": 2,
+        "pointsEarned": 7
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Nathan",
+        "quarter": 1,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "Dumpling King",
+        "targetRank": 2,
+        "pointsEarned": 7
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Natalia",
+        "quarter": 2,
+        "source": "Dumpling King",
+        "sourceRank": 2,
+        "target": "Dumpling Home",
+        "targetRank": 3,
+        "pointsEarned": 5
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Anuj",
+        "quarter": 2,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "Dumpling King",
+        "targetRank": 4,
+        "pointsEarned": 16
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Chris Laganiere",
+        "quarter": 2,
+        "source": "Dumpling Home",
+        "sourceRank": 2,
+        "target": "Dumpling King",
+        "targetRank": 3,
+        "pointsEarned": 5
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Rhea",
+        "quarter": 2,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "Dumpling King",
+        "targetRank": 2,
+        "pointsEarned": 7
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Aviva",
+        "quarter": 2,
+        "source": "Dumpling Home",
+        "sourceRank": 2,
+        "target": "Dumpling King",
+        "targetRank": 3,
+        "pointsEarned": 5
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Benjamin Cooper",
+        "quarter": 3,
+        "source": "Dumpling King",
+        "sourceRank": 1,
+        "target": "Dumpling Home",
+        "targetRank": 3,
+        "pointsEarned": 13
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Justin",
+        "quarter": 3,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "Dumpling King",
+        "targetRank": 3,
+        "pointsEarned": 13
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Siddharth Agrawal",
+        "quarter": 3,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "Dumpling King",
+        "targetRank": 2,
+        "pointsEarned": 7
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Nancy Hung",
+        "quarter": 3,
+        "source": "Dumpling Home",
+        "sourceRank": 2,
+        "target": "Dumpling King",
+        "targetRank": 4,
+        "pointsEarned": 10
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Vikram",
+        "quarter": 3,
+        "source": "Dumpling King",
+        "sourceRank": 2,
+        "target": "Dumpling Home",
+        "targetRank": 3,
+        "pointsEarned": 5
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Casey Price",
+        "quarter": 4,
+        "source": "Dumpling King",
+        "sourceRank": 1,
+        "target": "Dumpling Home",
+        "targetRank": 2,
+        "pointsEarned": 7
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Virginia",
+        "quarter": 4,
+        "source": "Dumpling Home",
+        "sourceRank": 2,
+        "target": "Dumpling King",
+        "targetRank": 4,
+        "pointsEarned": 10
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Kishahnica Rajendran",
+        "quarter": 4,
+        "source": "Dumpling Home",
+        "sourceRank": 2,
+        "target": "Dumpling King",
+        "targetRank": 4,
+        "pointsEarned": 10
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Andrew",
+        "quarter": 4,
+        "source": "Dumpling Home",
+        "sourceRank": 2,
+        "target": "Dumpling King",
+        "targetRank": 3,
+        "pointsEarned": 5
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Dhruva",
+        "quarter": 4,
+        "source": "Dumpling King",
+        "sourceRank": 2,
+        "target": "Dumpling Home",
+        "targetRank": 3,
+        "pointsEarned": 5
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "James Fletcher",
+        "quarter": 4,
+        "source": "Dumpling Home",
+        "sourceRank": 1,
+        "target": "Dumpling King",
+        "targetRank": 3,
+        "pointsEarned": 13
+      }
+    ]
+  },
+  {
+    "pair": [
+      "Dumpling Home",
       "Today Food"
     ],
     "pairSeeds": [
@@ -2240,6 +2972,250 @@
   {
     "pair": [
       "Bao",
+      "House of Pancakes"
+    ],
+    "pairSeeds": [
+      8,
+      11
+    ],
+    "pairIds": [
+      "07",
+      "10"
+    ],
+    "scores": {
+      "Bao": [
+        16,
+        24,
+        42,
+        45
+      ],
+      "House of Pancakes": [
+        3,
+        32,
+        10,
+        26
+      ]
+    },
+    "totalScores": {
+      "Bao": 127,
+      "House of Pancakes": 71
+    },
+    "judgeDetails": [
+      {
+        "file": "grand_finals.csv",
+        "judge": "Joe",
+        "quarter": 1,
+        "source": "House of Pancakes",
+        "sourceRank": 3,
+        "target": "Bao",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Avena Cheng",
+        "quarter": 1,
+        "source": "Bao",
+        "sourceRank": 3,
+        "target": "House of Pancakes",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Michell Li",
+        "quarter": 1,
+        "source": "Bao",
+        "sourceRank": 1,
+        "target": "House of Pancakes",
+        "targetRank": 2,
+        "pointsEarned": 7
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Matthew Gao",
+        "quarter": 1,
+        "source": "Bao",
+        "sourceRank": 3,
+        "target": "House of Pancakes",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Nathan",
+        "quarter": 1,
+        "source": "Bao",
+        "sourceRank": 3,
+        "target": "House of Pancakes",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Natalia",
+        "quarter": 2,
+        "source": "House of Pancakes",
+        "sourceRank": 1,
+        "target": "Bao",
+        "targetRank": 4,
+        "pointsEarned": 16
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Anuj",
+        "quarter": 2,
+        "source": "Bao",
+        "sourceRank": 2,
+        "target": "House of Pancakes",
+        "targetRank": 3,
+        "pointsEarned": 5
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Chris Laganiere",
+        "quarter": 2,
+        "source": "House of Pancakes",
+        "sourceRank": 1,
+        "target": "Bao",
+        "targetRank": 4,
+        "pointsEarned": 16
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Rhea",
+        "quarter": 2,
+        "source": "Bao",
+        "sourceRank": 3,
+        "target": "House of Pancakes",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Aviva",
+        "quarter": 2,
+        "source": "Bao",
+        "sourceRank": 1,
+        "target": "House of Pancakes",
+        "targetRank": 4,
+        "pointsEarned": 16
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Benjamin Cooper",
+        "quarter": 3,
+        "source": "House of Pancakes",
+        "sourceRank": 2,
+        "target": "Bao",
+        "targetRank": 4,
+        "pointsEarned": 10
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Justin",
+        "quarter": 3,
+        "source": "Bao",
+        "sourceRank": 2,
+        "target": "House of Pancakes",
+        "targetRank": 4,
+        "pointsEarned": 10
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Siddharth Agrawal",
+        "quarter": 3,
+        "source": "Bao",
+        "sourceRank": 3,
+        "target": "House of Pancakes",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Nancy Hung",
+        "quarter": 3,
+        "source": "Bao",
+        "sourceRank": 1,
+        "target": "House of Pancakes",
+        "targetRank": 3,
+        "pointsEarned": 13
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Vikram",
+        "quarter": 3,
+        "source": "Bao",
+        "sourceRank": 1,
+        "target": "House of Pancakes",
+        "targetRank": 4,
+        "pointsEarned": 16
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Casey Price",
+        "quarter": 4,
+        "source": "Bao",
+        "sourceRank": 3,
+        "target": "House of Pancakes",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Virginia",
+        "quarter": 4,
+        "source": "Bao",
+        "sourceRank": 1,
+        "target": "House of Pancakes",
+        "targetRank": 3,
+        "pointsEarned": 13
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Kishahnica Rajendran",
+        "quarter": 4,
+        "source": "Bao",
+        "sourceRank": 1,
+        "target": "House of Pancakes",
+        "targetRank": 3,
+        "pointsEarned": 13
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Andrew",
+        "quarter": 4,
+        "source": "House of Pancakes",
+        "sourceRank": 1,
+        "target": "Bao",
+        "targetRank": 4,
+        "pointsEarned": 16
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Dhruva",
+        "quarter": 4,
+        "source": "Bao",
+        "sourceRank": 1,
+        "target": "House of Pancakes",
+        "targetRank": 4,
+        "pointsEarned": 16
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "James Fletcher",
+        "quarter": 4,
+        "source": "House of Pancakes",
+        "sourceRank": 2,
+        "target": "Bao",
+        "targetRank": 4,
+        "pointsEarned": 10
+      }
+    ]
+  },
+  {
+    "pair": [
+      "Bao",
       "Dumpling Kitchen"
     ],
     "pairSeeds": [
@@ -2442,6 +3418,250 @@
         "target": "United Dumplings",
         "targetRank": 4,
         "pointsEarned": 16
+      }
+    ]
+  },
+  {
+    "pair": [
+      "Bao",
+      "Dumpling King"
+    ],
+    "pairSeeds": [
+      8,
+      14
+    ],
+    "pairIds": [
+      "07",
+      "13"
+    ],
+    "scores": {
+      "Bao": [
+        13,
+        23,
+        28,
+        39
+      ],
+      "Dumpling King": [
+        39,
+        18,
+        21,
+        19
+      ]
+    },
+    "totalScores": {
+      "Bao": 103,
+      "Dumpling King": 97
+    },
+    "judgeDetails": [
+      {
+        "file": "grand_finals.csv",
+        "judge": "Joe",
+        "quarter": 1,
+        "source": "Dumpling King",
+        "sourceRank": 1,
+        "target": "Bao",
+        "targetRank": 4,
+        "pointsEarned": 16
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Avena Cheng",
+        "quarter": 1,
+        "source": "Dumpling King",
+        "sourceRank": 2,
+        "target": "Bao",
+        "targetRank": 3,
+        "pointsEarned": 5
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Michell Li",
+        "quarter": 1,
+        "source": "Bao",
+        "sourceRank": 1,
+        "target": "Dumpling King",
+        "targetRank": 3,
+        "pointsEarned": 13
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Matthew Gao",
+        "quarter": 1,
+        "source": "Dumpling King",
+        "sourceRank": 1,
+        "target": "Bao",
+        "targetRank": 3,
+        "pointsEarned": 13
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Nathan",
+        "quarter": 1,
+        "source": "Dumpling King",
+        "sourceRank": 2,
+        "target": "Bao",
+        "targetRank": 3,
+        "pointsEarned": 5
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Natalia",
+        "quarter": 2,
+        "source": "Dumpling King",
+        "sourceRank": 2,
+        "target": "Bao",
+        "targetRank": 4,
+        "pointsEarned": 10
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Anuj",
+        "quarter": 2,
+        "source": "Bao",
+        "sourceRank": 2,
+        "target": "Dumpling King",
+        "targetRank": 4,
+        "pointsEarned": 10
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Chris Laganiere",
+        "quarter": 2,
+        "source": "Dumpling King",
+        "sourceRank": 3,
+        "target": "Bao",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Rhea",
+        "quarter": 2,
+        "source": "Dumpling King",
+        "sourceRank": 2,
+        "target": "Bao",
+        "targetRank": 3,
+        "pointsEarned": 5
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Aviva",
+        "quarter": 2,
+        "source": "Bao",
+        "sourceRank": 1,
+        "target": "Dumpling King",
+        "targetRank": 3,
+        "pointsEarned": 13
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Benjamin Cooper",
+        "quarter": 3,
+        "source": "Dumpling King",
+        "sourceRank": 1,
+        "target": "Bao",
+        "targetRank": 4,
+        "pointsEarned": 16
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Justin",
+        "quarter": 3,
+        "source": "Bao",
+        "sourceRank": 2,
+        "target": "Dumpling King",
+        "targetRank": 3,
+        "pointsEarned": 5
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Siddharth Agrawal",
+        "quarter": 3,
+        "source": "Dumpling King",
+        "sourceRank": 2,
+        "target": "Bao",
+        "targetRank": 3,
+        "pointsEarned": 5
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Nancy Hung",
+        "quarter": 3,
+        "source": "Bao",
+        "sourceRank": 1,
+        "target": "Dumpling King",
+        "targetRank": 4,
+        "pointsEarned": 16
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Vikram",
+        "quarter": 3,
+        "source": "Bao",
+        "sourceRank": 1,
+        "target": "Dumpling King",
+        "targetRank": 2,
+        "pointsEarned": 7
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Casey Price",
+        "quarter": 4,
+        "source": "Dumpling King",
+        "sourceRank": 1,
+        "target": "Bao",
+        "targetRank": 3,
+        "pointsEarned": 13
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Virginia",
+        "quarter": 4,
+        "source": "Bao",
+        "sourceRank": 1,
+        "target": "Dumpling King",
+        "targetRank": 4,
+        "pointsEarned": 16
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Kishahnica Rajendran",
+        "quarter": 4,
+        "source": "Bao",
+        "sourceRank": 1,
+        "target": "Dumpling King",
+        "targetRank": 4,
+        "pointsEarned": 16
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Andrew",
+        "quarter": 4,
+        "source": "Dumpling King",
+        "sourceRank": 3,
+        "target": "Bao",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Dhruva",
+        "quarter": 4,
+        "source": "Bao",
+        "sourceRank": 1,
+        "target": "Dumpling King",
+        "targetRank": 2,
+        "pointsEarned": 7
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "James Fletcher",
+        "quarter": 4,
+        "source": "Dumpling King",
+        "sourceRank": 3,
+        "target": "Bao",
+        "targetRank": 4,
+        "pointsEarned": 3
       }
     ]
   },
@@ -2904,6 +4124,250 @@
         "target": "House of Pancakes",
         "targetRank": 4,
         "pointsEarned": 10
+      }
+    ]
+  },
+  {
+    "pair": [
+      "House of Pancakes",
+      "Dumpling King"
+    ],
+    "pairSeeds": [
+      11,
+      14
+    ],
+    "pairIds": [
+      "10",
+      "13"
+    ],
+    "scores": {
+      "House of Pancakes": [
+        5,
+        23,
+        3,
+        24
+      ],
+      "Dumpling King": [
+        49,
+        13,
+        30,
+        26
+      ]
+    },
+    "totalScores": {
+      "House of Pancakes": 55,
+      "Dumpling King": 118
+    },
+    "judgeDetails": [
+      {
+        "file": "grand_finals.csv",
+        "judge": "Joe",
+        "quarter": 1,
+        "source": "Dumpling King",
+        "sourceRank": 1,
+        "target": "House of Pancakes",
+        "targetRank": 3,
+        "pointsEarned": 13
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Avena Cheng",
+        "quarter": 1,
+        "source": "Dumpling King",
+        "sourceRank": 2,
+        "target": "House of Pancakes",
+        "targetRank": 4,
+        "pointsEarned": 10
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Michell Li",
+        "quarter": 1,
+        "source": "House of Pancakes",
+        "sourceRank": 2,
+        "target": "Dumpling King",
+        "targetRank": 3,
+        "pointsEarned": 5
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Matthew Gao",
+        "quarter": 1,
+        "source": "Dumpling King",
+        "sourceRank": 1,
+        "target": "House of Pancakes",
+        "targetRank": 4,
+        "pointsEarned": 16
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Nathan",
+        "quarter": 1,
+        "source": "Dumpling King",
+        "sourceRank": 2,
+        "target": "House of Pancakes",
+        "targetRank": 4,
+        "pointsEarned": 10
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Natalia",
+        "quarter": 2,
+        "source": "House of Pancakes",
+        "sourceRank": 1,
+        "target": "Dumpling King",
+        "targetRank": 2,
+        "pointsEarned": 7
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Anuj",
+        "quarter": 2,
+        "source": "House of Pancakes",
+        "sourceRank": 3,
+        "target": "Dumpling King",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Chris Laganiere",
+        "quarter": 2,
+        "source": "House of Pancakes",
+        "sourceRank": 1,
+        "target": "Dumpling King",
+        "targetRank": 3,
+        "pointsEarned": 13
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Rhea",
+        "quarter": 2,
+        "source": "Dumpling King",
+        "sourceRank": 2,
+        "target": "House of Pancakes",
+        "targetRank": 4,
+        "pointsEarned": 10
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Aviva",
+        "quarter": 2,
+        "source": "Dumpling King",
+        "sourceRank": 3,
+        "target": "House of Pancakes",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Benjamin Cooper",
+        "quarter": 3,
+        "source": "Dumpling King",
+        "sourceRank": 1,
+        "target": "House of Pancakes",
+        "targetRank": 2,
+        "pointsEarned": 7
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Justin",
+        "quarter": 3,
+        "source": "Dumpling King",
+        "sourceRank": 3,
+        "target": "House of Pancakes",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Siddharth Agrawal",
+        "quarter": 3,
+        "source": "Dumpling King",
+        "sourceRank": 2,
+        "target": "House of Pancakes",
+        "targetRank": 4,
+        "pointsEarned": 10
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Nancy Hung",
+        "quarter": 3,
+        "source": "House of Pancakes",
+        "sourceRank": 3,
+        "target": "Dumpling King",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Vikram",
+        "quarter": 3,
+        "source": "Dumpling King",
+        "sourceRank": 2,
+        "target": "House of Pancakes",
+        "targetRank": 4,
+        "pointsEarned": 10
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Casey Price",
+        "quarter": 4,
+        "source": "Dumpling King",
+        "sourceRank": 1,
+        "target": "House of Pancakes",
+        "targetRank": 4,
+        "pointsEarned": 16
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Virginia",
+        "quarter": 4,
+        "source": "House of Pancakes",
+        "sourceRank": 3,
+        "target": "Dumpling King",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Kishahnica Rajendran",
+        "quarter": 4,
+        "source": "House of Pancakes",
+        "sourceRank": 3,
+        "target": "Dumpling King",
+        "targetRank": 4,
+        "pointsEarned": 3
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Andrew",
+        "quarter": 4,
+        "source": "House of Pancakes",
+        "sourceRank": 1,
+        "target": "Dumpling King",
+        "targetRank": 3,
+        "pointsEarned": 13
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "Dhruva",
+        "quarter": 4,
+        "source": "Dumpling King",
+        "sourceRank": 2,
+        "target": "House of Pancakes",
+        "targetRank": 4,
+        "pointsEarned": 10
+      },
+      {
+        "file": "grand_finals.csv",
+        "judge": "James Fletcher",
+        "quarter": 4,
+        "source": "House of Pancakes",
+        "sourceRank": 2,
+        "target": "Dumpling King",
+        "targetRank": 3,
+        "pointsEarned": 5
       }
     ]
   },
