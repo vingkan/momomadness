@@ -295,4 +295,34 @@ export const RESULTS: MatchResult[] = [
     recap:
       "Bao demolished Dumpling Time 60-7 in the most lopsided quarterfinal of the tournament. Dumpling Time grabbed a 7-0 Q1 lead, then scored exactly zero points over the final three quarters. Bao rallied with 17-0 in Q2, 23-0 in Q3, and 20-0 in Q4 — a 60-0 run that made the early deficit irrelevant. The worst second-half collapse of the tournament sends Bao to the Final Four.",
   },
+  // ── North-West Semifinal ──
+  // Dumpling King vs House of Pancakes (replacing Dumpling Specialist)
+  {
+    matchId: "021013",
+    matchIndex: 6,
+    topScore: [49, 13, 30, 26],
+    bottomScore: [5, 23, 3, 24],
+    recap:
+      "Dumpling King steamrolled into the Finals with a dominant 118-55 victory over House of Pancakes. DK's Kurobuta Pork Bao exploded for 49 points in Q1 — the biggest single-quarter output of the entire tournament — burying HoP in a 49-5 hole before the replacement could find its footing. HoP, stepping in for the injured Dumpling Specialist, showed fight with a 23-13 Q2 and a competitive 24-26 Q4, but DK's 30-3 Q3 blitz extinguished any comeback hopes. The 14-seed's Final Four run continues as HoP's Cinderella replacement story comes to an end.",
+  },
+  // ── East-South Semifinal ──
+  // Dumpling Home vs Bao
+  {
+    matchId: "020007",
+    matchIndex: 7,
+    topScore: [41, 33, 23, 31],
+    bottomScore: [16, 7, 20, 27],
+    recap:
+      "The 1-seed Dumpling Home dominated Bao 128-70 to punch its ticket to the Momo Madness Finals. Dumpling Home's Juicy Pork Bao was overwhelming from the start — a 41-16 Q1 set the tone, and a 33-7 Q2 blowout pushed the halftime lead to 74-23. Bao's Bi Feng Tang Har Gow, which had demolished Dumpling Time 60-7 in the QF, showed more life in the second half with a 20-23 Q3 and 27-31 Q4, but the 51-point halftime deficit was insurmountable. The top seed rolls on.",
+  },
+  // ── Momo Madness Finals ──
+  // Dumpling King vs Dumpling Home
+  {
+    matchId: "030013",
+    matchIndex: 14,
+    topScore: [17, 5, 18, 12],
+    bottomScore: [14, 33, 30, 38],
+    recap:
+      "Dumpling Home is the Momo Madness champion! The 1-seed's Juicy Pork Bao defeated Dumpling King's Kurobuta Pork Bao 115-52 in a Finals that was only close for one quarter. DK took a narrow 17-14 Q1 lead, but Dumpling Home erupted with a 33-5 Q2 — the most lopsided quarter of the Finals — to seize control at halftime. The onslaught continued with a 30-18 Q3 and 38-12 Q4 as the late judges overwhelmingly favored the top seed. DK's remarkable 14-seed run — which included a 66-41 QF win and a tournament-high 49-point quarter in the SF — ends one game short of the crown. Dumpling Home's consistency proved unbeatable, capping a dominant tournament as the deserving champion.",
+  },
 ];

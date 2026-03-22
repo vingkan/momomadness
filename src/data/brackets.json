@@ -1,62 +1,12 @@
 [
   {
-    "name": "Matthew Gao",
-    "timestamp": "3/15/2026 13:35:56",
-    "encoded": "7MW",
-    "url": "https://vingkan.github.io/momomadness/?choices=7MW",
-    "score": 13,
-    "maxScore": 29,
-    "wins": 9,
-    "losses": 3
-  },
-  {
-    "name": "Somya Jain",
-    "timestamp": "3/10/2026 19:46:36",
-    "encoded": "MG4",
-    "url": "https://vingkan.github.io/momomadness/?choices=MG4",
-    "score": 11,
-    "maxScore": 27,
-    "wins": 9,
-    "losses": 3
-  },
-  {
     "name": "James Fletcher",
     "timestamp": "3/10/2026 21:12:30",
     "encoded": "AA1",
     "url": "https://vingkan.github.io/momomadness/?choices=AA1",
-    "score": 10,
+    "score": 26,
     "maxScore": 26,
-    "wins": 8,
-    "losses": 4
-  },
-  {
-    "name": "Marilyn Zhang",
-    "timestamp": "3/15/2026 15:39:41",
-    "encoded": "MHS",
-    "url": "https://vingkan.github.io/momomadness/?choices=MHS",
-    "score": 10,
-    "maxScore": 26,
-    "wins": 9,
-    "losses": 3
-  },
-  {
-    "name": "Avena Cheng",
-    "timestamp": "3/8/2026 16:23:22",
-    "encoded": "6JK",
-    "url": "https://vingkan.github.io/momomadness/?choices=6JK",
-    "score": 10,
-    "maxScore": 14,
-    "wins": 8,
-    "losses": 4
-  },
-  {
-    "name": "Joe M",
-    "timestamp": "3/15/2026 9:31:39",
-    "encoded": "ADL",
-    "url": "https://vingkan.github.io/momomadness/?choices=ADL",
-    "score": 10,
-    "maxScore": 14,
-    "wins": 8,
+    "wins": 11,
     "losses": 4
   },
   {
@@ -64,40 +14,190 @@
     "timestamp": "3/8/2026 14:59:36",
     "encoded": "4YP",
     "url": "https://vingkan.github.io/momomadness/?choices=4YP",
-    "score": 9,
-    "maxScore": 25,
-    "wins": 7,
-    "losses": 5
+    "score": 21,
+    "maxScore": 21,
+    "wins": 9,
+    "losses": 6
   },
   {
     "name": "Jonathan Reynolds",
     "timestamp": "3/9/2026 18:57:13",
     "encoded": "6CP",
     "url": "https://vingkan.github.io/momomadness/?choices=6CP",
-    "score": 9,
+    "score": 21,
     "maxScore": 21,
+    "wins": 9,
+    "losses": 6
+  },
+  {
+    "name": "Jonathan (3/10)",
+    "timestamp": "3/10/2026 19:16:18",
+    "encoded": "9IJ",
+    "url": "https://vingkan.github.io/momomadness/?choices=9IJ",
+    "score": 19,
+    "maxScore": 19,
+    "wins": 8,
+    "losses": 7
+  },
+  {
+    "name": "Tanha Kabir",
+    "timestamp": "3/10/2026 17:39:29",
+    "encoded": "6CR",
+    "url": "https://vingkan.github.io/momomadness/?choices=6CR",
+    "score": 18,
+    "maxScore": 18,
     "wins": 7,
+    "losses": 8
+  },
+  {
+    "name": "Virginia A",
+    "timestamp": "3/10/2026 21:06:12",
+    "encoded": "8AX",
+    "url": "https://vingkan.github.io/momomadness/?choices=8AX",
+    "score": 18,
+    "maxScore": 18,
+    "wins": 7,
+    "losses": 8
+  },
+  {
+    "name": "Evania",
+    "timestamp": "3/15/2026 8:08:57",
+    "encoded": "6JR",
+    "url": "https://vingkan.github.io/momomadness/?choices=6JR",
+    "score": 18,
+    "maxScore": 18,
+    "wins": 7,
+    "losses": 8
+  },
+  {
+    "name": "Javi",
+    "timestamp": "3/11/2026 21:14:53",
+    "encoded": "5JH",
+    "url": "https://vingkan.github.io/momomadness/?choices=5JH",
+    "score": 17,
+    "maxScore": 17,
+    "wins": 6,
+    "losses": 9
+  },
+  {
+    "name": "Matthew Gao",
+    "timestamp": "3/15/2026 13:35:56",
+    "encoded": "7MW",
+    "url": "https://vingkan.github.io/momomadness/?choices=7MW",
+    "score": 17,
+    "maxScore": 17,
+    "wins": 10,
     "losses": 5
+  },
+  {
+    "name": "Avena Cheng",
+    "timestamp": "3/8/2026 16:23:22",
+    "encoded": "6JK",
+    "url": "https://vingkan.github.io/momomadness/?choices=6JK",
+    "score": 14,
+    "maxScore": 14,
+    "wins": 9,
+    "losses": 6
+  },
+  {
+    "name": "Joe M",
+    "timestamp": "3/15/2026 9:31:39",
+    "encoded": "ADL",
+    "url": "https://vingkan.github.io/momomadness/?choices=ADL",
+    "score": 14,
+    "maxScore": 14,
+    "wins": 9,
+    "losses": 6
   },
   {
     "name": "Natalia",
     "timestamp": "3/11/2026 16:08:36",
     "encoded": "9B6",
     "url": "https://vingkan.github.io/momomadness/?choices=9B6",
-    "score": 8,
+    "score": 12,
     "maxScore": 12,
-    "wins": 6,
-    "losses": 6
+    "wins": 7,
+    "losses": 8
   },
   {
     "name": "Andrew",
     "timestamp": "3/15/2026 12:06:26",
     "encoded": "1SW",
     "url": "https://vingkan.github.io/momomadness/?choices=1SW",
-    "score": 8,
+    "score": 12,
     "maxScore": 12,
+    "wins": 7,
+    "losses": 8
+  },
+  {
+    "name": "Nathan",
+    "timestamp": "3/8/2026 17:18:47",
+    "encoded": "2LG",
+    "url": "https://vingkan.github.io/momomadness/?choices=2LG",
+    "score": 11,
+    "maxScore": 11,
     "wins": 6,
+    "losses": 9
+  },
+  {
+    "name": "Somya Jain",
+    "timestamp": "3/10/2026 19:46:36",
+    "encoded": "MG4",
+    "url": "https://vingkan.github.io/momomadness/?choices=MG4",
+    "score": 11,
+    "maxScore": 11,
+    "wins": 9,
     "losses": 6
+  },
+  {
+    "name": "Emily",
+    "timestamp": "3/11/2026 22:06:02",
+    "encoded": "000",
+    "url": "https://vingkan.github.io/momomadness/?choices=000",
+    "score": 11,
+    "maxScore": 11,
+    "wins": 7,
+    "losses": 8
+  },
+  {
+    "name": "Andy",
+    "timestamp": "3/11/2026 19:06:53",
+    "encoded": "4QS",
+    "url": "https://vingkan.github.io/momomadness/?choices=4QS",
+    "score": 10,
+    "maxScore": 10,
+    "wins": 6,
+    "losses": 9
+  },
+  {
+    "name": "Ali Kapadia",
+    "timestamp": "3/15/2026 14:10:05",
+    "encoded": "P24",
+    "url": "https://vingkan.github.io/momomadness/?choices=P24",
+    "score": 10,
+    "maxScore": 10,
+    "wins": 6,
+    "losses": 9
+  },
+  {
+    "name": "Marilyn Zhang",
+    "timestamp": "3/15/2026 15:39:41",
+    "encoded": "MHS",
+    "url": "https://vingkan.github.io/momomadness/?choices=MHS",
+    "score": 10,
+    "maxScore": 10,
+    "wins": 9,
+    "losses": 6
+  },
+  {
+    "name": "Casey Price",
+    "timestamp": "3/15/2026 12:52:28",
+    "encoded": "08A",
+    "url": "https://vingkan.github.io/momomadness/?choices=08A",
+    "score": 9,
+    "maxScore": 9,
+    "wins": 5,
+    "losses": 10
   },
   {
     "name": "Elif",
@@ -107,7 +207,7 @@
     "score": 8,
     "maxScore": 8,
     "wins": 6,
-    "losses": 6
+    "losses": 9
   },
   {
     "name": "Kishahnica Rajendran",
@@ -117,17 +217,17 @@
     "score": 8,
     "maxScore": 8,
     "wins": 7,
-    "losses": 5
+    "losses": 8
   },
   {
-    "name": "Jonathan (3/10)",
-    "timestamp": "3/10/2026 19:16:18",
-    "encoded": "9IJ",
-    "url": "https://vingkan.github.io/momomadness/?choices=9IJ",
+    "name": "Vinesh Kannan",
+    "timestamp": "3/8/2026 11:40:54",
+    "encoded": "1TA",
+    "url": "https://vingkan.github.io/momomadness/?choices=1TA",
     "score": 7,
-    "maxScore": 19,
-    "wins": 6,
-    "losses": 6
+    "maxScore": 7,
+    "wins": 3,
+    "losses": 12
   },
   {
     "name": "Jonathan (3/11)",
@@ -135,79 +235,9 @@
     "encoded": "6I1",
     "url": "https://vingkan.github.io/momomadness/?choices=6I1",
     "score": 7,
-    "maxScore": 19,
+    "maxScore": 7,
     "wins": 6,
-    "losses": 6
-  },
-  {
-    "name": "Nathan",
-    "timestamp": "3/8/2026 17:18:47",
-    "encoded": "2LG",
-    "url": "https://vingkan.github.io/momomadness/?choices=2LG",
-    "score": 7,
-    "maxScore": 11,
-    "wins": 5,
-    "losses": 7
-  },
-  {
-    "name": "Emily",
-    "timestamp": "3/11/2026 22:06:02",
-    "encoded": "000",
-    "url": "https://vingkan.github.io/momomadness/?choices=000",
-    "score": 7,
-    "maxScore": 11,
-    "wins": 6,
-    "losses": 6
-  },
-  {
-    "name": "Tanha Kabir",
-    "timestamp": "3/10/2026 17:39:29",
-    "encoded": "6CR",
-    "url": "https://vingkan.github.io/momomadness/?choices=6CR",
-    "score": 6,
-    "maxScore": 18,
-    "wins": 5,
-    "losses": 7
-  },
-  {
-    "name": "Virginia A",
-    "timestamp": "3/10/2026 21:06:12",
-    "encoded": "8AX",
-    "url": "https://vingkan.github.io/momomadness/?choices=8AX",
-    "score": 6,
-    "maxScore": 18,
-    "wins": 5,
-    "losses": 7
-  },
-  {
-    "name": "Evania",
-    "timestamp": "3/15/2026 8:08:57",
-    "encoded": "6JR",
-    "url": "https://vingkan.github.io/momomadness/?choices=6JR",
-    "score": 6,
-    "maxScore": 18,
-    "wins": 5,
-    "losses": 7
-  },
-  {
-    "name": "Ali Kapadia",
-    "timestamp": "3/15/2026 14:10:05",
-    "encoded": "P24",
-    "url": "https://vingkan.github.io/momomadness/?choices=P24",
-    "score": 6,
-    "maxScore": 18,
-    "wins": 5,
-    "losses": 7
-  },
-  {
-    "name": "Andy",
-    "timestamp": "3/11/2026 19:06:53",
-    "encoded": "4QS",
-    "url": "https://vingkan.github.io/momomadness/?choices=4QS",
-    "score": 6,
-    "maxScore": 10,
-    "wins": 5,
-    "losses": 7
+    "losses": 9
   },
   {
     "name": "Adi",
@@ -217,7 +247,7 @@
     "score": 6,
     "maxScore": 6,
     "wins": 6,
-    "losses": 6
+    "losses": 9
   },
   {
     "name": "Nancy Hung",
@@ -227,36 +257,6 @@
     "score": 6,
     "maxScore": 6,
     "wins": 5,
-    "losses": 7
-  },
-  {
-    "name": "Javi",
-    "timestamp": "3/11/2026 21:14:53",
-    "encoded": "5JH",
-    "url": "https://vingkan.github.io/momomadness/?choices=5JH",
-    "score": 5,
-    "maxScore": 17,
-    "wins": 4,
-    "losses": 8
-  },
-  {
-    "name": "Casey Price",
-    "timestamp": "3/15/2026 12:52:28",
-    "encoded": "08A",
-    "url": "https://vingkan.github.io/momomadness/?choices=08A",
-    "score": 5,
-    "maxScore": 9,
-    "wins": 4,
-    "losses": 8
-  },
-  {
-    "name": "Vinesh Kannan",
-    "timestamp": "3/8/2026 11:40:54",
-    "encoded": "1TA",
-    "url": "https://vingkan.github.io/momomadness/?choices=1TA",
-    "score": 3,
-    "maxScore": 7,
-    "wins": 2,
     "losses": 10
   }
 ]

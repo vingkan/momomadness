@@ -3,6 +3,7 @@ import { RESTAURANTS, getRestaurantBySeed } from "../data/restaurants";
 import { MATCHES } from "../data/bracket";
 import {
   RESULTS,
+  getResultByIndex,
   getResultWinner,
   resolveActualSlot,
   totalScore,
@@ -75,7 +76,9 @@ function computeStats(): RestaurantRow[] {
     const replacedStats = stats.get(r.seed)!;
     replacedStats.eliminated = true;
     const replacementStats = stats.get(r.replacedBy.replacementSeed)!;
-    replacementStats.eliminated = false;
+    if (replacementStats.losses === 0) {
+      replacementStats.eliminated = false;
+    }
   }
 
   return RESTAURANTS.map((r) => {
@@ -100,6 +103,17 @@ function computeStats(): RestaurantRow[] {
 export default function RestaurantLeaderboard() {
   const rows = computeStats();
   const [selectedSeed, setSelectedSeed] = useState<number | null>(null);
+
+  // Derive the tournament champion from the finals result
+  const finalsResult = getResultByIndex(14);
+  let championSeed: number | null = null;
+  if (finalsResult) {
+    const winner = getResultWinner(finalsResult);
+    const match = MATCHES[14];
+    const winnerSlot = winner === 0 ? match.topSlot : match.bottomSlot;
+    const winnerRestaurant = resolveActualSlot(winnerSlot);
+    if (winnerRestaurant) championSeed = winnerRestaurant.seed;
+  }
 
   if (RESULTS.length === 0) {
     return (
@@ -161,7 +175,7 @@ export default function RestaurantLeaderboard() {
                     className="bracket-link"
                     onClick={() => setSelectedSeed(r.seed)}
                   >
-                    {r.name}
+                    {r.name}{r.seed === championSeed ? " 👑" : ""}
                   </button>
                 </td>
                 <td>{r.division}</td>

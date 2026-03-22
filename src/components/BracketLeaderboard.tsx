@@ -74,7 +74,7 @@ export default function BracketLeaderboard({ onViewBracket }: Props) {
                     className="bracket-link"
                     onClick={() => onViewBracket(b.encoded)}
                   >
-                    {b.name}
+                    {b.name}{i === 0 ? " 👑" : ""}
                   </button>
                 </td>
                 <td className="col-num col-score">{b.score}</td>
